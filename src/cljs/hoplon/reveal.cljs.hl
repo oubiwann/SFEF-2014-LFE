@@ -1,5 +1,6 @@
 (ns hoplon.reveal
-    (:require [hoplon.util :as util]))
+    (:require [clojure.data :as data]
+              [hoplon.util :as util]))
 
 
 (defelem markdown-slide
@@ -35,10 +36,10 @@
       (section attrs children))))
 
 (defelem chapter
-  [attrs children]
-  "This element is used soley for human-readable organization of content. It's
-  just another slide."
-  (slide attrs children))
+  [{:keys [title] :as attrs} children]
+  (if (empty? title)
+    (slide {} children)
+    (slide {} (into [(slide (h1 title))] children))))
 
 (defelem slideshow
   [{:keys [theme] :as attrs :or {theme "default"}} children]
