@@ -1,10 +1,11 @@
-(ns deck.chapter2
+(ns example-deck.chapter2
     (:require [hoplon.reveal :refer
                [chapter slide notes highlight bullet quicklist]]))
 
 
 (defn slides []
   (chapter
+    (slide :title "The Web with Clojure")
     (slide :title "The Big Secret"
       (ul
         (li "Web development is functional")

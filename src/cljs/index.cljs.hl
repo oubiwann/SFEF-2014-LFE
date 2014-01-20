@@ -2,13 +2,13 @@
       (:require [hoplon.reveal :refer
                   [chapter slide slideshow notes highlight bullet quicklist]]
                 [hoplon.util :as util]
-                [deck.chapter1 :as ch1]
-                [deck.chapter2 :as ch2]
-                [deck.chapter3 :as ch3]
-                [deck.chapter4 :as ch4]
-                [deck.chapter5 :as ch5]
-                [deck.chapter6 :as ch6]
-                [deck.chapter7 :as ch7]))
+                [example-deck.chapter1 :as ch1]
+                [example-deck.chapter2 :as ch2]
+                [example-deck.chapter3 :as ch3]
+                [example-deck.chapter4 :as ch4]
+                [example-deck.chapter5 :as ch5]
+                [example-deck.chapter6 :as ch6]
+                [example-deck.chapter7 :as ch7]))
 
 
 (defn ch1-slides []
@@ -20,8 +20,7 @@
 (html
   (head)
   (body
-    (slideshow
-      :theme "moon"
+    (slideshow :theme "moon"
       (ch1/slides)
       (ch2/slides)
       (ch3/slides)

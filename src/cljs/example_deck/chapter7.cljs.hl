@@ -1,4 +1,4 @@
-(ns deck.chapter7
+(ns example-deck.chapter7
     (:require [hoplon.reveal :refer
                [chapter slide notes highlight bullet quicklist]]))
 

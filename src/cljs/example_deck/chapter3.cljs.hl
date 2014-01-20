@@ -1,13 +1,12 @@
-(ns deck.chapter3
+(ns example-deck.chapter3
     (:require [hoplon.reveal :refer
                [chapter slide notes highlight bullet quicklist]]))
 
 
 (defn slides []
   (chapter
-    (slide
-      (h1 "Hoplon"))
-    (slide     :title "What is Hoplon?"
+    (slide :title "Hoplon")
+    (slide :title "What is Hoplon?"
      (bullet "A ClojureScript client-side framework")
      (notes
       "At its core, Hoplon is a ClojureScript compiler that generates HTML pages and JavaScript. The HTML pages are a harness for the JS, which renders the pages and sets up their interactions. Hoplon is used for making powerful one-page apps."))
