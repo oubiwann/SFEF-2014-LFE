@@ -1,4 +1,4 @@
-{:project       slides
+{:project       hoplon-reveal-js
  :version       "0.2.0-SNAPSHOT"
  :dependencies  [[tailrecursion/boot.core   "1.1.1"]
                  [tailrecursion/boot.task   "1.0.1"]
