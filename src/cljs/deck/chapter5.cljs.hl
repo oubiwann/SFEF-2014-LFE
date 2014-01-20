@@ -1,0 +1,79 @@
+(ns deck.chapter5
+    (:require [hoplon.reveal :refer
+               [chapter slide notes highlight bullet quicklist]]))
+
+
+(defn slides []
+  (chapter
+    (slide
+     (h1 "HTTP Kit"))
+    (slide
+     (h2 "A Clojure web server")
+     (quicklist
+      "Supports WebSockets and long polling"
+      "Supports HTTP streaming"
+      "Compatible with Ring"
+      "So fast"
+      "Also a HTTP client"))
+    (slide
+     (h2 "Streaming example")
+     (highlight
+      ;;{{
+      (defn streaming-handler [request]
+        (with-channel request channel
+          (on-close channel (fn [status] (println "channel closed, " status)))
+          (doseq [i (range 1 10)]
+            (send! channel
+                   (str "message #" i)
+                   false) ; false -> don't close after send
+            (Thread/sleep 200))
+          (close channel)))
+      ;;}}
+      ))
+    (slide
+     :title "Streaming an OutputStream"
+     (highlight
+      ;;{{
+      (defn ch->outputstream [ch]
+        (proxy [java.io.OutputStream] []
+          (close [] (close ch))
+          (write
+            ([^bytes bs] ;; bytes of byte
+               (send! ch (String. bs) false))
+            ([^bytes bs off len]
+               (send! ch (String. bs off len) false)))))
+
+      (defn ch->writer [ch]
+        (io/writer (ch->outputstream ch)))
+
+      (defn stream-slice-query-json
+        [request response resource]
+        (let [resource (hal/json-representation resource)]
+          (with-channel request ch
+            (send! ch response false)
+            (with-open [writer (ch->writer ch)]
+              (json/generate-stream resource writer))
+            (close ch))
+          response))
+      ;;}}
+      ))
+    (slide
+      (h2 "WebSocket example")
+      (highlight
+        ;;{{
+        (defn ws-handler [request]
+          (with-channel request channel
+            (swap! channels conj channel)
+            (println "channel opened: " channel)
+            (on-close channel
+                      (fn [status]
+                        (swap! channels disj channel)
+                        (println "channel closed: " channel " - " status)))
+            (on-receive channel (fn [data]
+                                  (println "data received: " data)
+                                  (doseq [chan (disj @channels channel)]
+                                    (println "sending data: " channel " - " data)
+                                    (send! chan data))))))
+        ;;}}
+        )
+     (notes "Note the unified API, allowing us to degrade to long polling"))))

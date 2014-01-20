@@ -1,0 +1,12 @@
+(ns deck.chapter7
+    (:require [hoplon.reveal :refer
+               [chapter slide notes highlight bullet quicklist]]))
+
+
+(defn slides []
+  (chapter
+    (h1 "Finis")
+    (p "@cndreisbach at Twitter, Github, etc")
+    (p "clinton@dreisbach.us")
+    (p "http://prompt.sh")
+    (p "Come to the lightning talks tonight!")))
