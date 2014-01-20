@@ -37,10 +37,16 @@
       (markdown-slide attrs children)
       (section attrs children))))
 
+(defelem chapter
+  [attrs children]
+  "This element is used soley for human-readable organization of content. It's
+  just another slide."
+  (slide attrs children))
+
 (defelem slideshow
   [{:keys [theme] :as attrs :or {theme "default"}} children]
   (add-initfn!
-   (fn []   
+   (fn []
      (.initialize
       js/Reveal
       (clj->js {:history true

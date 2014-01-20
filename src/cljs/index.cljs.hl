@@ -1,5 +1,5 @@
 (page "index.html"
-      (:require [slides :as s :refer [slide notes highlight t quicklist]]))
+      (:require [slides :as s :refer [chapter slide notes highlight t quicklist]]))
 
 (defn url
   [href]
@@ -9,12 +9,12 @@
  (head)
  (body
   (s/slideshow
-   :theme "sky"
-   (slide
+   :theme "moon"
+   (chapter
     (h1 "Secrets of Clojure Web Development")
     (t "Clinton N. Dreisbach")
     (t "CodeMash 2014"))
-   (slide
+   (chapter
     (slide
      :title "The Big Secret"
      (ul
@@ -31,10 +31,10 @@
       ;;{{
       (ns request-echo
         (:require [clojure.pprint :refer [pprint]]))
-      
+
       (defn handler
         "Return the request as HTML."
-        ;; A request comes in the handler.  
+        ;; A request comes in the handler.
         [request]
 
         ;; The handler returns a response map.
@@ -54,7 +54,7 @@
       (li "i18n and l10n - Tower")
       (li "Asset pipeline - Optimus or Stefon")
       (li (strong "Luminus") (text " wraps many of these up in a set of Leiningen tasks.")))
-     (notes "Clojure just has a different approach: libraries that work well together and that you can mix and match. Does this make getting started harder? Yes, because you have to pick your tools. But once you start, Clojure web development can be a blast."))     
+     (notes "Clojure just has a different approach: libraries that work well together and that you can mix and match. Does this make getting started harder? Yes, because you have to pick your tools. But once you start, Clojure web development can be a blast."))
     (slide
      (h2 "Next-Level Web Apps")
      (ul
@@ -63,8 +63,8 @@
       (li "WebSockets"))
      (notes
       (t "When things get more complicated, though, how can Clojure help us?")
-      (t "I'm going to show three libraries that have helped me greatly"))))   
-   (slide
+      (t "I'm going to show three libraries that have helped me greatly"))))
+   (chapter
     (slide
      (h1 "Hoplon"))
     (slide
@@ -89,7 +89,7 @@
         (ul (li x)
             (li y)))
       </script>
-      
+
       <html>
       <body>
       <h1>Hello, Hoplon</h1>
@@ -101,7 +101,7 @@
       </duo>
       </body>
       </html>
-      ;;}}       
+      ;;}}
       ))
     (slide
      :title "Hoplon with CLJS syntax"
@@ -117,7 +117,7 @@
        (body
         (h1 "Hello, Hoplon")
         (duo "first thing" "second thing")))
-      ;;}}       
+      ;;}}
       )
      (notes "We are going to use the CLJS syntax for the rest of the presentation, but the HTML syntax can do anything the CLJS syntax can."))
     (slide
@@ -170,7 +170,7 @@
       (span :id "todo-count"
             (strong (text "~(count active) "))
             (span (text " ~{plural-item} left")))
-      ;;}}       
+      ;;}}
       )
      (notes "You can see in the first four lines here how we set up an input cell and three formula cells. When the value in state is changed, the three formula cells are automatically updated. The string interpolation below binds these text nodes to the values of the formula cells. The change is propogated into the text cells."))
     (slide
@@ -194,9 +194,9 @@
        :do-focus loaded?
        :do-attr (cell= {:placeholder (if loaded?
                                        "What needs to be done?"
-                                       "Loading...")}) 
+                                       "Loading...")})
        :on-focusout #(do! (by-id :new-todo) :value ""))
-      ;;}}       
+      ;;}}
       )
      (notes "You can see in this input element an example of do- and on- parameters. Starting with :do-focus, you can see that it's looking at the value of the loaded? cell. If the loaded? cell contains true, then focus on this input. This means that this input will gain focus when loaded? becomes true. :do-attr sets the placeholder attribute on this input based on the current loading state. It uses an anonymous cell so that this will update. We didn't have to use an anonymous cell with :do-focus because loaded? is a cell. Lastly, look at :on-focusout. The do! multimethod allows us to programmatically do the same thing we do with the do- attributes: update a DOM element."))
     (slide
@@ -209,7 +209,7 @@
      (ul
       (li "They can be used anywhere")
       (li "And with any backend"))))
-   (slide
+   (chapter
     (slide
      (h1 "Liberator"))
     (slide
@@ -239,7 +239,7 @@
                          "Hola mundo!"
                          "Hello world!")))
         :handle-not-found (fn [ctx]
-                            "Language not found."))       
+                            "Language not found."))
       ;;}}
       )
      (notes "Look at the exists? function. It takes a context, which all functions in a resource should take. The context has the request in it, as well as the response. In this resource, we look to see if the language parameter is equal to 'en' or 'es' and if so, then handle-ok is called. If not, handle-not-found is called. We did not have to define handle-ok and handle-not-found: Liberator provides default functions for all decisions and handlers. There's repeated code here, though, to look up the language, and I probably should have looked it up a third time in :handle-not-found. Let's see how we can fix that."))
@@ -260,8 +260,8 @@
                          "Hola mundo!"
                          "Hello world!")))
         :handle-not-found (fn [ctx]
-                            "Language not found."))       
-      ;;}}       
+                            "Language not found."))
+      ;;}}
       )
      (notes "See here how we returned a map from exists?? Any time we return a map, it is merged into the context map and available elsewhere. We could have even used destructuring to pull lang out, but I didn't want to confuse the issue. That's more idiomatic of my usage, though. It looks like we can't get lang so easily in handle-not-found, but Liberator does provide a way."))
     (slide
@@ -281,7 +281,7 @@
                        "Hello world!"))
         :handle-not-found (fn [{:keys [lang]}]
                             (str "Language " lang " not found.")))
-      ;;}}       
+      ;;}}
       )
      (notes "Instead of returning a map from a decision function, we can return a length-2 vector, where the first element is whether the decision passed and the second is the map to update the context with."))
     (slide
@@ -341,19 +341,19 @@
       ;;{{
       (defresource todos-resource
         :allowed-methods [:get :post]
-        :available-media-types ["application/edn"]  
+        :available-media-types ["application/edn"]
         :handle-ok (fn [_] @todo-list)
-        :post! (fn [{:keys [request]}]           
+        :post! (fn [{:keys [request]}]
                  (let [body (-> (:body request)
                                 slurp
                                 read-string)
-                       new-todo (assoc body :id (new-id))]             
+                       new-todo (assoc body :id (new-id))]
                    (swap! todo-list conj new-todo)
                    {:todo new-todo}))
         :handle-created (fn [{:keys [todo]}] todo))
       ;;}}
       )))
-   (slide
+   (chapter
     (slide
      (h1 "HTTP Kit"))
     (slide
@@ -397,7 +397,7 @@
 
       (defn stream-slice-query-json
         [request response resource]
-        (let [resource (hal/json-representation resource)]        
+        (let [resource (hal/json-representation resource)]
           (with-channel request ch
             (send! ch response false)
             (with-open [writer (ch->writer ch)]
@@ -426,7 +426,7 @@
       ;;}}
       )
      (notes "Note the unified API, allowing us to degrade to long polling")))
-   (slide
+   (chapter
     (slide
      (h1 "Putting it all together"))
     (slide
@@ -446,7 +446,7 @@
       (li (url "http://http-kit.org/"))
       (li (url "http://clojure-doc.org/"))
       (li (url "http://clojurewebdev.com/")))))
-   (slide
+   (chapter
     (h1 "Finis")
     (p "@cndreisbach at Twitter, Github, etc")
     (p "clinton@dreisbach.us")
