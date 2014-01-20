@@ -1,18 +1,15 @@
-(ns slides)
+(ns hoplon.reveal
+    (:require [hoplon.util :as util]))
+
 
 (defelem markdown-slide
   [attrs children]
   (section (merge attrs {:data-markdown ""})
            (script :type "text/template" children)))
 
-(defn is-text?
-  [children]
-  (and (= (count children) 1)
-       (not (= (.-nodeType (first children)) 1))))
-
 (defelem slide-title
   [attrs children]
-  (if (is-text? children)
+  (if (util/is-text? children)
     (add-attributes! (h2 (first children)) {:class "title"})
     children))
 
@@ -69,7 +66,7 @@
              :href "reveal.js/plugin/highlight/github.min.css")
        (div :class "slides" children)))
 
-(def t div)
+(def bullet div)
 
 (defn quicklist
   [& things]
