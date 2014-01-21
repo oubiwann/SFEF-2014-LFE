@@ -1,6 +1,5 @@
 (ns example-deck.chapter4
-    (:require [hoplon.reveal :refer
-               [chapter slide notes highlight bullet quicklist]]))
+    (:require [hoplon.reveal :refer [chapter slide notes highlight quicklist]]))
 
 
 (defn slides []
