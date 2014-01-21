@@ -1,5 +1,6 @@
 (ns hoplon.reveal
-    (:require [hoplon.util :as util]))
+    (:require [clojure.string :as string]
+              [hoplon.util :as util]))
 
 
 (defelem markdown-slide
@@ -7,10 +8,22 @@
   (section (merge attrs {:data-markdown ""})
            (script :type "text/template" children)))
 
+(defelem intro-title
+  [attrs children]
+  (if (util/is-text? children)
+    (add-attributes! (h1 (first children)) {:class "slide-title intro"})
+    children))
+
+(defelem chapter-title
+  [attrs children]
+  (if (util/is-text? children)
+    (add-attributes! (h2 (first children)) {:class "slide-title chapter"})
+    children))
+
 (defelem slide-title
   [attrs children]
   (if (util/is-text? children)
-    (add-attributes! (h2 (first children)) {:class "title"})
+    (add-attributes! (h3 (first children)) {:class "slide-title slide"})
     children))
 
 (defelem slide
@@ -35,10 +48,16 @@
       (section attrs children))))
 
 (defelem chapter
-  [attrs children]
-  "This element is used soley for human-readable organization of content. It's
-  just another slide."
-  (slide attrs children))
+  [{:keys [title] :as attrs} children]
+  (if (empty? title)
+    (slide {} children)
+    (slide {} (concat [(slide (chapter-title title))] children))))
+
+(defelem intro
+  [{:keys [title] :as attrs} children]
+  (if (empty? title)
+    (slide {} children)
+    (slide {} (concat [(intro-title title)] children))))
 
 (defelem slideshow
   [{:keys [theme] :as attrs :or {theme "default"}} children]

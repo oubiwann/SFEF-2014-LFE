@@ -4,8 +4,7 @@
 
 
 (defn slides []
-  (chapter
-    (h1 "Finis")
+  (chapter :title "Finis"
     (p "@cndreisbach at Twitter, Github, etc")
     (p "clinton@dreisbach.us")
     (p "http://prompt.sh")

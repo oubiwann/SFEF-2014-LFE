@@ -4,19 +4,15 @@
 
 
 (defn slides []
-  (chapter
-    (slide
-     (h1 "HTTP Kit"))
-    (slide
-     (h2 "A Clojure web server")
+  (chapter :title "HTTP Kit"
+    (slide :title "A Clojure web server"
      (quicklist
       "Supports WebSockets and long polling"
       "Supports HTTP streaming"
       "Compatible with Ring"
       "So fast"
       "Also a HTTP client"))
-    (slide
-     (h2 "Streaming example")
+    (slide :title "Streaming example"
      (highlight
       ;;{{
       (defn streaming-handler [request]
@@ -30,8 +26,7 @@
           (close channel)))
       ;;}}
       ))
-    (slide
-     :title "Streaming an OutputStream"
+    (slide :title "Streaming an OutputStream"
      (highlight
       ;;{{
       (defn ch->outputstream [ch]
@@ -57,8 +52,7 @@
           response))
       ;;}}
       ))
-    (slide
-      (h2 "WebSocket example")
+    (slide :title "WebSocket example"
       (highlight
         ;;{{
         (defn ws-handler [request]
