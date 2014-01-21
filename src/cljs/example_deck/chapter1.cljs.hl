@@ -1,7 +1,5 @@
 (ns example-deck.chapter1
-    (:require [hoplon.reveal :refer
-                [slideshow intro chapter slide bullet notes highlight
-                   quicklist]]))
+    (:require [hoplon.reveal :refer [intro bullet]]))
 
 
 (defn slides []
