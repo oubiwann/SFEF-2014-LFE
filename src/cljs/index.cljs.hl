@@ -1,6 +1,7 @@
 (page "index.html"
       (:require [hoplon.reveal :refer
-                  [chapter slide slideshow notes highlight bullet quicklist]]
+                  [slideshow deck chapter slide bullet notes highlight
+                   quicklist]]
                 [hoplon.util :as util]
                 [example-deck.chapter1 :as ch1]
                 [example-deck.chapter2 :as ch2]
@@ -10,12 +11,6 @@
                 [example-deck.chapter6 :as ch6]
                 [example-deck.chapter7 :as ch7]))
 
-
-(defn ch1-slides []
-  (chapter
-    (h1 "Secrets of Clojure Web Development")
-    (bullet "Clinton N. Dreisbach")
-    (bullet "CodeMash 2014")))
 
 (html
   (head)
