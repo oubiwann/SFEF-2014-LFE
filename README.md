@@ -26,17 +26,16 @@ directory.
     $ make watch
     ```
 
-2. Run a dev HTTP server:
+1. Run a dev HTTP server:
 
     ```bash
     $ make dev
     ```
 
-3. Open the example side deck:
-
+1. Open the example side deck:
    * http:localhost:9999/example-deck.html
 
-4. Create your own slide deck, after seeing how wonderfully clean the example
+1. Create your own slide deck, after seeing how wonderfully clean the example
    code is!
 
 ## Themeing
