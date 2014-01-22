@@ -27,15 +27,17 @@
     children))
 
 (defelem slide
-  [{:keys [markdown title background transition] :as attrs} children]
+  [{:keys [markdown title background background-size transition] :as attrs} children]
   ;; TODO
   ;; - add data-background-repeat
-  ;; - add data-background-size
   ;; - add class -> data-state
   ;; - abstract out this nonsense
-  (let [attrs (dissoc attrs :markdown :title :background :transition)
+  (let [attrs (dissoc attrs :markdown :title :background :background-size :transition)
         attrs (if background
                 (assoc attrs :data-background background)
+                attrs)
+        attrs (if background-size
+                (assoc attrs :data-background-size background-size)
                 attrs)
         attrs (if transition
                 (assoc attrs :data-transition transition)
@@ -48,16 +50,18 @@
       (section attrs children))))
 
 (defelem chapter
-  [{:keys [title] :as attrs} children]
+  [{:keys [title background] :as attrs} children]
   (if (empty? title)
-    (slide {} children)
-    (slide {} (concat [(slide (chapter-title title))] children))))
+    (slide {:background background} children)
+    (slide {:background background}
+           (concat [(slide (chapter-title title))] children))))
 
 (defelem intro
-  [{:keys [title] :as attrs} children]
+  [{:keys [title background background-size] :as attrs} children]
   (if (empty? title)
-    (slide {} children)
-    (slide {} (concat [(intro-title title)] children))))
+    (slide {:background background :background-size background-size} children)
+    (slide {:background background :background-size background-size}
+           (concat [(intro-title title)] children))))
 
 (defelem slideshow
   [{:keys [theme] :as attrs :or {theme "default"}} children]

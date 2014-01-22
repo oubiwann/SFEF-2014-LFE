@@ -4,6 +4,9 @@
 
 (defn slides []
   (intro :title "LFE"
-    (h2 "0 to 120kph ... in 45 Minutes")
+         :background "img/LFE-Background-rusted-with-concrete.jpg"
+         ;:background-size "1200px"
+    (h2 "0 to 120kph")
+    (h2 "in 45 Minutes")
     (bullet "Duncan McGreggor")
     (bullet "SF Erlang Factory, 2014")))
