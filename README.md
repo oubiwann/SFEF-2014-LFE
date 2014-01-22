@@ -117,8 +117,8 @@ repo, for your convenience:
     $ make dev
     ```
 
-1. Open the example side deck:
-   * http:localhost:9999/example-deck.html
+1. Open the example deck and navigate through it!
+   * [http:localhost:9999/example-deck.html](http:localhost:9999/example-deck.html)
 
 1. Check out the beautifully clean source code :-)
 
