@@ -1,4 +1,4 @@
-(page "index.html"
+(page "example-deck.html"
       (:require [hoplon.reveal :refer
                   [slideshow deck chapter slide bullet notes highlight
                    quicklist]]
