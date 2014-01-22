@@ -3,6 +3,7 @@
 This library let's you create slide decks/presentations with
 [Reveal.js][3] and [Hoplon][7], using Clojure + ClojureScript.
 
+
 ## Dependencies
 
 - java 1.7+
@@ -14,6 +15,7 @@ If you want to build your own themes, you'll also need:
 - [Node.js][4]
 - [Grunt][5]
 - [sass][6]
+
 
 ## Usage
 
@@ -38,6 +40,7 @@ You can then use it in your project like so:
 ...
 ```
 
+
 ## Dev Environment
 
 You'll probably want to have two terminals open in your project's
@@ -61,6 +64,7 @@ directory.
 1. Create your own slide deck, after seeing how wonderfully clean the example
    code is!
 
+
 ## Themeing
 
 You can give your slide deck a feel all your own by following these steps:
@@ -79,3 +83,4 @@ Copyright © 2014, Clinton N. Dreisbach
 [4]: http://nodejs.org/
 [5]: http://gruntjs.com/
 [6]: http://sass-lang.com/
+[7]: http://hoplon.io/
