@@ -32,9 +32,10 @@ You can then use it in your project like so:
 
 ```clojure
 
-    (ns your-project.client
+    (ns your-project.some-module
       (:require [hoplon.reveal :refer
                   [intro chapter slide notes highlight bullet]]))
+    ...
 ```
 
 ## Dev Environment
