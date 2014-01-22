@@ -76,7 +76,8 @@ slide deck defined in a file called ``example_deck.cljs.hl`` (but compiled to
       (ch7/slides))))
 ```
 
-And here's what ``chapter`` (set of slides) looks like from that deck:
+And here's what one of the ``chapter``s (set of slides) looks like from that
+deck:
 ```clojure
   (chapter :title "HTTP Kit"
     (slide :title "A Clojure web server"
@@ -128,8 +129,42 @@ repo, for your convenience:
 
 You can give your slide deck a feel all your own by following these steps:
 
-1. TBD
-2. TBD
+1. Install Node.js on your system.
+
+1. Install Grunt:
+
+   ```bash
+   npm install -g grunt-cli
+   ```
+
+1. Install Saas:
+   ```bash
+   gem install sass
+   ```
+
+1. Change directory:
+   ```bash
+   $ cd resources/assets/reveal.js
+   ```
+
+1. Duplicate any needed ``.scss`` file in ``css/theme/source``.
+
+1. Add it to the compilation list in ``Gruntfile.js``.
+
+1. Add any needed images and update your ``.scss`` file(s).
+
+1. Update any of the ``css/theme/template/*.scss`` files that you need.
+
+1. Run `grunt themes``.
+
+1. Update your hoplon.reveal slideshow to use the new theme, e.g.:
+   ```clojure
+     (html
+       (head)
+       (body
+         (slideshow :theme "my-new-theme"
+           ...)))
+   ```
 
 
 ## License
