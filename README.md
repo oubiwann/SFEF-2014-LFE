@@ -40,8 +40,14 @@ You can then use it in your project like so:
 ...
 ```
 
-For instance, here is a complete slide deck defined in a file called
-``example_deck.cljs.hl`` (but compiled to ``example-deck.html``):
+Although this would allow you to use the Hoplon and ``hoplon.reveal`` functions
+and macros, you would still need to add the Reveal.js files. As such, it might
+be easier to simply clone this repo and work from there (see the "example
+deck").
+
+To get a better sense of how you'd use ``hoplon.reveal``, here is a complete
+slide deck defined in a file called ``example_deck.cljs.hl`` (but compiled to
+``example-deck.html``):
 ```clojure
 (page "example-deck.html"
       (:require [hoplon.reveal :refer
@@ -93,16 +99,18 @@ And here's what ``chapter`` (set of slides) looks like from that deck:
 
 ## Dev Environment
 
-You'll probably want to have two terminals open in your project's
-directory.
+We're going to assume that you will develop your slides inside a clone of this
+repo, for your convenience:
 
-1. Start the auto-compiler:
+1. Open two terminals in the cloned directory.
+
+1. Start the auto-compiler in one terminal:
 
     ```bash
     $ make watch
     ```
 
-1. Run a dev HTTP server:
+1. Run a dev HTTP server in the other terminal:
 
     ```bash
     $ make dev
@@ -111,8 +119,9 @@ directory.
 1. Open the example side deck:
    * http:localhost:9999/example-deck.html
 
-1. Create your own slide deck, after seeing how wonderfully clean the example
-   code is!
+1. Check out the beautifully clean source code :-)
+
+1. Create your own slide deck!
 
 
 ## Themeing
