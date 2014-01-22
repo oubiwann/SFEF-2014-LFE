@@ -1,5 +1,6 @@
 (ns example-deck.chapter3
-    (:require [hoplon.reveal :refer [chapter slide notes highlight bullet]]))
+    (:require [hoplon.reveal :refer [chapter slide notes bullet]]
+              [example-deck.sample-code :as sample-code]))
 
 
 (defn slides []
@@ -18,153 +19,72 @@
             "Lisp. In Hoplon, you can create pages using either HTML or "
             "ClojureScript."))
     (slide :title "Hoplon with HTML syntax"
-     (highlight
-      ;;{{
-      <script type="text/hoplon">
-      (page "index.html")
-
-      (defn duo [x y]
-        (ul (li x)
-            (li y)))
-      </script>
-
-      <html>
-      <body>
-      <h1>Hello, Hoplon</h1>
-
-      <!-- an HTML syntax call to the duo function -->
-      <duo>
-      <div>first thing</div>
-      <div>second thing</div>
-      </duo>
-      </body>
-      </html>
-      ;;}}
-      ))
+      (sample-code/get-hoplon-with-html))
     (slide :title "Hoplon with CLJS syntax"
-     (highlight
-      ;;{{
-      (page "index.html")
-
-      (defn duo [x y]
-        (ul (li x)
-            (li y)))
-
-      (html
-       (body
-        (h1 "Hello, Hoplon")
-        (duo "first thing" "second thing")))
-      ;;}}
-      )
-     (notes "We are going to use the CLJS syntax for the rest of the "
-            "presentation, but the HTML syntax can do anything the CLJS syntax "
-            "can."))
+      (sample-code/get-hoplon-with-cljs)
+      (notes "We are going to use the CLJS syntax for the rest of the "
+             "presentation, but the HTML syntax can do anything the CLJS "
+             "syntax can."))
     (slide :title "defelem"
-     (highlight
-      ;;{{
-      (defelem slideshow
-        [attrs children]
-        (div :class "reveal"
-             (div (assoc attrs :class "slides")
-                  children)))
-      ;;}}
-      )
-     (notes "defelem is the preferred way to create functions that act like "
-            "HTML elements. It allows for the syntactic sugar you see with all "
-            "Hoplon elements."))
+      (sample-code/get-hoplon-defelem)
+      (notes "defelem is the preferred way to create functions that act like "
+             "HTML elements. It allows for the syntactic sugar you see with "
+             "all Hoplon elements."))
     (slide :title "Slideshows with Hoplon"
-     (highlight
-      ;;{{
-      (slideshow :theme "sky"
-       (slide
-        (h1 "Secrets of Clojure Web Development")
-        (bullet "Clinton N. Dreisbach")
-        (bullet "CodeMash 2014"))
-       (slide
-        :title "The Big Secret"
-        (ul
-         (li "Web development is functional")
-         (li "Clojure is great at web development"))
-        (notes "A request comes in, a transformation is performed, a response "
-               "is returned.")))
-      ;;}}
-      ))
+      (sample-code/get-hoplon-slidedeck))
     (slide :title "Hoplon as spreadsheet"
-     (ul
-      (li "Hoplon simplifies state by using cells")
-      (li "Cells work just like cells in a spreadsheet")
-      (li "Two kinds of cells: input and formula"))
-     (notes "Remember in a spreadsheet where you could have a cell A1 and a "
-            "cell B1 and then set C1 to the quotient of them? And when you "
-            "updated A1 or B1, C1 updated? Hoplon cells work just like this, "
-            "but instead of referencing them by letter and number, they are "
-            "referenced like any other Clojure value. They are a Clojure "
-            "reference type like atoms and the same functions work on them, "
-            "but they automatically propogate updates from input cells to "
-            "formula cells."))
+      (ul
+        (li "Hoplon simplifies state by using cells")
+        (li "Cells work just like cells in a spreadsheet")
+        (li "Two kinds of cells: input and formula"))
+      (notes "Remember in a spreadsheet where you could have a cell A1 and a "
+             "cell B1 and then set C1 to the quotient of them? And when you "
+             "updated A1 or B1, C1 updated? Hoplon cells work just like this, "
+             "but instead of referencing them by letter and number, they are "
+             "referenced like any other Clojure value. They are a Clojure "
+             "reference type like atoms and the same functions work on them, "
+             "but they automatically propogate updates from input cells to "
+             "formula cells."))
     (slide :title "Hoplon cell example"
-     (highlight
-      ;;{{
-      (def state       (cell []))
-      (def completed   (cell= (filter :completed state)))
-      (def active      (cell= (remove :completed state)))
-      (def plural-item (cell= (pluralize "item" (count active))))
-
-      ;; Later in the page
-      (span :id "todo-count"
-            (strong (text "~(count active) "))
-            (span (text " ~{plural-item} left")))
-      ;;}}
-      )
-     (notes "You can see in the first four lines here how we set up an input "
-            "cell and three formula cells. When the value in state is changed, "
-            "the three formula cells are automatically updated. The string "
-            "interpolation below binds these text nodes to the values of the "
-            "formula cells. The change is propogated into the text cells. "))
+      (sample-code/get-hoplon-cell)
+      (notes "You can see in the first four lines here how we set up an input "
+             "cell and three formula cells. When the value in state is "
+             "changed, the three formula cells are automatically updated. "
+             "The string interpolation below binds these text nodes to the "
+             "values of the formula cells. The change is propogated into the "
+             "text cells. "))
     (slide :title "Hoplon and the DOM"
-     (bullet "Hoplon uses the DOM for input and output. Examples:")
-     (ul
-      (li "on-click")
-      (li "on-change"))
-     (ul
-      (li "do-value")
-      (li "do-class"))
-     (notes "Hoplon uses the DOM for input and output. All user input is done "
-            "through DOM events like on-click and on-change. Code is attached "
-            "to these events, like you're used to from jQuery or other "
-            "libraries. Output is done by manipulating the properties of DOM "
-            "nodes using special do- attributes. The value of these attributes "
-            "is always a formula cell."))
+      (bullet "Hoplon uses the DOM for input and output. Examples:")
+      (ul
+        (li "on-click")
+        (li "on-change"))
+      (ul
+        (li "do-value")
+        (li "do-class"))
+      (notes "Hoplon uses the DOM for input and output. All user input is done "
+             "through DOM events like on-click and on-change. Code is attached "
+             "to these events, like you're used to from jQuery or other "
+             "libraries. Output is done by manipulating the properties of DOM "
+             "nodes using special do- attributes. The value of these "
+             "attributes is always a formula cell."))
     (slide :title "Hoplon DOM example"
-     (highlight
-      ;;{{
-      (input
-       :id "new-todo"
-       :type "text"
-       :do-focus loaded?
-       :do-attr (cell= {:placeholder (if loaded?
-                                       "What needs to be done?"
-                                       "Loading...")})
-       :on-focusout #(do! (by-id :new-todo) :value ""))
-      ;;}}
-      )
-     (notes "You can see in this input element an example of do- and on- "
-            "parameters. Starting with :do-focus, you can see that it's "
-            "looking at the value of the loaded? cell. If the loaded? cell "
-            "contains true, then focus on this input. This means that this "
-            "input will gain focus when loaded? becomes true. :do-attr sets "
-            "the placeholder attribute on this input based on the current "
-            "loading state. It uses an anonymous cell so that this will "
-            "update. We didn't have to use an anonymous cell with :do-focus "
-            "because loaded? is a cell. Lastly, look at :on-focusout. The do! "
-            "multimethod allows us to programmatically do the same thing we "
-            "do with the do- attributes: update a DOM element."))
+      (sample-code/get-hoplon-dom)
+      (notes "You can see in this input element an example of do- and on- "
+             "parameters. Starting with :do-focus, you can see that it's "
+             "looking at the value of the loaded? cell. If the loaded? cell "
+             "contains true, then focus on this input. This means that this "
+             "input will gain focus when loaded? becomes true. :do-attr sets "
+             "the placeholder attribute on this input based on the current "
+             "loading state. It uses an anonymous cell so that this will "
+             "update. We didn't have to use an anonymous cell with :do-focus "
+             "because loaded? is a cell. Lastly, look at :on-focusout. The do! "
+             "multimethod allows us to programmatically do the same thing we "
+             "do with the do- attributes: update a DOM element."))
     (slide :title "Full example of Hoplon"
-     (a :href "https://github.com/cndreisbach/codemash-2014-presentation/blob/master/todo-hoplon/src/index.cljs.hl"
-        :target "_blank"
-        "Code on GitHub"))
+      (a :href "https://github.com/cndreisbach/codemash-2014-presentation/blob/master/todo-hoplon/src/index.cljs.hl"
+         :target "_blank"
+         "Code on GitHub"))
     (slide :title "Hoplon compiles to static files"
-     (ul
-      (li "They can be used anywhere")
-      (li "And with any backend")))
-    ))
+      (ul
+        (li "They can be used anywhere")
+        (li "And with any backend")))))

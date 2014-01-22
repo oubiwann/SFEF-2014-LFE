@@ -1,5 +1,6 @@
 (ns example-deck.chapter2
-    (:require [hoplon.reveal :refer [chapter slide notes highlight bullet]]))
+    (:require [hoplon.reveal :refer [chapter slide notes bullet]]
+              [example-deck.sample-code :as sample-code]))
 
 
 (defn slides []
@@ -17,24 +18,7 @@
       (img :src "img/ring.png")
       (notes "Clojure provides good facilities for creating web apps with Ring"))
     (slide :title "A simple Ring app"
-      (highlight
-        ;;{{
-        (ns request-echo
-          (:require [clojure.pprint :refer [pprint]]))
-
-        (defn handler
-          "Return the request as HTML."
-          ;; A request comes in the handler.
-          [request]
-
-          ;; The handler returns a response map.
-          {:status 200
-           :headers {"Content-Type" "text/html"}
-           :body (str "<h1>Request Echo</h1><pre>"
-                      (with-out-str (pprint request))
-                      "</pre>")})
-        ;;}}
-        ))
+      );(sample-code/get-simple-ring-app))
     (slide :title "Libraries over frameworks"
       (ul
         (li "Routing - Compojure")
