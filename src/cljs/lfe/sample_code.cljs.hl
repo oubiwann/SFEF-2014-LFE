@@ -1,4 +1,4 @@
-(ns example-deck.sample-code
+(ns lfe.sample-code
     (:require [hoplon.reveal :refer [highlight]]))
 
 

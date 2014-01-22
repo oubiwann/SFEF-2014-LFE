@@ -1,6 +1,6 @@
-(ns example-deck.chapter5
+(ns lfe.chapter5
     (:require [hoplon.reveal :refer [chapter slide notes quicklist]]
-              [example-deck.sample-code :as sample-code]))
+              [lfe.sample-code :as sample-code]))
 
 
 (defn slides []

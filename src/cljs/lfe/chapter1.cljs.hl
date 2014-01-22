@@ -1,8 +1,9 @@
-(ns example-deck.chapter1
+(ns lfe.chapter1
     (:require [hoplon.reveal :refer [intro bullet]]))
 
 
 (defn slides []
-  (intro :title "Secrets of Clojure Web Development"
-    (bullet "Clinton N. Dreisbach")
-    (bullet "CodeMash 2014")))
+  (intro :title "LFE"
+    (h2 "0 to 120kph ... in 45 Minutes")
+    (bullet "Duncan McGreggor")
+    (bullet "SF Erlang Factory, 2014")))

@@ -1,4 +1,4 @@
-(ns example-deck.chapter6
+(ns lfe.chapter6
     (:require [hoplon.reveal :refer [chapter slide]]
               [hoplon.util :as util]))
 
