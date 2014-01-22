@@ -15,7 +15,7 @@
 (html
   (head)
   (body
-    (slideshow :theme "moon"
+    (slideshow :theme "lfe"
       (ch1/slides)
       (ch2/slides)
       (ch3/slides)
