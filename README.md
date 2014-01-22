@@ -1,7 +1,7 @@
 # hoplon.reveal
 
-A Hoplon project that let's you create slide decks/presentations with
-[Reveal.js][3] with Clojure + ClojureScript.
+This library let's you create slide decks/presentations with
+[Reveal.js][3] and [Hoplon][7], using Clojure + ClojureScript.
 
 ## Dependencies
 
@@ -21,21 +21,21 @@ The latest version is: ``[hoplon.reveal "0.1.0"]``
 
 ```clojure
 
-    (defproject your-project "1.2.3"
-      ...
-      :dependencies [[hoplon.reveal "0.1.0"]
-                      ...]
-      ...)
+(defproject your-project "1.2.3"
+  ...
+  :dependencies [[hoplon.reveal "0.1.0"]
+                  ...]
+  ...)
 ```
 
 You can then use it in your project like so:
 
 ```clojure
 
-    (ns your-project.some-module
-      (:require [hoplon.reveal :refer
-                  [intro chapter slide notes highlight bullet]]))
-    ...
+(ns your-project.some-module
+  (:require [hoplon.reveal :refer
+              [intro chapter slide notes highlight bullet]]))
+...
 ```
 
 ## Dev Environment
