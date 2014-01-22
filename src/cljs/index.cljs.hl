@@ -1,0 +1,25 @@
+(page "index.html"
+      (:require [hoplon.reveal :refer
+                  [slideshow deck chapter slide bullet notes highlight
+                   quicklist]]
+                [hoplon.util :as util]
+                [lfe.chapter1 :as ch1]
+                [lfe.chapter2 :as ch2]
+                [lfe.chapter3 :as ch3]
+                [lfe.chapter4 :as ch4]
+                [lfe.chapter5 :as ch5]
+                [lfe.chapter6 :as ch6]
+                [lfe.chapter7 :as ch7]))
+
+
+(html
+  (head)
+  (body
+    (slideshow :theme "lfe"
+      (ch1/slides)
+      (ch2/slides)
+      (ch3/slides)
+      (ch4/slides)
+      (ch5/slides)
+      (ch6/slides)
+      (ch7/slides))))
