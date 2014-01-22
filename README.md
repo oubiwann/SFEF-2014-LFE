@@ -17,6 +17,28 @@ If you want to build your own themes, you'll also need:
 
 ## Usage
 
+The latest version is: ``[hoplon.reveal "0.1.0"]``
+
+```clojure
+
+    (defproject your-project "1.2.3"
+      ...
+      :dependencies [[hoplon.reveal "0.1.0"]
+                      ...]
+      ...)
+```
+
+You can then use it in your project like so:
+
+```clojure
+
+    (ns your-project.client
+      (:require [hoplon.reveal :refer
+                  [intro chapter slide notes highlight bullet]]))
+```
+
+## Dev Environment
+
 You'll probably want to have two terminals open in your project's
 directory.
 
@@ -40,7 +62,10 @@ directory.
 
 ## Themeing
 
-You can give your slide deck a feel all your own
+You can give your slide deck a feel all your own by following these steps:
+
+1. TBD
+2. TBD
 
 
 ## License
