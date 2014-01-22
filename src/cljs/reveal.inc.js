@@ -93,7 +93,7 @@ var Reveal = (function(){
 			theme: null,
 
 			// Transition style
-			transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+			transition: 'fade', // default/cube/page/concave/zoom/linear/fade/none
 
 			// Transition speed
 			transitionSpeed: 'default', // default/fast/slow
