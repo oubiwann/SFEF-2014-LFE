@@ -18,7 +18,7 @@
       (img :src "img/ring.png")
       (notes "Clojure provides good facilities for creating web apps with Ring"))
     (slide :title "A simple Ring app"
-      );(sample-code/get-simple-ring-app))
+      (sample-code/get-simple-ring-app))
     (slide :title "Libraries over frameworks"
       (ul
         (li "Routing - Compojure")
