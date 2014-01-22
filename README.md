@@ -98,6 +98,7 @@ deck:
       (notes "Note the unified API, allowing us to degrade to long polling")))
 ```
 
+
 ## Dev Environment
 
 We're going to assume that you will develop your slides inside a clone of this
@@ -134,17 +135,22 @@ You can give your slide deck a feel all your own by following these steps:
 1. Install Grunt:
 
    ```bash
-   npm install -g grunt-cli
+   $ npm install -g grunt-cli
    ```
 
 1. Install Saas:
    ```bash
-   gem install sass
+   $ gem install sass
    ```
 
 1. Change directory:
    ```bash
    $ cd resources/assets/reveal.js
+   ```
+
+1. Install any missing deps for Reveal.js:
+   ```bash
+   $ npm install
    ```
 
 1. Duplicate any needed ``.scss`` file in ``css/theme/source``.
