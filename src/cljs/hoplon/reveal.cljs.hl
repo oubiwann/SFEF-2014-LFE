@@ -27,40 +27,44 @@
     children))
 
 (defelem slide
-  [{:keys [markdown title background background-size transition] :as attrs} children]
+  [{:keys [markdown title bg bg-size class transition] :as attrs} children]
   ;; TODO
   ;; - add data-background-repeat
-  ;; - add class -> data-state
   ;; - abstract out this nonsense
-  (let [attrs (dissoc attrs :markdown :title :background :background-size :transition)
-        attrs (if background
-                (assoc attrs :data-background background)
+  (let [attrs (dissoc attrs :markdown :title :bg :bg-size :class :transition)
+        attrs (if bg
+                (assoc attrs :data-background bg)
                 attrs)
-        attrs (if background-size
-                (assoc attrs :data-background-size background-size)
+        attrs (if bg-size
+                (assoc attrs :data-background-size bg-size)
                 attrs)
         attrs (if transition
                 (assoc attrs :data-transition transition)
                 attrs)
+        attrs (if class
+                (assoc attrs :data-state class)
+                attrs)
         children (if title
                    (concat [(slide-title title)] children)
                    children)]
+    (if class
+      (.log js/console attrs))
     (if markdown
       (markdown-slide attrs children)
       (section attrs children))))
 
 (defelem chapter
-  [{:keys [title background] :as attrs} children]
+  [{:keys [title bg class] :as attrs} children]
   (if (empty? title)
-    (slide {:background background} children)
-    (slide {:background background}
+    (slide {:bg bg :class class} children)
+    (slide {:bg bg :class class}
            (concat [(slide (chapter-title title))] children))))
 
 (defelem intro
-  [{:keys [title background background-size] :as attrs} children]
+  [{:keys [title bg bg-size class] :as attrs} children]
   (if (empty? title)
-    (slide {:background background :background-size background-size} children)
-    (slide {:background background :background-size background-size}
+    (slide {:bg bg :bg-size bg-size :class class} children)
+    (slide {:bg bg :bg-size bg-size :class class}
            (concat [(intro-title title)] children))))
 
 (defelem slideshow
