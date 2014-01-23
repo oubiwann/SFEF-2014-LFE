@@ -44,8 +44,8 @@ $base01:    #586e75;
 $base00:    #657b83;
 $base0:     #839496;
 //$base1:     #93a1a1;
-$base1:     #eeba92;
-$base2:     #eee8d5;
+$base1:     #520a00;
+$base2:     #b55c35;
 $base3:     #fdf6e3;
 $yellow:    #b58900;
 $orange:    #cb4b16;
@@ -61,7 +61,9 @@ $mainFont: 'Open Sans', sans-serif;
 $mainColor: $base1;
 $headingFont: 'Bree Serif', serif;
 $headingColor: $base2;
-//$headingTextShadow: none;
+$headingMargin: 0 0 5px 0;
+$headingTextShadow: 5px 5px 5px rgba(0,0,0,0.6);
+$heading1TextShadow: $headingTextShadow;
 $backgroundColor: $base03;
 $linkColor: $blue;
 $linkColorHover: lighten( $linkColor, 20% );
@@ -74,6 +76,17 @@ $selectionBackgroundColor: $magenta;
   left: 0;
 }
 
+section[data-state=chapter] div,
+section[data-state=intro] div {
+  color: #ffc453;
+}
+
+section[data-state=chapter] h1,
+section[data-state=chapter] h2,
+section[data-state=intro] h1,
+section[data-state=intro] h2 {
+  color: #eee8d5;
+}
 
 // Theme template ------------------------------
 @import "../template/theme";
