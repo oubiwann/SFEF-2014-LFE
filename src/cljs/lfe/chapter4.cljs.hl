@@ -1,5 +1,6 @@
 (ns lfe.chapter4
-    (:require [hoplon.reveal :refer [chapter slide notes highlight quicklist]]
+    (:require [hoplon.reveal :refer [notes highlight quicklist]]
+              [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
 

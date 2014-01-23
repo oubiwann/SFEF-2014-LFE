@@ -1,5 +1,5 @@
 (ns lfe.chapter6
-    (:require [hoplon.reveal :refer [chapter slide]]
+    (:require [lfe.reveal :refer [chapter slide]]
               [hoplon.util :as util]))
 
 

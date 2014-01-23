@@ -1,11 +1,10 @@
 (ns lfe.chapter1
-    (:require [hoplon.reveal :refer [intro bullet]]))
+    (:require [hoplon.reveal :refer [bullet]]
+              [lfe.reveal :refer [intro]]))
 
 
 (defn slides []
-  (intro :title "LFE"
-         :background "img/LFE-Background-rusted-with-concrete.jpg"
-         ;:background-size "1200px"
+  (intro :title "LFE:"
     (h2 "0 to 120kph")
     (h2 "in 45 Minutes")
     (bullet "Duncan McGreggor")

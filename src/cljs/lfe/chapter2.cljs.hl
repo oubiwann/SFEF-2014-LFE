@@ -1,11 +1,12 @@
 (ns lfe.chapter2
-    (:require [hoplon.reveal :refer [chapter slide notes bullet]]
+    (:require [hoplon.reveal :refer [notes bullet]]
+              [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
 
 (defn slides []
-  (chapter :title "Web Dev w/Clojure"
-    (slide :title "The Big Secret"
+  (chapter :title "Why Lisp?"
+    (slide :title "Peter Norvig"
       (ul
         (li "Web development is functional")
         (li "Clojure is great at web development"))

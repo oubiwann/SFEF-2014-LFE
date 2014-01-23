@@ -1,5 +1,6 @@
 (ns lfe.chapter3
-    (:require [hoplon.reveal :refer [chapter slide notes bullet]]
+    (:require [hoplon.reveal :refer [notes bullet]]
+              [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
 
