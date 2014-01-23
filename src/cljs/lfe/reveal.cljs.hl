@@ -1,0 +1,27 @@
+(ns lfe.reveal
+    (:require [hoplon.reveal :as reveal]
+              [hoplon.util :as util]))
+
+
+(def chapter-back "img/LFE-Background-rusted-with-concrete.jpg")
+(def slide-back "img/LFE-Background-rusted-with-concrete-2-light.jpg")
+
+(defelem slide
+  [{:keys [markdown title transition] :as attrs} children]
+  (reveal/slide (conj {:bg slide-back} attrs) children))
+
+(defelem chapter
+  [{:keys [title] :as attrs} children]
+  (reveal/chapter
+    (conj {:bg chapter-back :class "chapter"} attrs)
+    children))
+
+(defelem intro
+  [{:keys [title] :as attrs} children]
+  (reveal/intro
+    (conj {:bg chapter-back :class "intro"} attrs)
+    children))
+
+(defelem slideshow
+  [{:keys [theme] :as attrs :or {theme "lfe"}} children]
+  (reveal/slideshow (conj {:theme theme} attrs) children))
