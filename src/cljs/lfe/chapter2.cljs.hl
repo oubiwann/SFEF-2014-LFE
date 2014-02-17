@@ -8,7 +8,7 @@
 
     (slide :title "Why Lisp?"
       (bullet "A lot has happened since the 60s. And 70s. And ...")
-      (img :src "img/Land of Lisp.png"))
+      (img :src "img/Land-of-Lisp.png"))
 
     (slide :title "Why Lisp?"
       (bullet "Do we still need it?")
