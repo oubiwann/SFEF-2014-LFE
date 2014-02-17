@@ -88,6 +88,10 @@ section[data-state=intro] h2 {
   color: #eee8d5;
 }
 
+section[data-state=content-slide] div {
+  color: $mainColor;
+}
+
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
