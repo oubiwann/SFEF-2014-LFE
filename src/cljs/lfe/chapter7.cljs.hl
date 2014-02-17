@@ -1,6 +1,12 @@
 (ns lfe.chapter7
-    (:require [lfe.reveal :refer [chapter]]))
+    (:require [lfe.reveal :refer [chapter slide]]))
 
 
 (defn slides []
-  (chapter :title "Thanks!"))
+  (chapter :title "Going Off Road"
+
+    (slide :title "Streaming example"
+      (ul
+        (li "")))
+
+    ))

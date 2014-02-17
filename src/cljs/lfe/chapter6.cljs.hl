@@ -4,7 +4,8 @@
 
 
 (defn slides []
-  (chapter :title "Putting it all together"
+  (chapter :title "Racing to the Finish"
+
     (slide :title "Review"
       (ul
         (li "Clojure is a great language for web development")
@@ -13,6 +14,7 @@
         (li "Liberator handles all the scutwork of making REST APIs")
         (li "HTTP Kit is a speedy Clojure web server that handles streaming, "
             "polling, and WebSockets with ease")))
+
     (slide :title "Resources"
       (ul
         (li (util/url "http://www.luminusweb.net/"))

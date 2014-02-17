@@ -8,7 +8,7 @@
 
 (defelem slide
   [{:keys [markdown title transition] :as attrs} children]
-  (reveal/slide (conj {:bg slide-back} attrs) children))
+  (reveal/slide (conj {:bg slide-back :class "content-slide"} attrs) children))
 
 (defelem chapter
   [{:keys [title] :as attrs} children]

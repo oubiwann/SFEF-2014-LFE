@@ -2,25 +2,48 @@
     (:require [hoplon.reveal :refer [highlight]]))
 
 
-(defn get-simple-ring-app []
+(defn get-page-13 []
   (highlight
     ;;{{
-    (ns request-echo
-      (:require [clojure.pprint :refer [pprint]]))
+    apply[fn;x;a] =
+         [atom[fn] -> [eq[fn;CAR] -> caar[x];
+                      eq[fn;CDR] -> cdar[x];
+                      eq[fn;CONS] -> cons[car[x];cadr[x]];
+                      eq[fn;ATOM] -> atom[car[x]];
+                      eq[fn;EQ] -> eq[car[x];cadr[x]];
+                      T -> apply[eval[fn;a];x;a]];
+         eq[car[fn];LAMBDA] -> eval[caddr[fn];parlis[cadr[fn];x;a]];
+         eq[car[fn];LABEL] -> apply[caddr[fn];x;cons[cons[cadr[fn];
+                                   caddr[fn]];a]]]
 
-    (defn handler
-      "Return the request as HTML."
-      ;; A request comes in the handler.
-      [request]
+    eval[e;a] = [atom[e] -> cdr[assoc[e;a]];
+         atom[car[e]] ->
+          [eq[car[e],QUOTE] -> cadr[e];
+          eq[car[e];COND] -> evcon[cdr[e];a];
+          T -> apply[car[e];evlis[cdr[e];a];a]];
+          T -> apply[car[e];evlis[cdr[e];a];a]]
 
-      ;; The handler returns a response map.
-      {:status 200
-       :headers {"Content-Type" "text/html"}
-       :body (str "<h1>Request Echo</h1><pre>"
-                  (with-out-str (pprint request))
-                  "</pre>")})
+    evcon[c;a] = [eval[caar[c];a] -> eval[cadar[c];a];
+          T -> evcon[cdr[c];a]]
+
+    evlis[m;a] = [null[m] -> NIL;
+        T -> cons[eval[car[m];a];evlis[cdr[m];a]]]
     ;;}}
     ))
+
+(defn get-parens-quote []
+  (highlight
+    ;;{{
+    (with more.
+          (an English
+              (but
+                (with fewer parentheses
+                      (a Lisp
+                         (I think is not
+                            (What the world needs)))))))
+    ;;}}
+    ))
+
 
 (defn get-hoplon-with-html []
   (highlight

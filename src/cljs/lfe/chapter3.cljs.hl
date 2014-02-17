@@ -3,89 +3,239 @@
               [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
-
 (defn slides []
-  (chapter :title "Hoplon"
-    (slide :title "What is Hoplon?"
-      (bullet "A ClojureScript client-side framework")
-      (notes "At its core, Hoplon is a ClojureScript compiler that generates "
-             "HTML pages and JavaScript. The HTML pages are a harness for the "
-             "JS, which renders the pages and sets up their interactions. "
-             "Hoplon is used for making powerful one-page apps."))
-    (slide :title "HTML as s-expressions"
-     (ul
-      (li "HTML elements can be represented as ClojureScript")
-      (li "ClojureScript can be represented as HTML"))
-     (notes "One of the ideas that led to Hoplon is the idea that HTML is a "
-            "Lisp. In Hoplon, you can create pages using either HTML or "
-            "ClojureScript."))
-    (slide :title "Hoplon with HTML syntax"
-      (sample-code/get-hoplon-with-html))
-    (slide :title "Hoplon with CLJS syntax"
-      (sample-code/get-hoplon-with-cljs)
-      (notes "We are going to use the CLJS syntax for the rest of the "
-             "presentation, but the HTML syntax can do anything the CLJS "
-             "syntax can."))
-    (slide :title "defelem"
-      (sample-code/get-hoplon-defelem)
-      (notes "defelem is the preferred way to create functions that act like "
-             "HTML elements. It allows for the syntactic sugar you see with "
-             "all Hoplon elements."))
-    (slide :title "Slideshows with Hoplon"
-      (sample-code/get-hoplon-slidedeck))
-    (slide :title "Hoplon as spreadsheet"
+  (chapter :title "The Road to LFE"
+
+    ;; 60s
+    (slide :title " "
+      (bullet (strong :style "font-size: 300%" "1962")))
+
+    (slide :title "1962"
+      (bullet "What We Were Driving")
+      (img :src "img/volvo-p1800-15-small.jpg"))
+
+    (slide :title "1962"
+      (bullet "What We Were Wearing")
+      (img :src "img/Grace-Coddington-Vogue-1962-september.jpg"))
+
+    (slide :title "1962"
+      (bullet "How We Were Computing")
+      (img :src "img/ibm-704-llnl.jpg"))
+
+    (slide :title "1962"
+      (bullet "What We Were Reading")
+      (img :src "img/lisp-1.5-manual.jpg"))
+
+    (slide :title "1962: The World of Lisp"
       (ul
-        (li "Hoplon simplifies state by using cells")
-        (li "Cells work just like cells in a spreadsheet")
-        (li "Two kinds of cells: input and formula"))
-      (notes "Remember in a spreadsheet where you could have a cell A1 and a "
-             "cell B1 and then set C1 to the quotient of them? And when you "
-             "updated A1 or B1, C1 updated? Hoplon cells work just like this, "
-             "but instead of referencing them by letter and number, they are "
-             "referenced like any other Clojure value. They are a Clojure "
-             "reference type like atoms and the same functions work on them, "
-             "but they automatically propogate updates from input cells to "
-             "formula cells."))
-    (slide :title "Hoplon cell example"
-      (sample-code/get-hoplon-cell)
-      (notes "You can see in the first four lines here how we set up an input "
-             "cell and three formula cells. When the value in state is "
-             "changed, the three formula cells are automatically updated. "
-             "The string interpolation below binds these text nodes to the "
-             "values of the formula cells. The change is propogated into the "
-             "text cells. "))
-    (slide :title "Hoplon and the DOM"
-      (bullet "Hoplon uses the DOM for input and output. Examples:")
+        (li :class "fragment"
+          "MIT Published the LISP 1.5 Programmer's Manual"
+          (img :style "float: right" :src "img/McCarthyChessPlaying.jpg"))
+        (li :class "fragment"
+          "Within a year, interactive Lisp was implemented by Peter Deutsch "
+          "on PDP-1")
+        (li :class "fragment"
+          "McCarthy's dream had been realized and Lisp was being applied to "
+          "problems in AI")))
+
+    (slide :title "1962: A Sense of Scale"
       (ul
-        (li "on-click")
-        (li "on-change"))
+        (li :class "fragment"
+          "The IBM 704 was billed as a 40,000 instruction-per-second machine"
+          (img :style "float: right" :src "img/weak-nuclear-force.jpg"))
+        (li :class "fragment"
+          "About 10,000 computers on Earth")
+        (li :class "fragment"
+          (strong "6.7e-17 ") "instructions/s/kg on the planet")
+        (li :class "fragment"
+          "In units of length, this would be ~7 attometers")
+        (li :class "fragment"
+          "This is the range of the "
+          (strong "weak nuclear force ")
+          "(responsible for radioactive decay)")))
+
+    ;; 80s
+    (slide :title " "
+      (bullet (strong :style "font-size: 300%" "1986")))
+
+    (slide :title "1986"
+      (bullet "What We Were Driving")
+      (img :src "img/1978_Volvo_262_Coupe_Bertone-small.jpg"))
+
+    (slide :title "1986"
+      (bullet "What We Were Wearing")
+      (img :src "img/Shari-Belafonte-Vogue-June-1986.jpg"))
+
+    (slide :title "1986"
+      (bullet "What We Were Wearing")
+      (img :src "img/Joe-Armstrong-Fashion-small.jpg"))
+
+    (slide :title "1986"
+      (bullet "How We Were Computing")
+      (img :src "img/ibm-5150-chaplin.jpg"))
+
+    (slide :title "1986"
+      (bullet "How We Were Computing")
+      (img :src "img/VAX-11-780-small.jpg"))
+
+    (slide :title "1986"
+      (bullet "What We Were Reading")
+      (img :src "img/Common-Lisp-The-Language-First-Edition-1984.jpg"))
+
+    (slide :title "1986"
+      (bullet "What We Were Writing")
+      (img :src "img/Erlang-1.0-small.jpg"))
+
+    (slide :title "1986: The World of Lisp"
       (ul
-        (li "do-value")
-        (li "do-class"))
-      (notes "Hoplon uses the DOM for input and output. All user input is done "
-             "through DOM events like on-click and on-change. Code is attached "
-             "to these events, like you're used to from jQuery or other "
-             "libraries. Output is done by manipulating the properties of DOM "
-             "nodes using special do- attributes. The value of these "
-             "attributes is always a formula cell."))
-    (slide :title "Hoplon DOM example"
-      (sample-code/get-hoplon-dom)
-      (notes "You can see in this input element an example of do- and on- "
-             "parameters. Starting with :do-focus, you can see that it's "
-             "looking at the value of the loaded? cell. If the loaded? cell "
-             "contains true, then focus on this input. This means that this "
-             "input will gain focus when loaded? becomes true. :do-attr sets "
-             "the placeholder attribute on this input based on the current "
-             "loading state. It uses an anonymous cell so that this will "
-             "update. We didn't have to use an anonymous cell with :do-focus "
-             "because loaded? is a cell. Lastly, look at :on-focusout. The do! "
-             "multimethod allows us to programmatically do the same thing we "
-             "do with the do- attributes: update a DOM element."))
-    (slide :title "Full example of Hoplon"
-      (a :href "https://github.com/cndreisbach/codemash-2014-presentation/blob/master/todo-hoplon/src/index.cljs.hl"
-         :target "_blank"
-         "Code on GitHub"))
-    (slide :title "Hoplon compiles to static files"
+        (li :class "fragment"
+          "The birth of Common Lisp"
+          (img :style "float: right" :src "img/Symbolics-3600-small.jpg"))
+        (li :class "fragment"
+          "The rise of the Lisp Machines")
+        (li :class "fragment"
+          "Symbolics was the first .com domain on the nascent WWW")
+        (li :class "fragment"
+          "Zetalisp used to program an OS, window manager, compiler, "
+          "network server, and editor")
+        (li :class "fragment"
+          "The AI Winter still 3 years in the future ...")))
+
+    (slide :title "1986: A Sense of Scale"
       (ul
-        (li "They can be used anywhere")
-        (li "And with any backend")))))
+        (li :class "fragment"
+          "VAX-11/750 - 1 MIPS at 5 MHz"
+          (img :style "float: right" :src "img/helium-atom-small.jpg"))
+        (li :class "fragment"
+          "About 31 million computers on Earth")
+        (li :class "fragment"
+          (strong "5.2e-12 ") "instructions/s/kg on the planet")
+        (li :class "fragment"
+          "In units of length, this would be ~5 picometers")
+        (li :class "fragment"
+          "The radius of a "
+          (strong "helium atom ")
+          "is about 31 pm")))
+
+    ;; 00s
+    (slide :title " "
+      (bullet (strong :style "font-size: 300%" "2008")))
+
+    (slide :title "2008"
+      (bullet "What We Were Driving")
+      (img :src "img/2008_volvo_s60_2_5t.jpg"))
+
+    (slide :title "2008"
+      (bullet "What We Were Wearing")
+      (img :src "img/vogue-spain-2008-march-small.jpg"))
+
+    (slide :title "2008"
+      (bullet "What We Were Wearing")
+      (img :src "img/robert-virding-2008-small.jpg"))
+
+    (slide :title "2008"
+      (bullet "How We Were Computing")
+      (img :src "img/2008-dell-m1730-open-on-small.jpg"))
+
+    (slide :title "2008"
+      (bullet "What We Were Reading")
+      (img :src "img/Let-Over-Lambda.jpg"))
+
+    (slide :title "2008"
+      (bullet "What We Were Reading")
+      (img :src "img/programming-erlang-2007.jpg"))
+
+    (slide :title "2008: The World of Lisp"
+      (ul
+        (li :class "fragment"
+          "2001 - Paul Graham founds Lisp-using start-up"
+          (img :style "float: right" :src "img/Practical-Common-Lisp-small.jpg"))
+        (li :class "fragment"
+          "2002 -  Paul Graham provides On Lisp as free download")
+        (li :class "fragment"
+          "2004 -  David Lamkins' Successful Lisp published")
+        (li :class "fragment"
+          "2004 -  Conrad Barski's Casting SPELs in Lisp - The Comic Book "
+          "released")
+        (li :class "fragment"
+          "2005 - Daniel Friedman's The Reasoned Schemer published")
+        (li :class "fragment"
+          "2005 - Peter Seibel's Practical Common Lisp published")))
+
+    (slide :title "2008: The World of Lisp (cont'd)"
+      (ul
+        (li :class "fragment"
+          "2005 - Mark Tarver introduced Qi (FP Lisp)"
+          (img :style "float: right" :src "img/haskell-lisp.png"))
+        (li :class "fragment"
+          "2006 - ITA received "
+          (strong "$100 million ")
+          "in venture capital")
+        (li :class "fragment"
+          "2006 - Blaise released, a Scheme implemented in Haskell")
+        (li :class "fragment"
+          "2007 - Scheme R6RS ratified as standard")
+        (li :class "fragment"
+          "2007 - Liskell released for Haskell (GHC)")))
+
+    (slide :title "2008: The World of Lisp (cont'd)"
+      (ul
+        (li :class "fragment"
+          "2007 - Rich Hickey releases Clojure for the JVM"
+          (img :style "float: right" :src "img/LFE-Logo-small.png"))
+        (li :class "fragment"
+          "2008 - Robert Virding releases LFE for the Erlang VM")
+        (li :class "fragment"
+          "2008 - Termite for Gambit (Erlang-style concurrency in Scheme)")
+        (li :class "fragment"
+          "2008 - Doug Hoyte's Let Over Lambda published")
+        (li :class "fragment"
+          "The AI Spring arrives with Machine Learning and Data Analytics")))
+
+    (slide :title "2008: A Sense of Scale"
+      (ul
+        (li :class "fragment"
+          "Intel Core 2 59,455 MIPS at 3.2 GHz"
+          (img :style "float: right"
+               :src "img/weird_cloud_rainbow_by_marandaschmidt-cropped-small.jpg"))
+        (li :class "fragment"
+          "About 1 billion PCs and ~260 million smartphones on Earth")
+        (li :class "fragment"
+          (strong "1.3e-5 ") "instructions/s/kg on the planet")
+        (li :class "fragment"
+          "In units of length, this would be 10s of micrometers")
+        (li :class "fragment"
+          "10 micrometers is the typical size of a "
+          (strong "cloud water droplet"))))
+    ;; 10s
+    (slide :title " "
+      (bullet (strong :style "font-size: 300%" "2014")))
+
+    (slide :title "2014"
+      (bullet :class "fragment" "Some Recent Changes"
+        (img :style "float: right"
+               :src "img/2014-Volvo-Concept-Coupe-small.jpg"))
+      (ul
+        (li :class "fragment" "Interest in Lisps have exploded")
+        ))
+
+    (slide :title "2014: A Sense of Scale"
+      (ul
+        (li :class "fragment"
+          "Intel Core i7 106,924 MIPS at 3.9 GHz"
+          (img :style "float: right"
+               :src "img/paramecium.jpg"))
+        (li :class "fragment"
+          "About 12 billion computing devicess on Earth")
+        (li :class "fragment"
+          (strong "2.1e-4 ") "instructions/s/kg on the planet")
+        (li :class "fragment"
+          "In units of length, this would be about 200 micrometers")
+        (li :class "fragment"
+          "That's two "
+          (strong "Paramecium ")
+          "end-to-end, or the width of a "
+          (strong "human hair"))))
+    ))
+
+

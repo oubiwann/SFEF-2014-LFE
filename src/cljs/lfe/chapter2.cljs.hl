@@ -3,43 +3,60 @@
               [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
-
 (defn slides []
   (chapter :title "Why Lisp?"
-    (slide :title "Peter Norvig"
+
+    (slide :title "Why Lisp?"
+      (bullet "A lot has happened since the 60s. And 70s. And ...")
+      (img :src "img/Land of Lisp.png"))
+
+    (slide :title "Why Lisp?"
+      (bullet "Do we still need it?")
+      (bullet "We've got Perl, and Java, and Ruby, and ...")
+      (img :src "img/pyfry.jpg"))
+    ;   (ul
+    ;     (li "A")
+    ;     (li "We all need therapy as a result of the AI Winter.")
+    ;     (li "Almost as many answers to this as there are Monad tutorials.")
+    ;     (li "Signifcant chunk of PAIP preface dedicated to this question.")))
+    ; (slide :title "Something Different?"
+    ;   (ul
+    ;     (li "Let's look at some quick quotes.")
+    ;     (li "What does Robert Virding have to say?")
+    ;     (li "Next, we'll take a quick joy ride through 20th-century computing.")
+    ;     (li "Then some code.")
+    ;     (li "(I promise.)")))
+
+    (slide :title "Alan Kay on Lisp"
+      (img :src "img/alan-kay.jpg")
+      (bullet "\"Greatest single programming language ever designed.\"")
+      (bullet "\" ... the big revelation ... when I was in graduate school "
+              "[was] when I finally understood that the half page of code "
+              "[from] the Lisp 1.5 manual was Lisp "
+              (em "in itself")
+              ". These were "
+              (strong "Maxwell’s Equations of Software")
+              "! This is the whole world of programming in a few lines that I "
+              "can put my hand over.\""))
+
+    (slide :title "Lisp 1.5 Manual, Page 13 (1961)"
+      (sample-code/get-page-13))
+
+    (slide :title "Brian Hayes"
       (ul
-        (li "Web development is functional")
-        (li "Clojure is great at web development"))
-      (notes "A request comes in, a transformation is performed, a response is "
-             "returned. Web development lends itself to functional programming "
-             "well. Many people new to Clojure think that Clojure isn't the "
-             "best language for web development because it doesn't have a "
-             "comprehensive framework like Play or Ruby on Rails."))
-    (slide :title "The Ring Cycle"
-      (img :src "img/ring.png")
-      (notes "Clojure provides good facilities for creating web apps with Ring"))
-    (slide :title "A simple Ring app"
-      (sample-code/get-simple-ring-app))
-    (slide :title "Libraries over frameworks"
+        (li "Some of us just really "
+            (em "like ")
+            "parentheses. Seriously!"))
+      (sample-code/get-parens-quote)
       (ul
-        (li "Routing - Compojure")
-        (li "Templating - Hiccup or Selmer")
-        (li "SQL - Korma")
-        (li "i18n and l10n - Tower")
-        (li "Asset pipeline - Optimus or Stefon")
-        (li (strong "Luminus")
-            (text " wraps many of these up in a set ofLeiningen tasks.")))
-      (notes "Clojure just has a different approach: libraries that work well "
-             "together and that you can mix and match. Does this make getting "
-             "started harder? Yes, because you have to pick your tools. But "
-             "once you start, Clojure web development can be a blast."))
-    (slide :title "Next-Level Web Apps"
-     (ul
-      (li "Single-page apps")
-      (li "APIs")
-      (li "WebSockets"))
-     (notes
-      (bullet "When things get more complicated, though, how can Clojure help "
-              "us?")
-      (bullet "I'm going to show three libraries that have helped me "
-              "greatly")))))
+        (li "\"The Semicolon Wars\", American Scientist (2006)")))
+
+    (slide :title "Why Lisp?"
+      (img :src "img/can-has-lfe.png"))
+
+    (slide :title "Robert Virding on LFE"
+      (bullet "\"Yes, I have implemented another syntax front-end for Erlang, "
+              "but it is Lisp-based ... [it's] quite a natural thing to do. "
+              "Lisp has such a simple and powerful syntax so how could I not "
+              "do it?\""))
+    ))

@@ -4,12 +4,14 @@
 
 (defn slides []
   (chapter :title "Contact Info"
+
     (slide :title "LFE Info"
       (br)
       (p "@ErlangLisp on Twitter")
       (p "#erlang-lisp on Freenode IRC")
       (p "lisp-flavoured-erlang@googlegroups.com")
       (p "http://lfe.github.io/"))
+
     (slide :title "My Info"
       (br)
       (p "@oubiwann on Twitter, Github, Freenode, etc")

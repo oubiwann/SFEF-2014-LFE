@@ -7,7 +7,8 @@
                 [lfe.chapter5 :as ch5]
                 [lfe.chapter6 :as ch6]
                 [lfe.chapter7 :as ch7]
-                [lfe.chapter8 :as ch8]))
+                [lfe.chapter8 :as ch8]
+                [lfe.chapter9 :as ch9]))
 
 
 (html
@@ -21,4 +22,5 @@
       (ch5/slides)
       (ch6/slides)
       (ch7/slides)
-      (ch8/slides))))
+      (ch8/slides)
+      (ch9/slides))))
