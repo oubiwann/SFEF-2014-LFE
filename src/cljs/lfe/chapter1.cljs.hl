@@ -1,11 +1,30 @@
 (ns lfe.chapter1
     (:require [hoplon.reveal :refer [bullet]]
-              [lfe.reveal :refer [intro]]))
+              [lfe.reveal :refer [chapter intro slide]]))
 
-
-(defn slides []
+(defn cover []
   (intro :title "LFE:"
     (h2 "0 to 120kph")
     (h2 "in 45 Minutes")
     (bullet "Duncan McGreggor")
     (bullet "SF Erlang Factory, 2014")))
+
+
+(defn overview []
+  (chapter :title "Overview"
+    (slide :title "Ground We're Going to Cover"
+      (ul
+        (li :class "fragment"
+          "Motivation: Why Lisp?")
+        (li :class "fragment"
+          "Historical Context: The Road to LFE")
+        (li :class "fragment"
+          "A Quick Look: Kicking the Tires")
+        (li :class "fragment"
+          "Getting to Know LFE: Test Drive")
+        (li :class "fragment"
+          "Additional Topics: Racing to the Finish")
+        (li :class "fragment"
+          "Additional Topics: Going Off Road")
+        (li :class "fragment"
+          "Wrapup")))))

@@ -10,12 +10,12 @@
                 [lfe.chapter8 :as ch8]
                 [lfe.chapter9 :as ch9]))
 
-
 (html
   (head)
   (body
     (slideshow
-      (ch1/slides)
+      (ch1/cover)
+      (ch1/overview)
       (ch2/slides)
       (ch3/slides)
       (ch4/slides)
