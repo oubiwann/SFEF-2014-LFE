@@ -3,12 +3,74 @@
               [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
-
 (defn slides []
   (chapter :title "Kicking the Tires"
 
+    (slide :title "What Does It Look Like?"
+      (bullet "Numbers and Arithmetic")
+      (sample-code/numbers))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Atoms and Strings")
+      (sample-code/atoms-and-strings))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Bit Packing")
+      (sample-code/bit-pack))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Bit Unpacking")
+      (sample-code/bit-unpack))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Lists")
+      (sample-code/lists-1))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Lists")
+      (sample-code/lists-2))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Records")
+      (sample-code/records-1))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Records")
+      (sample-code/records-2))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Records")
+      (sample-code/records-3))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Pattern Matching - let")
+      (sample-code/patterns-1))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Pattern Matching - case")
+      (sample-code/patterns-2))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Pattern Matching - cond")
+      (sample-code/patterns-3))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Pattern Matching - defun")
+      (sample-code/patterns-4))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Pattern Matching - receive")
+      (sample-code/patterns-5))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Macros")
+      (sample-code/macros-1))
+
     (slide :title "What Does This Thing Run On?"
-      (bullet "A lot has happened since the 60s. And 70s. And ...")
-      (img :src "img/Land of Lisp.png"))
+      (bullet "Erlang, of course."))
+
+    (slide :title "What Does It Look Like?"
+      (sample-code/erlang-lfe-macros))
+
 
     ))

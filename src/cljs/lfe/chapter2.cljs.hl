@@ -51,12 +51,13 @@
       (ul
         (li "\"The Semicolon Wars\", American Scientist (2006)")))
 
-    (slide :title "Why Lisp?"
-      (img :src "img/can-has-lfe.png"))
-
     (slide :title "Robert Virding on LFE"
       (bullet "\"Yes, I have implemented another syntax front-end for Erlang, "
               "but it is Lisp-based ... [it's] quite a natural thing to do. "
               "Lisp has such a simple and powerful syntax so how could I not "
               "do it?\""))
+
+    (slide :title "LFE!"
+      (img :src "img/can-has-lfe.png"))
+
     ))

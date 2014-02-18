@@ -1,7 +1,6 @@
 (ns lfe.chapter8
     (:require [lfe.reveal :refer [chapter slide]]))
 
-
 (defn slides []
   (chapter :title "Contact Info"
 

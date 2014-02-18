@@ -2,7 +2,6 @@
     (:require [lfe.reveal :refer [chapter slide]]
               [hoplon.util :as util]))
 
-
 (defn slides []
   (chapter :title "Racing to the Finish"
 

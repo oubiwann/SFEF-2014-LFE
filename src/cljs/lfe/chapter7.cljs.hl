@@ -1,12 +1,23 @@
 (ns lfe.chapter7
-    (:require [lfe.reveal :refer [chapter slide]]))
-
+    (:require [lfe.reveal :refer [chapter slide]]
+              [lfe.sample-code :as sample-code]))
 
 (defn slides []
   (chapter :title "Going Off Road"
 
-    (slide :title "Streaming example"
-      (ul
-        (li "")))
+    (slide :title "Church Numerals"
+      (sample-code/church-numerals))
 
+    (slide :title "Async HTTP Request"
+      (sample-code/async-http))
+
+    (slide :title "Bidirectional messages"
+      (sample-code/messenger))
+
+    (slide :title "Async HTTP Request"
+      (sample-code/church-numerals))
     ))
+
+
+
+

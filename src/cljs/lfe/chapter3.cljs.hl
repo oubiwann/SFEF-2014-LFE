@@ -28,14 +28,11 @@
 
     (slide :title "1962: The World of Lisp"
       (ul
-        (li :class "fragment"
-          "MIT Published the LISP 1.5 Programmer's Manual"
+        (li "MIT Published the LISP 1.5 Programmer's Manual"
           (img :style "float: right" :src "img/McCarthyChessPlaying.jpg"))
-        (li :class "fragment"
-          "Within a year, interactive Lisp was implemented by Peter Deutsch "
+        (li "Within a year, interactive Lisp was implemented by Peter Deutsch "
           "on PDP-1")
-        (li :class "fragment"
-          "McCarthy's dream had been realized and Lisp was being applied to "
+        (li "McCarthy's dream had been realized and Lisp was being applied to "
           "problems in AI")))
 
     (slide :title "1962: A Sense of Scale"
@@ -88,18 +85,13 @@
 
     (slide :title "1986: The World of Lisp"
       (ul
-        (li :class "fragment"
-          "The birth of Common Lisp"
+        (li "The birth of Common Lisp"
           (img :style "float: right" :src "img/Symbolics-3600-small.jpg"))
-        (li :class "fragment"
-          "The rise of the Lisp Machines")
-        (li :class "fragment"
-          "Symbolics was the first .com domain on the nascent WWW")
-        (li :class "fragment"
-          "Zetalisp used to program an OS, window manager, compiler, "
+        (li "The rise of the Lisp Machines")
+        (li "Symbolics was the first .com domain on the nascent WWW")
+        (li "Zetalisp used to program an OS, window manager, compiler, "
           "network server, and editor")
-        (li :class "fragment"
-          "The AI Winter still 3 years in the future ...")))
+        (li "The AI Winter still 3 years in the future ...")))
 
     (slide :title "1986: A Sense of Scale"
       (ul
@@ -147,50 +139,34 @@
 
     (slide :title "2008: The World of Lisp"
       (ul
-        (li :class "fragment"
-          "2001 - Paul Graham founds Lisp-using start-up"
+        (li "2001 - Paul Graham founds Lisp-using start-up"
           (img :style "float: right" :src "img/Practical-Common-Lisp-small.jpg"))
-        (li :class "fragment"
-          "2002 -  Paul Graham provides On Lisp as free download")
-        (li :class "fragment"
-          "2004 -  David Lamkins' Successful Lisp published")
-        (li :class "fragment"
-          "2004 -  Conrad Barski's Casting SPELs in Lisp - The Comic Book "
+        (li "2002 -  Paul Graham provides On Lisp as free download")
+        (li "2004 -  David Lamkins' Successful Lisp published")
+        (li "2004 -  Conrad Barski's Casting SPELs in Lisp - The Comic Book "
           "released")
-        (li :class "fragment"
-          "2005 - Daniel Friedman's The Reasoned Schemer published")
-        (li :class "fragment"
-          "2005 - Peter Seibel's Practical Common Lisp published")))
+        (li "2005 - Daniel Friedman's The Reasoned Schemer published")
+        (li "2005 - Peter Seibel's Practical Common Lisp published")))
 
     (slide :title "2008: The World of Lisp (cont'd)"
       (ul
-        (li :class "fragment"
-          "2005 - Mark Tarver introduced Qi (FP Lisp)"
+        (li "2005 - Mark Tarver introduced Qi (FP Lisp)"
           (img :style "float: right" :src "img/haskell-lisp.png"))
-        (li :class "fragment"
-          "2006 - ITA received "
+        (li "2006 - ITA received "
           (strong "$100 million ")
           "in venture capital")
-        (li :class "fragment"
-          "2006 - Blaise released, a Scheme implemented in Haskell")
-        (li :class "fragment"
-          "2007 - Scheme R6RS ratified as standard")
-        (li :class "fragment"
-          "2007 - Liskell released for Haskell (GHC)")))
+        (li "2006 - Blaise released, a Scheme implemented in Haskell")
+        (li "2007 - Scheme R6RS ratified as standard")
+        (li "2007 - Liskell released for Haskell (GHC)")))
 
     (slide :title "2008: The World of Lisp (cont'd)"
       (ul
-        (li :class "fragment"
-          "2007 - Rich Hickey releases Clojure for the JVM"
+        (li "2007 - Rich Hickey releases Clojure for the JVM"
           (img :style "float: right" :src "img/LFE-Logo-small.png"))
-        (li :class "fragment"
-          "2008 - Robert Virding releases LFE for the Erlang VM")
-        (li :class "fragment"
-          "2008 - Termite for Gambit (Erlang-style concurrency in Scheme)")
-        (li :class "fragment"
-          "2008 - Doug Hoyte's Let Over Lambda published")
-        (li :class "fragment"
-          "The AI Spring arrives with Machine Learning and Data Analytics")))
+        (li "2008 - Robert Virding releases LFE for the Erlang VM")
+        (li "2008 - Termite for Gambit (Erlang-style concurrency in Scheme)")
+        (li "2008 - Doug Hoyte's Let Over Lambda published")
+        (li "The AI Spring arrives with Machine Learning and Data Analytics")))
 
     (slide :title "2008: A Sense of Scale"
       (ul

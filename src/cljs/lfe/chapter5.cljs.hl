@@ -3,7 +3,6 @@
               [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
-
 (defn slides []
   (chapter :title "Test Drive"
     (slide :title "Building Projects"
@@ -15,14 +14,14 @@
       "Also a HTTP client"))
 
     (slide :title "Streaming example"
-      (sample-code/get-http-streaming))
+      (sample-code/atoms-and-strings))
 
     (slide :title "Streaming an OutputStream (part 1)"
-      (sample-code/get-http-outstream-p1))
+      (sample-code/atoms-and-strings))
 
     (slide :title "Streaming an OutputStream (part 2)"
-      (sample-code/get-http-outstream-p2))
+      (sample-code/atoms-and-strings))
 
     (slide :title "WebSocket example"
-      (sample-code/get-http-websocket)
+      (sample-code/atoms-and-strings)
       (notes "Note the unified API, allowing us to degrade to long polling"))))

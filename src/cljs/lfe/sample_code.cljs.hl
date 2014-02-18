@@ -45,241 +45,290 @@
     ))
 
 
-(defn get-hoplon-with-html []
+(defn church-numerals []
   (highlight
     ;;{{
-    <script type="text/hoplon">
-      (page "index.html")
-      (defn duo [x y]
-        (ul (li x)
-            (li y)))
-    </script>
-    <html>
-      <body>
-        <h1>Hello, Hoplon</h1>
-        <!-- an HTML syntax call to the duo function -->
-        <duo>
-          <div>first thing</div>
-          <div>second thing</div>
-        </duo>
-      </body>
-    </html>
+    (defun zero ()
+      (lambda (s)
+        (lambda (x) x)))
+
+    (defun one ()
+      (lambda (s)
+        (lambda (x)
+          (funcall s x))))
+
+    (defun two ()
+      (lambda (s)
+        (lambda (x)
+          (funcall s
+            (funcall s x)))))
     ;;}}
     ))
 
-(defn get-hoplon-with-cljs []
+(defn async-http []
   (highlight
     ;;{{
-    (page "index.html")
-
-    (defn duo [x y]
-      (ul (li x)
-          (li y)))
-
-    (html
-      (body
-        (h1 "Hello, Hoplon")
-        (duo "first thing" "second thing")))
+    (defun get-page (url)
+      "Make a single HTTP request."
+      (let* ((method 'get)
+             (headers ())
+             (request-data (tuple url headers))
+             (http-options ())
+             (request-options (list (tuple 'sync 'false))))
+        (: httpc request method request-data http-options request-options)
+        (receive
+          ((tuple 'http (tuple request-id (tuple 'error reason)))
+           (: io format '"Error: ~p~n" (list reason)))
+          ((tuple 'http (tuple request-id result))
+           (: io format '"Result: ~p~n" (list result))))))
     ;;}}
     ))
 
-(defn get-hoplon-defelem []
+(defn messenger []
   (highlight
     ;;{{
-    (defelem slideshow
-      [attrs children]
-      (div :class "reveal"
-           (div (assoc attrs :class "slides")
-                children)))
+    (defun get-page (url)
+      "Make a single HTTP request."
+      (let* ((method 'get)
+             (headers ())
+             (request-data (tuple url headers))
+             (http-options ())
+             (request-options (list (tuple 'sync 'false))))
+        (: httpc request method request-data http-options request-options)
+        (receive
+          ((tuple 'http (tuple request-id (tuple 'error reason)))
+           (: io format '"Error: ~p~n" (list reason)))
+          ((tuple 'http (tuple request-id result))
+           (: io format '"Result: ~p~n" (list result))))))
     ;;}}
     ))
 
-(defn get-hoplon-slidedeck []
+(defn erlang-lfe-macros []
   (highlight
     ;;{{
-    (slideshow :theme "sky"
-      (intro :title "Secrets of Clojure Web Development"
-        (bullet "Clinton N. Dreisbach")
-        (bullet "CodeMash 2014"))
-      (chapter :title "Web Dev w/Clojure"
-        (slide :title "The Big Secret"
-          (ul
-            (li "Web development is functional")
-            (li "Clojure is great at web development"))
-        (notes "A request comes in, a transformation is performed, a "
-             "response is returned."))))
+    Macs = [['defmacro',Make,fds,
+             ['let',[[def,[list|Defs]]],
+              ?BQ([tuple,?Q(Name),?UQ_S([Fu,fds,def])])]],
+            ['defmacro',Match,fds,
+             ['let',[[def,[list|lists:duplicate(length(Fields),?Q('_'))]]],
+              ?BQ([tuple,?Q(Name),?UQ_S([Fu,fds,def])])]],
+            ['defmacro',Test,[rec],
+              ?BQ(['is_record',?UQ(rec),?Q(Name),length(Fields)+1])],
+            ...
     ;;}}
     ))
 
-(defn get-hoplon-cell []
+(defn numbers []
   (highlight
     ;;{{
-    (def state       (cell []))
-    (def completed   (cell= (filter :completed state)))
-    (def active      (cell= (remove :completed state)))
-    (def plural-item (cell= (pluralize "item" (count active))))
-
-    ;; Later in the page
-    (span :id "todo-count"
-          (strong (text "~(count active) "))
-          (span (text " ~{plural-item} left")))
+      > (+ 1 2 3 4 5 6)
+      21
+      > (- 6 21)
+      15
+      > (/ 36 7)
+      5.142857142857143
+      > (+ #b101010 #o52 #x2a #36r16)
+      168
+      > (* 42 4)
+      168
+      > (: erlang integer_to_list (+ #b1001 #b100 #b10) 2)
+      "1111"
+      > (div 11 2)
+      5
+      > (rem 11 2)
+      1
+      >
     ;;}}
     ))
 
-(defn get-hoplon-dom []
+(defn atoms-and-strings []
   (highlight
     ;;{{
-    (input
-      :id "new-todo"
-      :type "text"
-      :do-focus loaded?
-      :do-attr (cell= {:placeholder (if loaded?
-                                        "What needs to be done?"
-                                        "Loading...")})
-      :on-focusout #(do! (by-id :new-todo) :value ""))
+      > 'Vogon
+      Vogon
+      > '|and now with hyperspace bypasses|
+      |and now with hyperspace bypasses|
+      > '"Don't Panic."
+      "Don't Panic."
+      > (list 68 111 110 39 116 32 80 97 110 105 99 46)
+      "Don't Panic."
+      >
     ;;}}
     ))
 
-(defn get-liberator-simple []
+(defn bit-pack []
   (highlight
     ;;{{
-    (require '[liberator.core :refer [defresource]])
-
-    (defresource hello
-      :exists? (fn [ctx]
-                   (let [lang (get-in ctx [:request :params :lang])]
-                     (contains? #{"en" "es"} lang)))
-      :handle-ok (fn [ctx]
-                     (let [lang (get-in ctx [:request :params :lang])]
-                       (if (= lang "es")
-                         "Hola mundo!"
-                         "Hello world!")))
-      :handle-not-found (fn [ctx]
-                            "Language not found."))
+      > (set red 2)
+      2
+      > (set green 61)
+      61
+      > (set blue 20)
+      20
+      > (binary
+          (red (size 5))
+          (green (size 6))
+          (blue (size 5)))
+      #B(23 180)
+      >
     ;;}}
     ))
 
-(defn get-liberator-context []
+(defn bit-unpack []
   (highlight
     ;;{{
-    (require '[liberator.core :refer [defresource]])
-
-    (defresource hello
-      :exists? (fn [ctx]
-                   (let [lang (get-in ctx [:request :params :lang])]
-                     (if (contains? #{"en" "es"} lang)
-                       {:lang lang})))
-      :handle-ok (fn [ctx]
-                     (let [lang (:lang ctx)]
-                       (if (= lang "es")
-                         "Hola mundo!"
-                         "Hello world!")))
-      :handle-not-found (fn [ctx]
-                            "Language not found."))
+      > (let (((binary (r (size 5)) (g (size 6)) (b (size 5)))
+               #b(23 180)))
+             (: io format '"~p ~p ~p~n" (list r g b)))
+      2 61 20
+      ok
+      >
       ;;}}
       ))
 
-(defn get-liberator-context-with-failure []
+(defn lists-1 []
   (highlight
     ;;{{
-    (require '[liberator.core :refer [defresource]])
-
-    (defresource hello
-      :exists? (fn [{:keys req}]
-                   (let [lang (get-in req [:params :lang])]
-                     ;; Return a vector instead of a map.
-                     [(contains? #{"en" "es"} lang) {:lang lang}]))
-      :handle-ok (fn [{:keys [lang]}]
-                     (if (= lang "es")
-                       "Hola mundo!"
-                       "Hello world!"))
-      :handle-not-found (fn [{:keys [lang]}]
-                            (str "Language " lang " not found.")))
+      > (list 1 3 9 27)
+      (1 3 9 27)
+      > '(1 3 9 27)
+      (1 3 9 27)
+      > (: erlang length '(1 2 3 4 5 6 7))
+      7
+      > (: lists append '(1 2) '(3 4))
+      (1 2 3 4)
+      > (: lists append (list '(1 2) '(3 4) '(5 6)))
+      (1 2 3 4 5 6)
+      >
       ;;}}
       ))
 
-(defn get-liberator-todo []
+(defn lists-2 []
   (highlight
     ;;{{
-    (defresource todos-resource
-      :allowed-methods [:get :post]
-      :available-media-types ["application/edn"]
-      :handle-ok (fn [_] @todo-list)
-      :post! (fn [{:keys [request]}]
-                 (let [body (-> (:body request)
-                                slurp
-                                read-string)
-                       new-todo (assoc body :id (new-id))]
-                   (swap! todo-list conj new-todo)
-                   {:todo new-todo}))
-      :handle-created (fn [{:keys [todo]}] todo))
+      > (car '(1 2 3 4 5 6))
+      1
+      > (cdr '(1 2 3 4 5 6))
+      (2 3 4 5 6)
+      > (cadr '(1 2 3 4 5 6))
+      2
+      > (cddr '(1 2 3 4 5 6))
+      (3 4 5 6)
+      > (cons '(1 2 3) '(4 5 6))
+      ((1 2 3) 4 5 6)
+      >
+      ;;}}
+      ))
+
+(defn records-1 []
+  (highlight
+    ;;{{
+      (defrecord person
+        name
+        address
+        age)
       ;;}}
   ))
 
-(defn get-http-streaming []
+(defn records-2 []
   (highlight
     ;;{{
-    (defn streaming-handler [request]
-      (with-channel request channel
-        (on-close channel (fn [status] (println "channel closed, " status)))
-        (doseq [i (range 1 10)]
-          (send! channel
-                 (str "message #" i)
-                 false) ; false -> don't close after send
-          (Thread/sleep 200))
-        (close channel)))
+      > (set ford
+          (make-person name '"Ford Prefect"
+                       address '"Betelgeuse Seven"
+                       age 234))
+      #(person "Ford Prefect" "Betelgeuse Seven" 234)
+      >
+      ;;}}
+  ))
+
+(defn records-3 []
+  (highlight
+    ;;{{
+      > (person-name ford)
+      "Ford Prefect"
+      > (set ford
+          (set-person-age ford 244))
+      #(person "Ford Prefect" "Betelgeuse Seven" 244)
+      > (person-age ford)
+      244
+      >
+      ;;}}
+  ))
+
+(defn patterns-1 []
+  (highlight
+    ;;{{
+      > (let (((tuple len status data) #(8 ok "Trillian")))
+             (list len status data))
+      (8 ok "Trillian")
+      >
     ;;}}
     ))
 
-(defn get-http-outstream-p1 []
+(defn patterns-2 []
   (highlight
     ;;{{
-    (defn ch->outputstream [ch]
-      (proxy [java.io.OutputStream] []
-        (close [] (close ch))
-        (write
-          ([^bytes bs] ;; bytes of byte
-            (send! ch (String. bs) false))
-          ([^bytes bs off len]
-            (send! ch (String. bs off len) false)))))
-
-      (defn ch->writer [ch]
-        (io/writer (ch->outputstream ch)))
+      > (case data
+          ((tuple len 'ok msg)
+            (: io format '"~s seems good.~n" (list msg)))
+          ((tuple len 'err msg)
+            (: io format '"There's a problem with ~s.~n" (list msg)))
+          ((tuple len 'warn msg)
+            (: io format '"Be careful of ~s.~n" (list msg))))
+      Be careful of Arthur.
+      ok
+      >
     ;;}}
     ))
 
-(defn get-http-outstream-p2 []
+(defn patterns-3 []
   (highlight
     ;;{{
-      (defn stream-slice-query-json
-        [request response resource]
-        (let [resource (hal/json-representation resource)]
-          (with-channel request ch
-            (send! ch response false)
-            (with-open [writer (ch->writer ch)]
-              (json/generate-stream resource writer))
-            (close ch))
-          response))
+      (cond ((?= (tuple len 'ok msg) data)
+             (: io format '"~s seems good.~n" (list msg)))
+            ((?= (tuple len 'err msg) data)
+             (: io format '"There's a problem with ~s.~n" (list msg)))
+            ((?= (tuple len 'warn msg) data)
+             (: io format '"Be careful of ~s.~n" (list msg))))
     ;;}}
     ))
 
-(defn get-http-websocket []
+
+(defn patterns-4 []
   (highlight
     ;;{{
-    (defn ws-handler [request]
-      (with-channel request channel
-        (swap! channels conj channel)
-        (println "channel opened: " channel)
-        (on-close channel
-                  (fn [status]
-                    (swap! channels disj channel)
-                    (println "channel closed: " channel " - " status)))
-        (on-receive channel
-                    (fn [data]
-                      (println "data received: " data)
-                      (doseq [chan (disj @channels channel)]
-                        (println "sending data: " channel " - " data)
-                        (send! chan data))))))
+      (defun safety-check
+        (('ok msg)
+          (: io format '"~s seems good.~n" (list msg)))
+        (('warn msg)
+          (: io format '"There's a problem with ~s.~n" (list msg)))
+        (('crit msg)
+          (: io format '"Be careful of ~s.~n" (list msg))))
+    ;;}}
+    ))
+
+(defn patterns-5 []
+  (highlight
+    ;;{{
+      (defun safety-check ()
+        (receive
+          ((tuple 'ok item)
+            (: io format '"~s is safe to approach.~n" (list item))
+            (safety-check))
+          ((tuple 'warn item)
+            (: io format '"Approach ~s with extreme caution.~n" (list item))
+            (safety-check))
+          ((tuple 'crit item)
+            (: io format '"Withdraw from ~s immediately!~n" (list item))
+            (safety-check))))
+    ;;}}
+    ))
+
+(defn macros-1 []
+  (highlight
+    ;;{{
+
     ;;}}
     ))
 
