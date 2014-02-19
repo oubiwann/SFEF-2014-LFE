@@ -101,6 +101,12 @@
    (loop-tpl :bindings [x things]
              (li @x))))
 
+(defn quicklist-frag
+  [& things]
+  (ul
+   (loop-tpl :bindings [x things]
+             (li :class "fragment" @x))))
+
 (defelem notes
   [attrs children]
   (aside (merge attrs {:class "notes"}) children))
