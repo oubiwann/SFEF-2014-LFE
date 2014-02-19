@@ -1,5 +1,5 @@
 (ns lfe.chapter9
     (:require [lfe.reveal :refer [chapter]]))
 
-(defn slides []
+(defn end []
   (chapter :title "Thanks!"))

@@ -1,7 +1,21 @@
 (ns lfe.chapter8
-    (:require [lfe.reveal :refer [chapter slide]]))
+    (:require [hoplon.reveal :refer [bullet quicklist-frag]]
+              [lfe.reveal :refer [chapter slide]]))
 
-(defn slides []
+(defn review []
+  (chapter :title "Review"
+
+    (slide :title "What We've Covered"
+      (quicklist-frag
+        "Motivation: Why Lisp?"
+        "Historical Context: The Road to LFE"
+        "A Quick Look: Kicking the Tires"
+        "Getting to Know LFE: Test Drive"
+        "XXX: Racing to the Finish"
+        "Additional Topics: Going Off Road"
+        "Wrapup"))))
+
+(defn contact []
   (chapter :title "Contact Info"
 
     (slide :title "LFE Info"

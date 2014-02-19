@@ -1,5 +1,5 @@
 (ns lfe.chapter3
-    (:require [hoplon.reveal :refer [notes bullet]]
+    (:require [hoplon.reveal :refer [notes quicklist quicklist-frag bullet]]
               [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
@@ -27,28 +27,21 @@
       (img :src "img/lisp-1.5-manual.jpg"))
 
     (slide :title "1962: The World of Lisp"
-      (ul
-        (li "MIT Published the LISP 1.5 Programmer's Manual"
+      (quicklist
+        (span "MIT Published the LISP 1.5 Programmer's Manual"
           (img :style "float: right" :src "img/McCarthyChessPlaying.jpg"))
-        (li "Within a year, interactive Lisp was implemented by Peter Deutsch "
-          "on PDP-1")
-        (li "McCarthy's dream had been realized and Lisp was being applied to "
-          "problems in AI")))
+        "Within a year, interactive Lisp was implemented by Peter Deutsch on PDP-1"
+        "McCarthy's dream had been realized and Lisp was being applied to AI problems"))
 
     (slide :title "1962: A Sense of Scale"
-      (ul
-        (li :class "fragment"
-          "The IBM 704 was billed as a 40,000 instruction-per-second machine"
+      (quicklist-frag
+        (span "The IBM 704 was billed as a 40,000 instruction-per-second "
+          "machine"
           (img :style "float: right" :src "img/weak-nuclear-force.jpg"))
-        (li :class "fragment"
-          "About 10,000 computers on Earth")
-        (li :class "fragment"
-          (strong "6.7e-17 ") "instructions/s/kg on the planet")
-        (li :class "fragment"
-          "In units of length, this would be ~7 attometers")
-        (li :class "fragment"
-          "This is the range of the "
-          (strong "weak nuclear force ")
+        "About 10,000 computers on Earth"
+        (span (strong "6.7e-17 ") "instructions/s/kg on the planet")
+        "In units of length, this would be ~7 attometers"
+        (span "This is the range of the " (strong "weak nuclear force ")
           "(responsible for radioactive decay)")))
 
     ;; 80s
@@ -84,30 +77,22 @@
       (img :src "img/Erlang-1.0-small.jpg"))
 
     (slide :title "1986: The World of Lisp"
-      (ul
-        (li "The birth of Common Lisp"
+      (quicklist
+        (span "The birth of Common Lisp"
           (img :style "float: right" :src "img/Symbolics-3600-small.jpg"))
-        (li "The rise of the Lisp Machines")
-        (li "Symbolics was the first .com domain on the nascent WWW")
-        (li "Zetalisp used to program an OS, window manager, compiler, "
-          "network server, and editor")
-        (li "The AI Winter still 3 years in the future ...")))
+        "The rise of the Lisp Machines"
+        "Symbolics was the first .com domain on the nascent WWW"
+        "Zetalisp used to program an OS, window manager, compiler, network server, and editor"
+        "The AI Winter still 3 years in the future ..."))
 
     (slide :title "1986: A Sense of Scale"
-      (ul
-        (li :class "fragment"
-          "VAX-11/750 - 1 MIPS at 5 MHz"
+      (quicklist-frag
+        (span "VAX-11/750 - 1 MIPS at 5 MHz"
           (img :style "float: right" :src "img/helium-atom-small.jpg"))
-        (li :class "fragment"
-          "About 31 million computers on Earth")
-        (li :class "fragment"
-          (strong "5.2e-12 ") "instructions/s/kg on the planet")
-        (li :class "fragment"
-          "In units of length, this would be ~5 picometers")
-        (li :class "fragment"
-          "The radius of a "
-          (strong "helium atom ")
-          "is about 31 pm")))
+        "About 31 million computers on Earth"
+        (span (strong "5.2e-12 ") "instructions/s/kg on the planet")
+        "In units of length, this would be ~5 picometers"
+        (span "The radius of a "(strong "helium atom ") "is about 31 pm")))
 
     ;; 00s
     (slide :title " "
@@ -138,80 +123,65 @@
       (img :src "img/programming-erlang-2007.jpg"))
 
     (slide :title "2008: The World of Lisp"
-      (ul
-        (li "2001 - Paul Graham founds Lisp-using start-up"
+      (quicklist
+        (span "2001 - Paul Graham founds Lisp-using start-up"
           (img :style "float: right" :src "img/Practical-Common-Lisp-small.jpg"))
-        (li "2002 -  Paul Graham provides On Lisp as free download")
-        (li "2004 -  David Lamkins' Successful Lisp published")
-        (li "2004 -  Conrad Barski's Casting SPELs in Lisp - The Comic Book "
-          "released")
-        (li "2005 - Daniel Friedman's The Reasoned Schemer published")
-        (li "2005 - Peter Seibel's Practical Common Lisp published")))
+        "2002 -  Paul Graham provides On Lisp as free download"
+        "2004 -  David Lamkins' Successful Lisp published"
+        "2004 -  Conrad Barski's Casting SPELs in Lisp - The Comic Book released"
+        "2005 - Daniel Friedman's The Reasoned Schemer published"
+        "2005 - Peter Seibel's Practical Common Lisp published"))
 
     (slide :title "2008: The World of Lisp (cont'd)"
-      (ul
-        (li "2005 - Mark Tarver introduced Qi (FP Lisp)"
+      (quicklist
+        (span "2005 - Mark Tarver introduced Qi (FP Lisp)"
           (img :style "float: right" :src "img/haskell-lisp.png"))
-        (li "2006 - ITA received "
-          (strong "$100 million ")
-          "in venture capital")
-        (li "2006 - Blaise released, a Scheme implemented in Haskell")
-        (li "2007 - Scheme R6RS ratified as standard")
-        (li "2007 - Liskell released for Haskell (GHC)")))
+        (span "2006 - ITA received "(strong "$100 million ") "in venture capital")
+        "2006 - Blaise released, a Scheme implemented in Haskell"
+        "2007 - Scheme R6RS ratified as standard"
+        "2007 - Liskell released for Haskell (GHC)"))
 
     (slide :title "2008: The World of Lisp (cont'd)"
-      (ul
-        (li "2007 - Rich Hickey releases Clojure for the JVM"
+      (quicklist
+        (span "2007 - Rich Hickey releases Clojure for the JVM"
           (img :style "float: right" :src "img/LFE-Logo-small.png"))
-        (li "2008 - Robert Virding releases LFE for the Erlang VM")
-        (li "2008 - Termite for Gambit (Erlang-style concurrency in Scheme)")
-        (li "2008 - Doug Hoyte's Let Over Lambda published")
-        (li "The AI Spring arrives with Machine Learning and Data Analytics")))
+        "2008 - Robert Virding releases LFE for the Erlang VM"
+        "2008 - Termite for Gambit (Erlang-style concurrency in Scheme)"
+        "2008 - Doug Hoyte's Let Over Lambda published"
+        "The AI Spring arrives with Machine Learning and Data Analytics"))
 
     (slide :title "2008: A Sense of Scale"
-      (ul
-        (li :class "fragment"
-          "Intel Core 2 59,455 MIPS at 3.2 GHz"
+      (quicklist-frag
+        (span "Intel Core 2 59,455 MIPS at 3.2 GHz"
           (img :style "float: right"
                :src "img/weird_cloud_rainbow_by_marandaschmidt-cropped-small.jpg"))
-        (li :class "fragment"
-          "About 1 billion PCs and ~260 million smartphones on Earth")
-        (li :class "fragment"
-          (strong "1.3e-5 ") "instructions/s/kg on the planet")
-        (li :class "fragment"
-          "In units of length, this would be 10s of micrometers")
-        (li :class "fragment"
-          "10 micrometers is the typical size of a "
+        "About 1 billion PCs and ~260 million smartphones on Earth"
+        (span (strong "1.3e-5 ") "instructions/s/kg on the planet")
+        "In units of length, this would be 10s of micrometers"
+        (span "10 micrometers is the typical size of a "
           (strong "cloud water droplet"))))
     ;; 10s
     (slide :title " "
       (bullet (strong :style "font-size: 300%" "2014")))
 
     (slide :title "2014"
-      (bullet :class "fragment" "Some Recent Changes"
-        (img :style "float: right"
+      (quicklist
+        (bullet "Some Recent Changes"
+          (img :style "float: right"
                :src "img/2014-Volvo-Concept-Coupe-small.jpg"))
-      (ul
-        (li :class "fragment" "Interest in Lisps have exploded")
+        "Interest in Lisps have exploded"
         ))
 
     (slide :title "2014: A Sense of Scale"
-      (ul
-        (li :class "fragment"
-          "Intel Core i7 106,924 MIPS at 3.9 GHz"
+      (quicklist-frag
+        (span "Intel Core i7 106,924 MIPS at 3.9 GHz"
           (img :style "float: right"
                :src "img/paramecium.jpg"))
-        (li :class "fragment"
-          "About 12 billion computing devicess on Earth")
-        (li :class "fragment"
-          (strong "2.1e-4 ") "instructions/s/kg on the planet")
-        (li :class "fragment"
-          "In units of length, this would be about 200 micrometers")
-        (li :class "fragment"
-          "That's two "
-          (strong "Paramecium ")
-          "end-to-end, or the width of a "
-          (strong "human hair"))))
+        "About 12 billion computing devicess on Earth"
+        (span (strong "2.1e-4 ") "instructions/s/kg on the planet")
+        "In units of length, this would be about 200 micrometers"
+        (span "That's two " (strong "Paramecium ")
+          "end-to-end, or the width of a " (strong "human hair"))))
     ))
 
 

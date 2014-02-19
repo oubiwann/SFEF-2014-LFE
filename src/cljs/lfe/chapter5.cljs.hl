@@ -1,27 +1,61 @@
 (ns lfe.chapter5
-    (:require [hoplon.reveal :refer [notes quicklist]]
+    (:require [hoplon.reveal :refer [bullet notes quicklist]]
               [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
 (defn slides []
   (chapter :title "Test Drive"
+
     (slide :title "Building Projects"
+     (bullet "Wait, first we need dependencies ..."))
+
+    (slide :title "Dependencies"
      (quicklist
-      "Supports WebSockets and long polling"
-      "Supports HTTP streaming"
-      "Compatible with Ring"
-      "So fast"
-      "Also a HTTP client"))
+      "kerl: easily run many versions of Erlang"
+      "rebar"
+      (span "Download " (pre "lfetool"))))
 
-    (slide :title "Streaming example"
+    (slide :title "Building Things"
+     (quicklist
+      "Create a script"
+      "Run it!"
+      "Create a library"
+      "Add a unit test!"
+      "Fail!"
+      "Add some code..."
+      "Pass!"))
+
+    (slide :title "Create a Script"
       (sample-code/atoms-and-strings))
 
-    (slide :title "Streaming an OutputStream (part 1)"
+    (slide :title "Add Some Code"
       (sample-code/atoms-and-strings))
 
-    (slide :title "Streaming an OutputStream (part 2)"
+    (slide :title "Run It!"
       (sample-code/atoms-and-strings))
 
-    (slide :title "WebSocket example"
-      (sample-code/atoms-and-strings)
-      (notes "Note the unified API, allowing us to degrade to long polling"))))
+    (slide :title "Create a Library"
+      (sample-code/atoms-and-strings))
+
+    (slide :title "Add a Unit Test"
+      (sample-code/atoms-and-strings))
+
+    (slide :title "Run the Test Suite"
+      (sample-code/atoms-and-strings))
+
+    (slide :title "Add the Code"
+      (sample-code/atoms-and-strings))
+
+    (slide :title "Run the Tests Again..."
+      (sample-code/atoms-and-strings))
+
+    (slide :title "Create A Service"
+      (sample-code/atoms-and-strings))
+
+    (slide :title "Add Some Code"
+      (sample-code/atoms-and-strings))
+
+    (slide :title "Run It!"
+      (sample-code/atoms-and-strings))
+
+    ))

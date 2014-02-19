@@ -328,7 +328,48 @@
 (defn macros-1 []
   (highlight
     ;;{{
-
+      (defmacro deftest arg
+        (let ((name (car arg))
+              (body (cdr arg)))
+          `(defun ,(list_to_atom (++ (atom_to_list name) '"_test")) ()
+             ,@body)))
     ;;}}
     ))
+
+
+(defn macros-2 []
+  (highlight
+    ;;{{
+      (defun is-equal_test ()
+        (is-equal 1 1)
+        (is-equal 1 (+ 1 0))
+        (is-equal 1 (- 2 1)))
+    ;;}}
+    ))
+
+(defn macros-3 []
+  (highlight
+    ;;{{
+      (deftest is-equal
+        (is-equal 1 1)
+        (is-equal 1 (+ 1 0))
+        (is-equal 1 (- 2 1)))
+    ;;}}
+    ))
+
+(defn XXX []
+  (highlight
+    ;;{{
+    ;;}}
+    ))
+
+(defn YYY []
+  (highlight
+    ;;{{
+    ;;}}
+    ))
+
+
+
+
 

@@ -66,6 +66,22 @@
       (bullet "Macros")
       (sample-code/macros-1))
 
+    (slide :title "What Does It Look Like?"
+      (bullet "Macros")
+      (table :width "100%"
+        (tr
+          (td :width "10%" "From this:")
+          (td :width "40%"
+            (sample-code/macros-2))
+          (td :width "10%" "to this:")
+          (td :width "40%"
+            (sample-code/macros-3))
+        )))
+
+    (slide :title "What Does It Look Like?"
+      (bullet "Macros")
+      (sample-code/macros-3))
+
     (slide :title "What Does This Thing Run On?"
       (bullet "Erlang, of course."))
 
