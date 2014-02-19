@@ -82,11 +82,22 @@
       (bullet "Macros")
       (sample-code/macros-3))
 
+    (slide :title "Church Numerals"
+      (sample-code/church-numerals))
+
+    (slide :title "Async HTTP Request"
+      (sample-code/async-http))
+
+    (slide :title "Bidirectional messages"
+      (sample-code/messenger))
+
+    (slide :title "Async HTTP Request"
+      (sample-code/church-numerals))
+
     (slide :title "What Does This Thing Run On?"
       (bullet "Erlang, of course."))
 
     (slide :title "What Does It Look Like?"
       (sample-code/erlang-lfe-macros))
-
 
     ))

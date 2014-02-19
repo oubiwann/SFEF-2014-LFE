@@ -5,16 +5,19 @@
 (defn slides []
   (chapter :title "Going Off Road"
 
-    (slide :title "Church Numerals"
-      (sample-code/church-numerals))
-
-    (slide :title "Async HTTP Request"
+    (slide :title "Rebar Plugins!"
       (sample-code/async-http))
 
-    (slide :title "Bidirectional messages"
+    (slide :title "Buidling a REST Client"
+      (sample-code/church-numerals))
+
+    (slide :title "Buidling a REST Server on YAWS"
+      (sample-code/church-numerals))
+
+    (slide :title "Hierarchical Task Networks"
       (sample-code/messenger))
 
-    (slide :title "Async HTTP Request"
+    (slide :title "Genetic Algorithms"
       (sample-code/church-numerals))
     ))
 
