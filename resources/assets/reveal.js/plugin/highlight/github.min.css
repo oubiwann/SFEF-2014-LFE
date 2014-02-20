@@ -91,3 +91,20 @@
 .xml .hljs-cdata {
   opacity: 0.5;
 }
+
+.lisp {color: green;}
+.lisp span {color: green;}
+.lisp .hljs-literal {color: green;}
+.lisp .hljs-shebang {color: aqua;}
+.lisp .hljs-comment {color: #0099cc;}
+.lisp .hljs-number {color: magenta;}
+.lisp .hljs-string {color: red;}
+.lisp span.hljs-list span.hljs-title {color: yellow;}
+.lisp span.hljs-list span.hljs-quoted {color: olive;}
+.lisp span.hljs-list {color: lime;}
+
+.bash {color: olive;}
+.bash span {color: olive;}
+.bash .hljs-literal {color: olive;}
+.bash .hljs-number {color: green;}
+.bash .hljs-built_in {color: yellow;}
