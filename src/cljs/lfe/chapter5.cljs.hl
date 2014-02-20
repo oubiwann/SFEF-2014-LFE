@@ -11,11 +11,24 @@
 
     (slide :title "Dependencies"
      (quicklist
-      "kerl: easily run many versions of Erlang"
-      "rebar"
-      (span "Download " (pre "lfetool"))))
+      "Easily run multiple versions of Erlang with kerl"
+      "Download (and possibly build) rebar"
+      "LFE"
+      "Download and install lfetool"))
+
+    (slide :title "Dependencies"
+      (bullet "If you want to run scripts, install LFE")
+      (sample-code/install-lfe)
+      (bullet "Otherwise, use rebar (more later)"))
+
+    (slide :title "Dependencies"
+      (bullet "Install lfetool")
+      (sample-code/install-lfetool)
+      (bullet "In the future, easily get the latest version:")
+      (sample-code/update-lfetool))
 
     (slide :title "Building Things"
+      (bullet "A quick look at the next few miles:")
      (quicklist
       "Create a script"
       "Run it!"
@@ -26,13 +39,12 @@
       "Pass!"))
 
     (slide :title "Create a Script"
-      (sample-code/atoms-and-strings))
+      (bullet "Create and Run")
+      (sample-code/create-a-script))
 
-    (slide :title "Add Some Code"
-      (sample-code/atoms-and-strings))
-
-    (slide :title "Run It!"
-      (sample-code/atoms-and-strings))
+    (slide :title "Create a Script"
+      (bullet "Quick Look Inside")
+      (sample-code/script-guts))
 
     (slide :title "Create a Library"
       (sample-code/atoms-and-strings))

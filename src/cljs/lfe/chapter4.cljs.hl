@@ -78,21 +78,14 @@
             (sample-code/macros-3))
         )))
 
-    (slide :title "What Does It Look Like?"
-      (bullet "Macros")
-      (sample-code/macros-3))
-
     (slide :title "Church Numerals"
       (sample-code/church-numerals))
 
     (slide :title "Async HTTP Request"
       (sample-code/async-http))
 
-    (slide :title "Bidirectional messages"
+    (slide :title "Bidirectional Messages"
       (sample-code/messenger))
-
-    (slide :title "Async HTTP Request"
-      (sample-code/church-numerals))
 
     (slide :title "What Does This Thing Run On?"
       (bullet "Erlang, of course."))

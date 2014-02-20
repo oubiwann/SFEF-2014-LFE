@@ -32,7 +32,7 @@
     ))
 
 (defn get-parens-quote []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
     (with more.
           (an English
@@ -46,7 +46,7 @@
 
 
 (defn church-numerals []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
     (defun zero ()
       (lambda (s)
@@ -66,7 +66,7 @@
     ))
 
 (defn async-http []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
     (defun get-page (url)
       "Make a single HTTP request."
@@ -85,21 +85,22 @@
     ))
 
 (defn messenger []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
-    (defun get-page (url)
-      "Make a single HTTP request."
-      (let* ((method 'get)
-             (headers ())
-             (request-data (tuple url headers))
-             (http-options ())
-             (request-options (list (tuple 'sync 'false))))
-        (: httpc request method request-data http-options request-options)
+      (defmodule messenger-back
+       (export all))
+
+      (defun print-result ()
         (receive
-          ((tuple 'http (tuple request-id (tuple 'error reason)))
-           (: io format '"Error: ~p~n" (list reason)))
-          ((tuple 'http (tuple request-id result))
-           (: io format '"Result: ~p~n" (list result))))))
+          ((tuple pid msg)
+            (: io format '"Received message: '~s'~n" (list msg))
+            (: io format '"Sending message to process ~p ...~n" (list pid))
+            (! pid (tuple msg))
+            (print-result))))
+
+      (defun send-message (calling-pid msg)
+        (let ((spawned-pid (spawn 'messenger-back 'print-result ())))
+          (! spawned-pid (tuple calling-pid msg))))
     ;;}}
     ))
 
@@ -119,7 +120,7 @@
     ))
 
 (defn numbers []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       > (+ 1 2 3 4 5 6)
       21
@@ -142,7 +143,7 @@
     ))
 
 (defn atoms-and-strings []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       > 'Vogon
       Vogon
@@ -157,7 +158,7 @@
     ))
 
 (defn bit-pack []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       > (set red 2)
       2
@@ -175,7 +176,7 @@
     ))
 
 (defn bit-unpack []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       > (let (((binary (r (size 5)) (g (size 6)) (b (size 5)))
                #b(23 180)))
@@ -187,7 +188,7 @@
       ))
 
 (defn lists-1 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       > (list 1 3 9 27)
       (1 3 9 27)
@@ -204,7 +205,7 @@
       ))
 
 (defn lists-2 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       > (car '(1 2 3 4 5 6))
       1
@@ -221,7 +222,7 @@
       ))
 
 (defn records-1 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       (defrecord person
         name
@@ -231,7 +232,7 @@
   ))
 
 (defn records-2 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       > (set ford
           (make-person name '"Ford Prefect"
@@ -243,7 +244,7 @@
   ))
 
 (defn records-3 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       > (person-name ford)
       "Ford Prefect"
@@ -257,7 +258,7 @@
   ))
 
 (defn patterns-1 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       > (let (((tuple len status data) #(8 ok "Trillian")))
              (list len status data))
@@ -267,7 +268,7 @@
     ))
 
 (defn patterns-2 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       > (case data
           ((tuple len 'ok msg)
@@ -283,7 +284,7 @@
     ))
 
 (defn patterns-3 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       (cond ((?= (tuple len 'ok msg) data)
              (: io format '"~s seems good.~n" (list msg)))
@@ -296,7 +297,7 @@
 
 
 (defn patterns-4 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       (defun safety-check
         (('ok msg)
@@ -309,7 +310,7 @@
     ))
 
 (defn patterns-5 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       (defun safety-check ()
         (receive
@@ -326,7 +327,7 @@
     ))
 
 (defn macros-1 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       (defmacro deftest arg
         (let ((name (car arg))
@@ -338,7 +339,7 @@
 
 
 (defn macros-2 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       (defun is-equal_test ()
         (is-equal 1 1)
@@ -348,12 +349,80 @@
     ))
 
 (defn macros-3 []
-  (highlight
+  (highlight :class "lisp"
     ;;{{
       (deftest is-equal
         (is-equal 1 1)
         (is-equal 1 (+ 1 0))
         (is-equal 1 (- 2 1)))
+    ;;}}
+    ))
+
+(defn install-lfe []
+  (highlight :class "bash"
+    ;;{{
+      $ cd ~/lab
+      $ git clone https://github.com/rvirding/lfe.git
+      $ cd lfe && make compile
+      $ ERL_LIBS=you_lib_path make install
+      $ cp bin/* /usr/local/bin/
+    ;;}}
+    ))
+
+(defn install-lfetool []
+  (highlight :class "bash"
+    ;;{{
+      $ cd ~/
+      $ curl -o ./lfetool https://raw.github.com/lfe/lfetool/master/lfetool
+      $ bash ./lfetool install /usr/local/bin
+      $ rm ./lfetool
+    ;;}}
+    ))
+
+(defn update-lfetool []
+  (highlight :class "bash"
+    ;;{{
+      $ lfetool update
+      % Total  % Received % Xferd  Average Speed   Time    Time    Time  Current
+                                   Dload   Upload  Total   Spent   Left  Speed
+    100 11895  100 11895  0     0  19835      0 --:--:-- --:--:-- --:--:-- 61632
+
+    Updated lfetool at /usr/local/bin/lfetool.
+    ;;}}
+    ))
+
+(defn create-a-script []
+  (highlight :class "bash"
+    ;;{{
+      $ lfetool new script fibo
+      $ ./fibo 42
+      factorial 42 = 1405006117752879898543142606244511569936384000000000
+    ;;}}
+    ))
+
+(defn script-guts []
+  (highlight :class "lisp"
+    ;;{{
+      #! /usr/bin/env lfescript
+      ;; -*- mode: lfe -*-
+      ;;! -smp enable -sname factorial -mnesia debug verbose
+      (defun main
+        (((list string))
+          (try
+            (let* ((n (list_to_integer string))
+                    (f (fac n)))
+               (: lfe_io format '"factorial ~w = ~w\n" (list n f)))
+            (catch
+              ((tuple _ _ _) (usage)))))
+          ((_) (usage)))
+
+      (defun fac
+        ((0) 1)
+        ((n) (* n (fac (- n 1)))))
+
+      (defun usage ()
+        (let ((script-name (: escript script_name)))
+          (: lfe_io format '"usage: ~s <integer>\n" (list script-name))))
     ;;}}
     ))
 
