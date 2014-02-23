@@ -7,14 +7,16 @@
   (chapter :title "Test Drive"
 
     (slide :title "Building Projects"
-     (bullet "Wait, first we need dependencies ..."))
+     (bullet :class "fragment" "Let's do it!")
+     (bullet :class "fragment" "Wait, first we need dependencies ...")
+     (bullet :class "fragment" "What are they?"))
 
     (slide :title "Dependencies"
      (quicklist
-      "Easily run multiple versions of Erlang with kerl"
-      "Download (and possibly build) rebar"
-      "LFE"
-      "Download and install lfetool"))
+      (span "Easily run multiple versions of Erlang with " (strong "kerl"))
+      (span "Download (and possibly build) " (strong "rebar"))
+      (strong "LFE")
+      (span "Download and install " (strong "lfetool"))))
 
     (slide :title "Dependencies"
       (bullet "If you want to run scripts, install LFE")
@@ -33,10 +35,8 @@
       "Create a script"
       "Run it!"
       "Create a library"
-      "Add a unit test!"
-      "Fail!"
-      "Add some code..."
-      "Pass!"))
+      "Create a service"
+      ))
 
     (slide :title "Create a Script"
       (bullet "Create and Run")
@@ -47,27 +47,31 @@
       (sample-code/script-guts))
 
     (slide :title "Create a Library"
-      (sample-code/atoms-and-strings))
+      (sample-code/library-1))
 
-    (slide :title "Add a Unit Test"
-      (sample-code/atoms-and-strings))
+    (slide :title "Create a Library"
+      (bullet "Quick Peek at src/my-lib.lfe")
+      (sample-code/library-2))
 
-    (slide :title "Run the Test Suite"
-      (sample-code/atoms-and-strings))
+    (slide :title "Create a Library"
+      (bullet "Quick Peek at test/my-lib_tests.lfe")
+      (sample-code/library-3))
 
-    (slide :title "Add the Code"
-      (sample-code/atoms-and-strings))
+    (slide :title "Create a Service"
+      (sample-code/service-1))
 
-    (slide :title "Run the Tests Again..."
-      (sample-code/atoms-and-strings))
+    (slide :title "Create a Service"
+      (bullet "Quick Peek at src/my-svc_app.lfe")
+      (sample-code/service-2))
 
-    (slide :title "Create A Service"
-      (sample-code/atoms-and-strings))
+    (slide :title "Create a Service"
+      (bullet "Quick Peek at the API section of src/my-svc_server.lfe")
+      (sample-code/service-5))
 
-    (slide :title "Add Some Code"
-      (sample-code/atoms-and-strings))
-
-    (slide :title "Run It!"
-      (sample-code/atoms-and-strings))
+    (slide :title "Create a Service"
+      (bullet "Starting a REPL for the service code")
+      (sample-code/service-3)
+      (bullet "Starting and checking the service")
+      (sample-code/service-4))
 
     ))

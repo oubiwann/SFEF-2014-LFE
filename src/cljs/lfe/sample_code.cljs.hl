@@ -44,7 +44,6 @@
     ;;}}
     ))
 
-
 (defn church-numerals []
   (highlight :class "lisp"
     ;;{{
@@ -138,7 +137,6 @@
       5
       > (rem 11 2)
       1
-      >
     ;;}}
     ))
 
@@ -153,7 +151,6 @@
       "Don't Panic."
       > (list 68 111 110 39 116 32 80 97 110 105 99 46)
       "Don't Panic."
-      >
     ;;}}
     ))
 
@@ -171,7 +168,6 @@
           (green (size 6))
           (blue (size 5)))
       #B(23 180)
-      >
     ;;}}
     ))
 
@@ -183,7 +179,6 @@
              (: io format '"~p ~p ~p~n" (list r g b)))
       2 61 20
       ok
-      >
       ;;}}
       ))
 
@@ -200,7 +195,6 @@
       (1 2 3 4)
       > (: lists append (list '(1 2) '(3 4) '(5 6)))
       (1 2 3 4 5 6)
-      >
       ;;}}
       ))
 
@@ -217,7 +211,6 @@
       (3 4 5 6)
       > (cons '(1 2 3) '(4 5 6))
       ((1 2 3) 4 5 6)
-      >
       ;;}}
       ))
 
@@ -239,7 +232,6 @@
                        address '"Betelgeuse Seven"
                        age 234))
       #(person "Ford Prefect" "Betelgeuse Seven" 234)
-      >
       ;;}}
   ))
 
@@ -253,7 +245,6 @@
       #(person "Ford Prefect" "Betelgeuse Seven" 244)
       > (person-age ford)
       244
-      >
       ;;}}
   ))
 
@@ -263,7 +254,6 @@
       > (let (((tuple len status data) #(8 ok "Trillian")))
              (list len status data))
       (8 ok "Trillian")
-      >
     ;;}}
     ))
 
@@ -279,7 +269,6 @@
             (: io format '"Be careful of ~s.~n" (list msg))))
       Be careful of Arthur.
       ok
-      >
     ;;}}
     ))
 
@@ -294,7 +283,6 @@
              (: io format '"Be careful of ~s.~n" (list msg))))
     ;;}}
     ))
-
 
 (defn patterns-4 []
   (highlight :class "lisp"
@@ -336,7 +324,6 @@
              ,@body)))
     ;;}}
     ))
-
 
 (defn macros-2 []
   (highlight :class "lisp"
@@ -423,6 +410,127 @@
       (defun usage ()
         (let ((script-name (: escript script_name)))
           (: lfe_io format '"usage: ~s <integer>\n" (list script-name))))
+    ;;}}
+    ))
+
+(defn library-1 []
+  (highlight :class "bash"
+    ;;{{
+      $ lfetool new library my-lib
+      $ find my-lib -type f|egrep -v 'deps|.git|.beam'
+      my-lib/ebin/my-lib.app
+      my-lib/Makefile
+      my-lib/package.exs
+      my-lib/README.rst
+      my-lib/rebar.config
+      my-lib/src/my-lib.app.src
+      my-lib/src/my-lib.lfe
+      my-lib/test/my-lib_tests.lfe
+    ;;}}
+    ))
+
+(defn library-2 []
+  (highlight :class "lisp"
+    ;;{{
+    (defmodule my-lib
+      (export all))
+
+    (defun my-adder (x y)
+      (+ x (+ y 1)))
+    ;;}}
+    ))
+
+(defn library-3 []
+  (highlight :class "lisp"
+    ;;{{
+      (defmodule my-lib_tests
+        (export all))
+
+      (include-lib "deps/lfeunit/include/lfeunit-macros.lfe")
+
+      (deftest my-adder
+        (is-equal 4 (: my-lib my-adder 2 2)))
+    ;;}}
+    ))
+
+(defn service-1 []
+  (highlight :class "bash"
+    ;;{{
+      $ lfetool new service my-svc
+      $ find my-svc -type f|egrep -v 'deps|.git|.beam'
+      my-svc/ebin/my-svc.app
+      my-svc/Makefile
+      my-svc/package.exs
+      my-svc/README.rst
+      my-svc/rebar.config
+      my-svc/src/my-svc.app.src
+      my-svc/src/my-svc_app.lfe
+      my-svc/src/my-svc_server.lfe
+      my-svc/src/my-svc_sup.lfe
+      my-svc/test/my-svc_tests.lfe
+    ;;}}
+    ))
+
+(defn service-2 []
+  (highlight :class "lisp"
+    ;;{{
+      (defmodule my-svc_app
+        (behaviour application)
+        (export (start 2)
+                (stop 1)))
+
+      (defun start (type args)
+        (let ((result (: my-svc_sup start_link)))
+          (case result
+            ((tuple 'ok pid)
+              result)
+            (_
+              (tuple 'error result)))))
+
+      (defun stop (state)
+        'ok)
+    ;;}}
+    ))
+
+(defn service-3 []
+  (highlight :class "bash"
+    ;;{{
+      $ cd my-svc
+      $ make shell
+      ...
+      LFE Shell V5.10.4 (abort with ^G)
+      >
+    ;;}}
+    ))
+
+(defn service-4 []
+  (highlight :class "lisp"
+    ;;{{
+      > (: application start 'my-svc)
+      ok
+      > (: my-svc_server test-call '"Testing a call ...")
+      Call: "Testing a call ..."
+      ok
+      > (: my-svc_server test-cast '"Testing a cast ...")
+      ok
+      Cast: "Testing a cast ..."
+    ;;}}
+    ))
+
+(defn service-5 []
+  (highlight :class "lisp"
+    ;;{{
+      (defun start_link ()
+        (: gen_server start_link
+           (tuple 'local (server-name)) (module-name) '() '()))
+
+      (defun test-call (message)
+        (: gen_server call
+           (server-name) (tuple 'test message)))
+
+      (defun test-cast (message)
+        (: gen_server cast
+           (server-name) (tuple 'test message)))
     ;;}}
     ))
 

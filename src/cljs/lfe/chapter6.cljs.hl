@@ -1,24 +1,41 @@
 (ns lfe.chapter6
-    (:require [lfe.reveal :refer [chapter slide]]
+    (:require [hoplon.reveal :refer [bullet notes quicklist]]
+              [lfe.reveal :refer [chapter slide]]
               [hoplon.util :as util]))
 
 (defn slides []
-  (chapter :title "Racing to the Finish"
+  (chapter :title "Racing Ahead"
 
-    (slide :title "Review"
-      (ul
-        (li "Clojure is a great language for web development")
-        (li "Look at Luminus for a good prepackaged collection of libraries")
-        (li "Hoplon makes dynamic front-ends easy")
-        (li "Liberator handles all the scutwork of making REST APIs")
-        (li "HTTP Kit is a speedy Clojure web server that handles streaming, "
-            "polling, and WebSockets with ease")))
+    (slide :title "Overcast Skies"
+      ;; create "cloudy" project
+      (bullet "Creating Larger Projects")
+      )
 
-    (slide :title "Resources"
-      (ul
-        (li (util/url "http://www.luminusweb.net/"))
-        (li (util/url "http://hoplon.io/"))
-        (li (util/url "http://clojure-liberator.github.io/liberator/"))
-        (li (util/url "http://http-kit.org/"))
-        (li (util/url "http://clojure-doc.org/"))
-        (li (util/url "http://clojurewebdev.com/"))))))
+    (slide :title "Amazon AWS"
+      ;; pull in amazon erlang lib
+      ;; demostrate brining up an instance on Amazon
+      (bullet "Using Large, 3rd Party Libraries")
+      )
+
+    (slide :title "Rackspace Cloud"
+      ;; pull in rackspace lib
+      ;; demostrate brining up an instance on Rackspace
+      (bullet "Building Larger Libraries")
+      )
+
+    (slide :title "REST Area"
+      ;; add dep for YAWS starter project
+      (bullet "Dependencies Update")
+      )
+
+    (slide :title "REST Area"
+      ;; update config file
+      (bullet "Configuration")
+      )
+
+    (slide :title "REST Area"
+      ;; add mini REST implementation
+      (bullet "API Implementation")
+      )
+
+    ))

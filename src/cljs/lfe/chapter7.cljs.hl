@@ -5,22 +5,17 @@
 (defn slides []
   (chapter :title "Going Off Road"
 
+    (slide :title "Hierarchical Task Networks"
+      (sample-code/messenger))
+
     (slide :title "Rebar Plugins!"
       (sample-code/async-http))
 
     (slide :title "Buidling a REST Client"
       (sample-code/church-numerals))
 
-    (slide :title "Buidling a REST Server on YAWS"
-      (sample-code/church-numerals))
-
-    (slide :title "Hierarchical Task Networks"
-      (sample-code/messenger))
-
     (slide :title "Genetic Algorithms"
       (sample-code/church-numerals))
+
     ))
-
-
-
 
