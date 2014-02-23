@@ -1,27 +1,83 @@
 (ns lfe.chapter6
     (:require [hoplon.reveal :refer [bullet notes quicklist]]
+              [hoplon.util :as util]
               [lfe.reveal :refer [chapter slide]]
-              [hoplon.util :as util]))
+              [lfe.sample-code :as sample-code]))
 
 (defn slides []
   (chapter :title "Racing Ahead"
 
     (slide :title "Overcast Skies"
-      ;; create "cloudy" project
       (bullet "Creating Larger Projects")
-      )
+      (sample-code/cloud-1))
 
     (slide :title "Amazon AWS"
-      ;; pull in amazon erlang lib
-      ;; demostrate brining up an instance on Amazon
-      (bullet "Using Large, 3rd Party Libraries")
-      )
+      (bullet "Update rebar dependencies")
+      (sample-code/aws-deps-1))
+
+    (slide :title "Amazon AWS"
+      (bullet "Update Makefile dependencies")
+      (sample-code/aws-deps-2))
+
+    (slide :title "Amazon AWS"
+      (bullet "Define a convenience function in src/cloudy.lfe")
+      (sample-code/aws-1))
+
+    (slide :title "Amazon AWS"
+      (bullet "Configure environment and start shell")
+      (sample-code/aws-2))
+
+    (slide :title "Amazon AWS"
+      (bullet "Start an instance")
+      (sample-code/aws-3))
+
+    (slide :title "Amazon AWS"
+      (bullet "Check your work")
+      (img :src "img/aws-screenshot.png"))
+
+    (slide :title "Amazon AWS"
+      (bullet "From here:")
+      (quicklist
+        "Log in to machine, install Erlang, rebar, git, etc."
+        "Clone your project(s)"
+        "Run your services"
+        "Alternatively, create your own image that does all this"))
 
     (slide :title "Rackspace Cloud"
-      ;; pull in rackspace lib
-      ;; demostrate brining up an instance on Rackspace
-      (bullet "Building Larger Libraries")
-      )
+      (bullet "Update rebar dependencies")
+      (sample-code/rax-deps-1))
+
+    (slide :title "Rackspace Cloud"
+      (bullet "Update Makefile dependencies")
+      (sample-code/rax-deps-2))
+
+    (slide :title "Rackspace Cloud"
+      (bullet "Update compile for Jiffy")
+      (sample-code/rax-deps-3))
+
+    (slide :title "Rackspace Cloud"
+      (bullet "Define a convenience function in src/cloudy.lfe")
+      (sample-code/rax-1))
+
+    (slide :title "Rackspace Cloud"
+      (bullet "Configure environment and start shell")
+      (sample-code/rax-2))
+
+    (slide :title "Rackspace Cloud"
+      (bullet "Start an instance")
+      (sample-code/rax-3))
+
+    (slide :title "Rackspace Cloud"
+      (bullet "Check your work")
+      (img :src "img/rax-screenshot.png"))
+
+    (slide :title "Rackspace Cloud"
+      (bullet "From here:")
+      (quicklist
+        "Log in to machine, install Erlang, rebar, git, etc."
+        "Clone your project(s)"
+        "Run your services"
+        "Alternatively, create your own image that does all this"))
 
     (slide :title "REST Area"
       ;; add dep for YAWS starter project

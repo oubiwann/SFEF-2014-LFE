@@ -534,6 +534,161 @@
     ;;}}
     ))
 
+(defn cloud-1 []
+  (highlight :class "bash"
+    ;;{{
+      $ lfetool new library cloudy
+      $ cd cloudy
+      $ vi rebar.config
+      $ vi Makefile
+    ;;}}
+    ))
+
+(defn aws-deps-1 []
+  (highlight :class "erlang"
+    ;;{{
+      {deps, [
+         ...
+         {erlcloud, ".*", {git, "git://github.com/gleber/erlcloud.git"}}
+  ]}.
+    ;;}}
+    ))
+
+(defn aws-deps-2 []
+  (highlight :class "makefile"
+    ;;{{
+      JSX_DIR = $(DEPS)/jsx
+      ERLCLOUD_DIR = $(DEPS)/erlcloud
+      ERL_LIBS1 = $(LFE_DIR):$(LFE_UTILS_DIR):$(LFEUNIT_DIR)
+      ERL_LIBS2 = $(ERLCLOUD_DIR):$(JSX_DIR):./
+      ERL_LIBS = $(ERL_LIBS1):$(ERL_LIBS2)
+    ;;}}
+    ))
+
+(defn aws-1 []
+  (highlight :class "lisp"
+    ;;{{
+      (defmodule cloudy
+        (export all))
+
+      (include-lib "deps/erlcloud/include/erlcloud_ec2.hrl")
+
+      (defun run-aws-instance (ami)
+        (: ssl start)
+        (: erlcloud start)
+        (let ((instance-config (make-ec2_instance_spec
+                                 image_id ami)))
+          (: erlcloud_ec2 run_instances instance-config)))
+    ;;}}
+    ))
+
+(defn aws-2 []
+  (highlight :class "bash"
+    ;;{{
+      $ export AWS_ACCESS_KEY_ID=ASDFG1234
+      $ export AWS_SECRET_ACCESS_KEY=QWERT2345
+      $ make shell
+    ;;}}
+    ))
+
+(defn aws-3 []
+  (highlight :class "lisp"
+    ;;{{
+> (slurp '"src/cloudy.lfe")
+> (run-aws-instance '"ami-2be4d942")
+#(ok
+  (#(reservation_id "r-26d4a907")
+   #(owner_id "1234567")
+   #(group_set ("sg-e77a968e"))
+   #(instances_set
+     ((#(instance_id "i-ba83d19b")
+       #(image_id "ami-2be4d942")
+       #(instance_state (#(code 0) #(name "pending")))
+       ...
+    ;;}}
+    ))
+
+(defn rax-deps-1 []
+  (highlight :class "erlang"
+    ;;{{
+      {deps, [
+         ...
+         {lferax, ".*", {git, "git://github.com/lfe/lfe-rackspace.git"}}
+  ]}.
+    ;;}}
+    ))
+
+(defn rax-deps-2 []
+  (highlight :class "makefile"
+    ;;{{
+      LFERAX_DIR = $(DEPS)/lferax
+      OPENSTACK_DIR = $(DEPS)/openstack
+      JIFFY_DIR = $(DEPS)/jiffy
+      EJ_DIR = $(DEPS)/ej
+      REST_CLIENT_DIR=$(DEPS)/lfe-rest-client
+      # Note that ERL_LIBS is for running this project in development and that
+      # ERL_LIB is for installation.
+      ERL_LIBS1 = $(LFE_DIR):$(LFE_UTILS_DIR):$(LFEUNIT_DIR)
+      ERL_LIBS2 = $(ERLCLOUD_DIR):$(JSX_DIR):$(LFERAX_DIR):$(OPENSTACK_DIR)
+      ERL_LIBS3 = $(JIFFY_DIR):$(EJ_DIR):$(REST_CLIENT_DIR):./
+      ERL_LIBS = $(ERL_LIBS1):$(ERL_LIBS2):$(ERL_LIBS3)
+    ;;}}
+    ))
+
+(defn rax-deps-3 []
+  (highlight :class "makefile"
+    ;;{{
+      compile: get-deps clean-ebin
+        rebar compile
+        cd $(JIFFY_DIR) && rebar compile
+    ;;}}
+    ))
+
+(defn rax-1 []
+  (highlight :class "lisp"
+    ;;{{
+      (defun run-rax-instance (image-id)
+        (let* ((auth-data (: lferax-identity login))
+               (region '"DFW")
+               (flavors-list (: lferax-servers get-flavors-list
+                               auth-data region))
+               (flavor-id (: lferax-servers get-id
+                            '"30 GB Performance"
+                            flavors-list)))
+          (: lferax-servers create-server
+            auth-data region '"my-new-server"image-id flavor-id)))
+    ;;}}
+    ))
+
+(defn rax-2 []
+  (highlight :class "bash"
+    ;;{{
+      $ export RAX_USERNAME=alice
+      $ export RAX_APIKEY=1234abcd
+      $ make shell
+    ;;}}
+    ))
+
+(defn rax-3 []
+  (highlight :class "lisp"
+    ;;{{
+> (slurp '"src/cloudy.lfe")
+#(ok cloudy)
+> (run-rax-instance '"80fbcb55-b206-41f9-9bc2-2dd7aac6c061")
+#(ok
+  #(#("HTTP/1.1" 202 "Accepted")
+    (#("date" "Sun, 23 Feb 2014 21:55:39 GMT")
+     #("via" "1.1 Repose (Repose/2.12)")
+     #("location"
+       "https://dfw.servers.api.rackspacecloud.com/v2/123/servers/456")
+     #("server" "Jetty(8.0.y.z-SNAPSHOT)")
+     #("content-length" "380")
+     #("content-type" "application/json")
+     #("x-compute-request-id" "req-1c180f0f-062f-4576-b316-4072eb1a4a83"))
+    ...
+    ;;}}
+    ))
+
 (defn XXX []
   (highlight
     ;;{{
