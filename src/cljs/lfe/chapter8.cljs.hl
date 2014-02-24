@@ -2,8 +2,8 @@
     (:require [hoplon.reveal :refer [bullet quicklist-frag]]
               [lfe.reveal :refer [chapter slide]]))
 
-(defn review []
-  (chapter :title "Review"
+(defn conclusion []
+  (chapter :title "Conclusion"
 
     (slide :title "What We've Covered"
       (quicklist-frag
@@ -13,7 +13,36 @@
         "Getting to Know LFE: Test Drive"
         "Bigger Projects: Racing Ahead"
         "Additional Topics: Going Off Road"
-        "Wrapup"))))
+        "Wrapup"))
+
+    (slide :title "Our History and Present"
+      (quicklist-frag
+        "Modern computing started with a war"
+        "Violence was provided as an answer to violence"
+        "We are working with powerful tools -- hardware and software"
+        "Extraordinary concepts: actor model, homoiconicity, ML, metaprogramming, GAs"
+        "We can take a different path"))
+
+    (slide :title "Our Future"
+      (bullet (strong "Gul Agha's 1985 PhD Dissertation"))
+      (quicklist-frag
+        "ACTORS: A Model of Concurrent Computation in Distributed Systems"
+        "Agha inspired by Carl Hewitt"
+        "Researched at MIT with Message-Passing Semantics Group"
+        ))
+
+    (slide :title "Our Future"
+      (bullet (strong "Gul Agha's 1985 PhD Dissertation"))
+      (bullet "Quotes from the Preface:")
+      (quicklist-frag
+        "\"Many observers have noted the computational power [...] of a new generation of computers.\""
+        "\"The possibilities that emerge [...] are simply mind boggling.\""
+        "\"[H]umankind has generally lacked the foresight to use the resources that science has provided in a manner that would be compatible wth its long-term survival.\""
+        ))
+
+    (slide :title "Our Future"
+      (bullet "\"Somehow we have to develop an ethic that values compassion rather than consumption, to acquire a reverence for life itself.\""))
+  ))
 
 (defn contact []
   (chapter :title "Contact Info"

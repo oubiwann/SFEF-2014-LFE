@@ -2,7 +2,7 @@
     (:require [hoplon.reveal :refer [highlight]]))
 
 
-(defn get-page-13 []
+(defn get-page-13-1 []
   (highlight
     ;;{{
     apply[fn;x;a] =
@@ -15,7 +15,12 @@
          eq[car[fn];LAMBDA] -> eval[caddr[fn];parlis[cadr[fn];x;a]];
          eq[car[fn];LABEL] -> apply[caddr[fn];x;cons[cons[cadr[fn];
                                    caddr[fn]];a]]]
+    ;;}}
+    ))
 
+(defn get-page-13-2 []
+  (highlight
+    ;;{{
     eval[e;a] = [atom[e] -> cdr[assoc[e;a]];
          atom[car[e]] ->
           [eq[car[e],QUOTE] -> cadr[e];
@@ -689,9 +694,378 @@
     ;;}}
     ))
 
+(defn rest-deps-1 []
+  (highlight :class "erlang"
+    ;;{{
+      {deps, [
+         ...
+         {yaws, ".*", {git, "git://github.com/klacke/yaws.git"}}
+        ]}.
+    ;;}}
+    ))
+
+(defn rest-deps-2 []
+  (highlight :class "bash"
+    ;;{{
+      $ make get-deps
+      $ make compile
+    ;;}}
+    ))
+
+(defn rest-deps-3 []
+  (highlight :class "makefile"
+    ;;{{
+      ETC_DIR = ./etc
+      ...
+      YAWS_DIR = $(DEPS)/yaws
+      YAWS = $(YAWS_DIR)/bin/yaws
+      YAWS_CONF = $(ETC_DIR)/yaws.conf
+      YAWS_SERVER_ID = cloudyrest
+      ERL_LIBS1 = $(LFE_DIR):$(LFE_UTILS_DIR):$(LFEUNIT_DIR)
+      ERL_LIBS2 = $(ERLCLOUD_DIR):$(JSX_DIR):$(LFERAX_DIR):$(OPENSTACK_DIR)
+      ERL_LIBS3 = $(JIFFY_DIR):$(EJ_DIR):$(REST_CLIENT_DIR):$(YAWS_DIR):./
+      ERL_LIBS = $(ERL_LIBS1):$(ERL_LIBS2):$(ERL_LIBS3)
+    ;;}}
+    ))
+
+(defn rest-targets []
+  (highlight :class "makefile"
+    ;;{{
+      yaws-dev: compile-no-deps
+        @ERL_LIBS=$(ERL_LIBS) $(YAWS) -i \
+        --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
+    ;;}}
+    ))
+
+(defn yaws-dirs []
+  (highlight :class "bash"
+    ;;{{
+      $ mkdir etc logs www
+    ;;}}
+    ))
+
+(defn yaws-conf []
+  (highlight :class "apache"
+    ;;{{
+      logdir = logs
+      ebin_dir = deps/yaws/var/yaws/ebin
+      ebin_dir = ebin
+      log_resolve_hostname = false
+      fail_on_bind_err = true
+
+      <server localhost>
+              port = 9099
+              listen = 0.0.0.0
+              appmods = </, cloudy>
+              docroot = www
+      </server>
+    ;;}}
+    ))
+
+(defn yaws-rest-entry []
+  (highlight :class "lisp"
+    ;;{{
+      (defun out (arg-data)
+        "This function is executed by YAWS. It is the YAWS entry point for our
+        RESTful service."
+        (let ((method-name (get-http-method arg-data))
+              (path-info (: string tokens
+                            (parse-path arg-data)
+                            '"/")))
+          (routes path-info method-name arg-data)))
+    ;;}}
+    ))
+
+(defn yaws-rest-routes []
+  (highlight :class "lisp"
+    ;;{{
+      (defun routes
+        "Routes for the Volvoshop REST API."
+        (((list '"order") method arg-data)
+         (order-api method arg-data))
+        (((list '"order" order-id) method arg-data)
+         (order-api method order-id arg-data))
+        (((list '"orders") method arg-data)
+         (orders-api method arg-data))
+        (((list '"payment" '"order" order-id) method arg-data)
+         (payment-api method order-id arg-data))
+        ((path method arg)
+          (: io format
+            '"Unmatched route!~n Path-info: ~p~n method: ~p~n arg-data: ~p~n~n"
+            (list path method arg))
+          (make-json-error-response '"Unmatched route.")))
+    ;;}}
+    ))
+
+(defn yaws-rest-api-order-1 []
+  (highlight :class "lisp"
+    ;;{{
+      (defun order-api
+        "The order API for methods without an order id."
+        (('POST arg-data)
+         (make-json-data-response '"You made a new order.")))
+    ;;}}
+    ))
+
+(defn yaws-rest-api-order-2 []
+  (highlight :class "lisp"
+    ;;{{
+      (defun order-api
+        "The order API for methods with an order id."
+        (('GET order-id arg-data)
+         (make-json-data-response (++ '"You got the status for order "
+                                      order-id '".")))
+        (('PUT order-id arg-data)
+         (make-json-data-response (++ '"You updated order " order-id '".")))
+        (('DELETE order-id arg-data)
+         (make-json-data-response (++ '"You deleted an order " order-id '"."))))
+    ;;}}
+    ))
+
+(defn yaws-rest-api-orders []
+  (highlight :class "lisp"
+    ;;{{
+      (defun orders-api
+        "The orders API."
+        (('GET arg-data)
+         (make-json-data-response '"You got a list of orders.")))
+    ;;}}
+    ))
+
+(defn yaws-rest-api-payment []
+  (highlight :class "lisp"
+    ;;{{
+      (defun payment-api
+        "The payment API."
+        (('GET order-id arg-data)
+         (make-json-data-response '"You got the payment status of an order."))
+        (('PUT order-id arg-data)
+         (make-json-data-response '"You paid for an order.")))
+    ;;}}
+    ))
+
+(defn yaws-rest-utils []
+  (highlight :class "lisp"
+    ;;{{
+      (include-lib "yaws/include/yaws_api.hrl")
+      ...
+      (defun parse-path (arg-data)
+        (arg-pathinfo arg-data))
+
+      (defun get-http-method (arg-data)
+        (let ((record (arg-req arg-data)))
+          (http_request-method record)))
+
+      (defun make-json-response (data)
+        (tuple 'content '"application/json"data))
+
+      (defun make-json-data-response (data)
+        (make-json-response (++ '"{\"data\": \"" data '"\"}")))
+
+      (defun make-json-error-response (error)
+        (make-json-response (++ '"{\"error\": \"" error '"\"}")))
+    ;;}}
+    ))
+
+(defn curl-check-1 []
+  (highlight :class "bash"
+    ;;{{
+      $ curl -D- -X POST http://localhost:9099/order
+      HTTP/1.1 200 OK
+      Server: Yaws 1.98
+      Date: Mon, 24 Feb 2014 01:45:13 GMT
+      Content-Length: 33
+      Content-Type: application/json
+
+      {"data": "You made a new order."}
+    ;;}}
+    ))
+
+(defn curl-check-2 []
+  (highlight :class "bash"
+    ;;{{
+      $ curl -D- -X GET http://localhost:9099/order/1234
+      HTTP/1.1 200 OK
+      Server: Yaws 1.98
+      Date: Mon, 24 Feb 2014 01:45:42 GMT
+      Content-Length: 46
+      Content-Type: application/json
+
+      {"data": "You got the status for order 1234."}
+    ;;}}
+    ))
+
+(defn curl-check-3 []
+  (highlight :class "bash"
+    ;;{{
+      $ curl -D- -X PUT http://localhost:9099/order/1234
+      HTTP/1.1 200 OK
+      Server: Yaws 1.98
+      Date: Mon, 24 Feb 2014 01:45:51 GMT
+      Content-Length: 35
+      Content-Type: application/json
+
+      {"data": "You updated order 1234."}
+    ;;}}
+    ))
+
+(defn curl-check-4 []
+  (highlight :class "bash"
+    ;;{{
+      $ curl -D- -X GET http://localhost:9099/orders
+      HTTP/1.1 200 OK
+      Server: Yaws 1.98
+      Date: Mon, 24 Feb 2014 01:46:05 GMT
+      Content-Length: 37
+      Content-Type: application/json
+
+      {"data": "You got a list of orders."}
+    ;;}}
+    ))
+
+(defn curl-check-5 []
+  (highlight :class "bash"
+    ;;{{
+      $ curl -D- -X GET http://localhost:9099/payment/order/1234
+      HTTP/1.1 200 OK
+      Server: Yaws 1.98
+      Date: Mon, 24 Feb 2014 01:47:00 GMT
+      Content-Length: 51
+      Content-Type: application/json
+
+      {"data": "You got the payment status of an order."}
+    ;;}}
+    ))
+
+(defn curl-check-6 []
+  (highlight :class "bash"
+    ;;{{
+      $ curl -D- -X PUT http://localhost:9099/payment/order/1234
+      HTTP/1.1 200 OK
+      Server: Yaws 1.98
+      Date: Mon, 24 Feb 2014 01:47:19 GMT
+      Content-Length: 34
+      Content-Type: application/json
+
+      {"data": "You paid for an order."}
+    ;;}}
+    ))
+
+(defn curl-check-7 []
+  (highlight :class "bash"
+    ;;{{
+      $ curl -D- -X DELETE http://localhost:9099/order/1234
+      HTTP/1.1 200 OK
+      Server: Yaws 1.98
+      Date: Mon, 24 Feb 2014 01:47:36 GMT
+      Content-Length: 38
+      Content-Type: application/json
+
+      {"data": "You deleted an order 1234."}
+    ;;}}
+    ))
+
+(defn lfe-hop []
+  (highlight :class "lisp"
+    ;;{{
+      (defun run ()
+        (let* ((bob (make-entity name '"Bob" location '"home" cash-total 10))
+               (state (store (entity-name bob) bob (new-dict)))
+               (taxi (make-entity name '"Taxi" location '"downtown"))
+               (state (store (entity-name taxi) taxi state)))
+          (: lfe-hop find-plan
+             state
+             (tasks)
+             (operators)
+             (methods))))
+    ;;}}
+    ))
+
+(defn lfe-rebar-1 []
+  (highlight :class "lisp"
+    ;;{{
+      (defun run-in-basedir (config app-file)
+        "We only want to execute this function when the plugin is running
+        in the base directory."
+       (: lfe-utils dump-data '"debug-config-data.erl" config)
+       (case (base-dir? config)
+         ('true (: io format '"Just ran the 'run-in-basedir' plugin command!~n"))
+         ('false 'ok)))
+    ;;}}
+    ))
+
+(defn lfe-rebar-2 []
+  (highlight :class "lisp"
+    ;;{{
+      (defun run-in-other-dirs (config app-file)
+        "We want to execute this function whenever the plugin is not running
+        in the base directory."
+       ;(: lfe-utils dump-data '"debug-config-data.erl" config)
+       (case (not (base-dir? config))
+         ('true (: io format '"Just ran the 'run-in-other-dirs' plugin command!~n"))
+         ('false 'ok)))
+    ;;}}
+    ))
+
+(defn lfe-rebar-3 []
+  (highlight :class "bash"
+    ;;{{
+      $ rebar run-in-basedir
+      ==> lfe (run-in-basedir)
+      ==> lfeunit (run-in-basedir)
+      ==> lfe-utils (run-in-basedir)
+      ==> rebar (run-in-basedir)
+      ==> lfe-sample-rebar-plugin (run-in-basedir)
+      Just ran the 'run-in-basedir' plugin command!
+    ;;}}
+    ))
+
+(defn lfe-rebar-4 []
+  (highlight :class "bash"
+    ;;{{
+      $ rebar run-in-other-dirs
+      ==> lfe (run-in-other-dirs)
+      Just ran the 'run-in-other-dirs' plugin command!
+      ==> lfeunit (run-in-other-dirs)
+      Just ran the 'run-in-other-dirs' plugin command!
+      ==> lfe-utils (run-in-other-dirs)
+      Just ran the 'run-in-other-dirs' plugin command!
+      ==> rebar (run-in-other-dirs)
+      Just ran the 'run-in-other-dirs' plugin command!
+      ==> lfe-sample-rebar-plugin (run-in-other-dirs)
+    ;;}}
+    ))
+
+(defn ga-1 []
+  (highlight :class "lisp"
+    ;;{{
+      > (: gp-util test-form)
+      (quote 10 4)
+      > (: gp-util test-form)
+      ((+ - * /) =input= 5)
+    ;;}}
+    ))
+
+(defn ga-2 []
+  (highlight :class "lisp"
+    ;;{{
+      > (: gp-util test-form)
+      ((+ - * /)
+       (quote 2 3)
+       (quote
+        ((+ - * /)
+         (quote
+          (quote 10 (quote (quote =input= =input=) =input=))
+          (quote =input= (quote (quote =input= 7) ((+ - * /) =input= =input=))))
+         =input=)
+        3))
+    ;;}}
+    ))
+
 (defn XXX []
   (highlight
     ;;{{
+
     ;;}}
     ))
 

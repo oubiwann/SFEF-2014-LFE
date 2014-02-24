@@ -166,10 +166,13 @@
 
     (slide :title "2014"
       (quicklist
-        (bullet "Some Recent Changes"
+        (span "There have been some changes in the last 6 years"
           (img :style "float: right"
                :src "img/2014-Volvo-Concept-Coupe-small.jpg"))
         "Interest in Lisps have exploded"
+        "AI has returned to the industry in the guise of machine learning"
+        "More companies, projects, and languages are tackling hard problems"
+        "Cores are everywhere"
         ))
 
     (slide :title "2014: A Sense of Scale"
@@ -182,6 +185,13 @@
         "In units of length, this would be about 200 micrometers"
         (span "That's two " (strong "Paramecium ")
           "end-to-end, or the width of a " (strong "human hair"))))
+
+    (slide :title "A Sense of Scale"
+      (quicklist-frag
+        (span "In 50 years, our capacity compute has grown from the "
+              "equivalent of the plank-scale to the size of living "
+              "organisms")
+        (span "This change is " (em "enormous"))))
     ))
 
 

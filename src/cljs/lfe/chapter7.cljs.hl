@@ -1,21 +1,74 @@
 (ns lfe.chapter7
-    (:require [lfe.reveal :refer [chapter slide]]
+    (:require [hoplon.reveal :refer [bullet quicklist-frag]]
+              [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
 (defn slides []
   (chapter :title "Going Off Road"
 
     (slide :title "Hierarchical Task Networks"
-      (sample-code/messenger))
+      (quicklist-frag
+        "Alan Kay's dream"
+        "(And Bret Victor's)"
+        "A world without APIs ..."
+        "Computers talking to each other"
+        "Programming with goals"))
 
-    (slide :title "Rebar Plugins!"
-      (sample-code/async-http))
+    (slide :title "Hierarchical Task Networks"
+      (quicklist-frag
+        "University of Maryland: SHOP2 and PyHOP"
+        "Currently working on an LFE port"
+        "Experiment with goals for users, APIs behind the scenes"))
+
+    (slide :title "Hierarchical Task Networks"
+      (sample-code/lfe-hop))
+
+    (slide :title "Rebar Plugins"
+      (quicklist-frag
+        "Lots of Makefile hacking for new deps"
+        "Automate that with rebar plugins"
+        "Rebar in LFE"))
+
+    (slide :title "Rebar Plugins"
+      (sample-code/lfe-rebar-1))
+
+    (slide :title "Rebar Plugins"
+      (sample-code/lfe-rebar-3))
+
+    (slide :title "Rebar Plugins"
+      (sample-code/lfe-rebar-2))
+
+    (slide :title "Rebar Plugins"
+      (sample-code/lfe-rebar-4))
 
     (slide :title "Buidling a REST Client"
-      (sample-code/church-numerals))
+      (quicklist-frag
+        "Working on several REST clients (openstack, rackspace, neo4j)"
+        "Need to re-use code"
+        "lferax client library now uses it"
+        "Others to follow"))
 
     (slide :title "Genetic Algorithms"
-      (sample-code/church-numerals))
+      (quicklist-frag
+        "Enormous corpus of work by John Koza"
+        "Mostly Lisp"
+        "Homoiconicity FTW"
+        "Using Erlang to power distributed GA processing too tempting"))
+
+    (slide :title "Genetic Algorithms"
+      (sample-code/ga-1))
+
+    (slide :title "Genetic Algorithms"
+      (sample-code/ga-2))
+
+    (slide :title "Genetic Algorithms"
+      (bullet "Next Steps:")
+      (quicklist-frag
+        "Fitness functions"
+        "Replacing nodes"
+        "Cross-overs"
+        "Mutation"
+        "Evaluating generations"))
 
     ))
 

@@ -7,7 +7,14 @@
   (chapter :title "Why Lisp?"
 
     (slide :title "Why Lisp?"
-      (bullet "A lot has happened since the 60s. And 70s. And ...")
+      (quicklist-frag
+        (span "It's so old ..."
+          (img :style "float: right" :src "img/ibm-704.jpg"))
+        "1958"
+        "Seriously?"))
+
+    (slide :title "Why Lisp?"
+      (bullet "A lot has happened in our industry since the 60s. And 70s. And ...")
       (img :src "img/Land-of-Lisp.png"))
 
     (slide :title "Why Lisp?"
@@ -33,14 +40,22 @@
       (bullet "\" ... the big revelation ... when I was in graduate school "
               "[was] when I finally understood that the half page of code "
               "[from] the Lisp 1.5 manual was Lisp "
-              (em "in itself")
-              ". These were "
+              (em "in itself") ".\""))
+
+    (slide :title "Alan Kay on Lisp"
+      (img :src "img/alan-kay.jpg")
+      (bullet "\"These were "
               (strong "Maxwell’s Equations of Software")
               "! This is the whole world of programming in a few lines that I "
               "can put my hand over.\""))
 
-    (slide :title "Lisp 1.5 Manual, Page 13 (1961)"
-      (sample-code/get-page-13))
+    (slide :title "Lisp 1.5 Manual (1961)"
+      (bullet "Bottom half of page 13:")
+      (sample-code/get-page-13-1))
+
+    (slide :title "Lisp 1.5 Manual (1961)"
+      (bullet "Bottom half of page 13:")
+      (sample-code/get-page-13-2))
 
     (slide :title "Brian Hayes"
       (ul
@@ -50,6 +65,9 @@
       (sample-code/get-parens-quote)
       (ul
         (li "\"The Semicolon Wars\", American Scientist (2006)")))
+
+    (slide :title "Why Lisp?"
+      (bullet "But on " (em "Erlang") "?"))
 
     (slide :title "Robert Virding on LFE"
       (bullet "\"Yes, I have implemented another syntax front-end for Erlang, "
@@ -84,6 +102,8 @@
     (slide :title "For Erlangers"
       (quicklist-frag
         "It's just plain fun"
+        "Switch syntax and spice up your life ..."
+        "Without losing your platform"
         ))
 
     ))

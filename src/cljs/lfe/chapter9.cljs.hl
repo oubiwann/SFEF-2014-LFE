@@ -2,4 +2,4 @@
     (:require [lfe.reveal :refer [chapter]]))
 
 (defn end []
-  (chapter :title "Thanks!"))
+  (chapter :title "Thanks :-D"))

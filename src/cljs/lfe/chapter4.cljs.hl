@@ -6,6 +6,11 @@
 (defn slides []
   (chapter :title "Kicking the Tires"
 
+    (slide :title "LFE?"
+      (img :src "img/can-has-lfe.png"))
+
+    (slide :title "NOW!")
+
     (slide :title "What Does It Look Like?"
       (bullet "Numbers and Arithmetic")
       (sample-code/numbers))

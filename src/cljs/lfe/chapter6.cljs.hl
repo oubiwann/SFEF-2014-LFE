@@ -80,18 +80,76 @@
         "Alternatively, create your own image that does all this"))
 
     (slide :title "REST Area"
-      ;; add dep for YAWS starter project
-      (bullet "Dependencies Update")
-      )
+      (bullet "Update dependencies:")
+      (sample-code/rest-deps-1)
+      (bullet "Download and compile missing deps:")
+      (sample-code/rest-deps-2))
 
     (slide :title "REST Area"
-      ;; update config file
-      (bullet "Configuration")
-      )
+      (bullet "Update Makefile:")
+      (sample-code/rest-deps-3)
+      (sample-code/rest-targets))
 
     (slide :title "REST Area"
-      ;; add mini REST implementation
-      (bullet "API Implementation")
-      )
+      (bullet "Create needed dirs:")
+      (sample-code/yaws-dirs)
+      (bullet "Create config file at ./etc/yaws.conf:")
+      (sample-code/yaws-conf))
+
+    (slide :title "REST Area"
+      (bullet "Implementation: entry point")
+      (sample-code/yaws-rest-entry))
+
+    (slide :title "REST Area"
+      (bullet "Implementation: routes")
+      (sample-code/yaws-rest-routes))
+
+    (slide :title "REST Area"
+      (bullet "Implementation: order")
+      (sample-code/yaws-rest-api-order-1))
+
+    (slide :title "REST Area"
+      (bullet "Implementation: order")
+      (sample-code/yaws-rest-api-order-2))
+
+    (slide :title "REST Area"
+      (bullet "Implementation: orders")
+      (sample-code/yaws-rest-api-orders))
+
+    (slide :title "REST Area"
+      (bullet "Implementation: payment")
+      (sample-code/yaws-rest-api-payment))
+
+    (slide :title "REST Area"
+      (bullet "Implementation: utility functions")
+      (sample-code/yaws-rest-utils))
+
+    (slide :title "REST Area"
+      (bullet "Exercising the API")
+      (sample-code/curl-check-1))
+
+    (slide :title "REST Area"
+      (bullet "Exercising the API")
+      (sample-code/curl-check-2))
+
+    (slide :title "REST Area"
+      (bullet "Exercising the API")
+      (sample-code/curl-check-3))
+
+    (slide :title "REST Area"
+      (bullet "Exercising the API")
+      (sample-code/curl-check-4))
+
+    (slide :title "REST Area"
+      (bullet "Exercising the API")
+      (sample-code/curl-check-5))
+
+    (slide :title "REST Area"
+      (bullet "Exercising the API")
+      (sample-code/curl-check-6))
+
+    (slide :title "REST Area"
+      (bullet "Exercising the API")
+      (sample-code/curl-check-7))
 
     ))
