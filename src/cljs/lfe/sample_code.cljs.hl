@@ -661,7 +661,7 @@
                             '"30 GB Performance"
                             flavors-list)))
           (: lferax-servers create-server
-            auth-data region '"my-new-server"image-id flavor-id)))
+            auth-data region '"my-new-server" image-id flavor-id)))
     ;;}}
     ))
 
@@ -754,7 +754,7 @@
       fail_on_bind_err = true
 
       <server localhost>
-              port = 9099
+              port = 5099
               listen = 0.0.0.0
               appmods = </, cloudy>
               docroot = www
@@ -870,7 +870,7 @@
 (defn curl-check-1 []
   (highlight :class "bash"
     ;;{{
-      $ curl -D- -X POST http://localhost:9099/order
+      $ curl -D- -X POST http://localhost:5099/order
       HTTP/1.1 200 OK
       Server: Yaws 1.98
       Date: Mon, 24 Feb 2014 01:45:13 GMT
@@ -884,7 +884,7 @@
 (defn curl-check-2 []
   (highlight :class "bash"
     ;;{{
-      $ curl -D- -X GET http://localhost:9099/order/1234
+      $ curl -D- -X GET http://localhost:5099/order/1234
       HTTP/1.1 200 OK
       Server: Yaws 1.98
       Date: Mon, 24 Feb 2014 01:45:42 GMT
@@ -898,7 +898,7 @@
 (defn curl-check-3 []
   (highlight :class "bash"
     ;;{{
-      $ curl -D- -X PUT http://localhost:9099/order/1234
+      $ curl -D- -X PUT http://localhost:5099/order/1234
       HTTP/1.1 200 OK
       Server: Yaws 1.98
       Date: Mon, 24 Feb 2014 01:45:51 GMT
@@ -912,7 +912,7 @@
 (defn curl-check-4 []
   (highlight :class "bash"
     ;;{{
-      $ curl -D- -X GET http://localhost:9099/orders
+      $ curl -D- -X GET http://localhost:5099/orders
       HTTP/1.1 200 OK
       Server: Yaws 1.98
       Date: Mon, 24 Feb 2014 01:46:05 GMT
@@ -926,7 +926,7 @@
 (defn curl-check-5 []
   (highlight :class "bash"
     ;;{{
-      $ curl -D- -X GET http://localhost:9099/payment/order/1234
+      $ curl -D- -X GET http://localhost:5099/payment/order/1234
       HTTP/1.1 200 OK
       Server: Yaws 1.98
       Date: Mon, 24 Feb 2014 01:47:00 GMT
@@ -940,7 +940,7 @@
 (defn curl-check-6 []
   (highlight :class "bash"
     ;;{{
-      $ curl -D- -X PUT http://localhost:9099/payment/order/1234
+      $ curl -D- -X PUT http://localhost:5099/payment/order/1234
       HTTP/1.1 200 OK
       Server: Yaws 1.98
       Date: Mon, 24 Feb 2014 01:47:19 GMT
@@ -954,7 +954,7 @@
 (defn curl-check-7 []
   (highlight :class "bash"
     ;;{{
-      $ curl -D- -X DELETE http://localhost:9099/order/1234
+      $ curl -D- -X DELETE http://localhost:5099/order/1234
       HTTP/1.1 200 OK
       Server: Yaws 1.98
       Date: Mon, 24 Feb 2014 01:47:36 GMT
@@ -987,9 +987,8 @@
       (defun run-in-basedir (config app-file)
         "We only want to execute this function when the plugin is running
         in the base directory."
-       (: lfe-utils dump-data '"debug-config-data.erl" config)
        (case (base-dir? config)
-         ('true (: io format '"Just ran the 'run-in-basedir' plugin command!~n"))
+         ('true (: io format '"Just ran the 'run-in-basedir' plugin cmd!~n"))
          ('false 'ok)))
     ;;}}
     ))
@@ -1000,9 +999,8 @@
       (defun run-in-other-dirs (config app-file)
         "We want to execute this function whenever the plugin is not running
         in the base directory."
-       ;(: lfe-utils dump-data '"debug-config-data.erl" config)
        (case (not (base-dir? config))
-         ('true (: io format '"Just ran the 'run-in-other-dirs' plugin command!~n"))
+         ('true (: io format '"Just ran the 'run-in-other-dirs' plugin cmd!~n"))
          ('false 'ok)))
     ;;}}
     ))

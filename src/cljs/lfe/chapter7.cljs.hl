@@ -45,6 +45,7 @@
       (quicklist-frag
         "Working on several REST clients (openstack, rackspace, neo4j)"
         "Need to re-use code"
+        "https://github.com/lfe/lfe-rest-client"
         "lferax client library now uses it"
         "Others to follow"))
 

@@ -15,6 +15,7 @@
   (body
     (slideshow
       (ch1/cover)
+      (ch1/aka)
       (ch1/overview)
       (ch2/why)
       (ch3/slides)

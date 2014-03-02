@@ -1,5 +1,5 @@
 (ns lfe.chapter1
-    (:require [hoplon.reveal :refer [bullet quicklist-frag]]
+    (:require [hoplon.reveal :refer [bullet notes quicklist-frag]]
               [lfe.reveal :refer [chapter intro slide]]))
 
 (defn cover []
@@ -7,8 +7,12 @@
     (h2 "0 to 120kph")
     (h2 "in 45 Minutes")
     (bullet "Duncan McGreggor")
-    (bullet "SF Erlang Factory, 2014")))
+    (bullet "SF Erlang Factory, 2014")
+    (notes "Welcome to one of the more exotic projects in the Erlang "
+           "community!")))
 
+(defn aka []
+  (chapter :title "(Lisp Flavored Erlang)"))
 
 (defn overview []
   (chapter :title "Overview"
@@ -20,4 +24,8 @@
         "Getting to Know LFE: Test Drive"
         "Bigger Projects: Racing Ahead"
         "Additional Topics: Going Off Road"
-        "Wrapup"))))
+        "Wrapup")
+      (notes "There is a lot I want to show you -- and it's not all code :-) "
+             "The spirit of LFE derives its essence from several key sources, "
+             "and I'd like to share these with you as well as show you how to "
+             "use LFE."))))

@@ -8,7 +8,13 @@
 
     ;; 60s
     (slide :title " "
-      (bullet (strong :style "font-size: 300%" "1962")))
+      (bullet (strong :style "font-size: 300%" "1962"))
+      (notes "1962 was the year that Lisp got its interpreter. Great "
+             "programmers had been hacking on making Lisp a reality for "
+             "4 years."
+             (br) (br)
+             "But what else was going on? In what cultural context did Lisp "
+             "arise?"))
 
     (slide :title "1962"
       (bullet "What We Were Driving")
@@ -21,6 +27,11 @@
     (slide :title "1962"
       (bullet "How We Were Computing")
       (img :src "img/ibm-704-llnl.jpg"))
+
+    (slide :title "1962"
+      (bullet "What We Were Reading")
+      (bullet (em "New York Times Best Seller list"))
+      (img :src "img/ship-of-fools.jpg"))
 
     (slide :title "1962"
       (bullet "What We Were Reading")
@@ -70,6 +81,11 @@
 
     (slide :title "1986"
       (bullet "What We Were Reading")
+      (bullet (em "New York Times Best Seller list"))
+      (img :src "img/john-le-carre-perfect-spy.jpg.jpg"))
+
+    (slide :title "1986"
+      (bullet "What We Were Reading")
       (img :src "img/Common-Lisp-The-Language-First-Edition-1984.jpg"))
 
     (slide :title "1986"
@@ -113,6 +129,11 @@
     (slide :title "2008"
       (bullet "How We Were Computing")
       (img :src "img/2008-dell-m1730-open-on-small.jpg"))
+
+    (slide :title "2008"
+      (bullet "What We Were Reading")
+      (bullet (em "New York Times Best Seller list"))
+      (img :src "img/force-unleashed.jpg"))
 
     (slide :title "2008"
       (bullet "What We Were Reading")

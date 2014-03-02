@@ -11,16 +11,27 @@
         (span "It's so old ..."
           (img :style "float: right" :src "img/ibm-704.jpg"))
         "1958"
-        "Seriously?"))
+        "Seriously?")
+      (notes "10-15 years ago, complaints about Lisp were quite common. You "
+             "still hear them, though perhaps not as much."))
 
     (slide :title "Why Lisp?"
-      (bullet "A lot has happened in our industry since the 60s. And 70s. And ...")
-      (img :src "img/Land-of-Lisp.png"))
+      (bullet "A lot has happened in our industry since the 50s. And 60s and "
+              "70s. And ...")
+      (img :src "img/Land-of-Lisp.png")
+      (notes "But even if the negative bias against Lisps has faded somewhat, "
+             "what relvance does our second-oldest programming language have "
+             "to modern computing?"))
 
     (slide :title "Why Lisp?"
       (bullet "Do we still need it?")
       (bullet "We've got Perl, and Java, and Ruby, and ...")
-      (img :src "img/pyfry.jpg"))
+      (img :src "img/pyfry.jpg")
+      (notes "Scripting and Dynamic languages now reign where Lisp used to be "
+             "the only answer."
+             (br) (br)
+             "Or have they? This image was taken from a Python-Flavored-Lisp "
+             "presentation..."))
     ;   (ul
     ;     (li "A")
     ;     (li "We all need therapy as a result of the AI Winter.")
@@ -40,22 +51,43 @@
       (bullet "\" ... the big revelation ... when I was in graduate school "
               "[was] when I finally understood that the half page of code "
               "[from] the Lisp 1.5 manual was Lisp "
-              (em "in itself") ".\""))
+              (em "in itself") ".\"")
+      (notes "The power of scripting languages is in their specificity. In a "
+             "way, they are like a DSL for programmers who think a particular "
+             "way."
+             (br) (br)
+             "Lisp is a very different beast. Its power comes from the other "
+             "end of the spectrum: being an appropriate tool for the "
+             "generalist."))
 
     (slide :title "Alan Kay on Lisp"
       (img :src "img/alan-kay.jpg")
       (bullet "\"These were "
               (strong "Maxwell’s Equations of Software")
               "! This is the whole world of programming in a few lines that I "
-              "can put my hand over.\""))
+              "can put my hand over.\"")
+      (notes "Alan Kay makes this point with a compelling analogy to "
+             "physics. Phrased another way, Lisp can concisely describe how to "
+             "make itself. This is, quite simply, mind-blowing."
+             (br) (br)
+             "Also note that he uses the same description that you often hear a "
+             "parent who is describing the miracle of thier new-born baby ;-)"))
 
     (slide :title "Lisp 1.5 Manual (1961)"
       (bullet "Bottom half of page 13:")
-      (sample-code/get-page-13-1))
+      (sample-code/get-page-13-1)
+      (notes "This is a portion of the code to which Alan is referring."))
 
     (slide :title "Lisp 1.5 Manual (1961)"
       (bullet "Bottom half of page 13:")
-      (sample-code/get-page-13-2))
+      (sample-code/get-page-13-2)
+      (notes "Here's the rest of it."
+             (br) (br)
+             "Note that it is expressed in the never-actualy-implemented "
+             "M-expression syntax. (S-expressions were originally envisioned "
+             "as an AST, a first step towards a more programmer-friendly "
+             "syntax. As it turned out, programmers ended up loving "
+             "S-expressions, and didn't want to change!"))
 
     (slide :title "Brian Hayes"
       (ul
@@ -64,7 +96,12 @@
             "parentheses. Seriously!"))
       (sample-code/get-parens-quote)
       (ul
-        (li "\"The Semicolon Wars\", American Scientist (2006)")))
+        (li "\"The Semicolon Wars\", American Scientist (2006)"))
+      (notes "Part of the 'Why Lisp' question often comes down to 'Why all the "
+             "parentheses?!' I can attest to the fact that parens blindness "
+             "only takes a few weeks to set it, so it's really no big deal. "
+             (br) (br)
+             "But some people actually really like them..."))
 
     (slide :title "Why Lisp?"
       (bullet "But on " (em "Erlang") "?"))
@@ -73,11 +110,14 @@
       (bullet "\"Yes, I have implemented another syntax front-end for Erlang, "
               "but it is Lisp-based ... [it's] quite a natural thing to do. "
               "Lisp has such a simple and powerful syntax so how could I not "
-              "do it?\""))
+              "do it?\"")
+      (notes "This is a great quote from Robert. It skips right past all the "
+             "rhetoric and appeals to experimental scientist in us."))
 
     (slide :title "LFE!"
-      (img :src "img/can-has-lfe.png"))
-
+      (img :src "img/can-has-lfe.png")
+      (notes "Not yet :-) Before we dive into LFE, I want to explore its "
+             "wider context with you."))
     ))
 
 (defn reprise []

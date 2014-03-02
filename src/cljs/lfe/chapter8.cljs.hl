@@ -7,13 +7,12 @@
 
     (slide :title "What We've Covered"
       (quicklist-frag
-        "Motivation: Why Lisp?"
-        "Historical Context: The Road to LFE"
-        "A Quick Look: Kicking the Tires"
-        "Getting to Know LFE: Test Drive"
-        "Bigger Projects: Racing Ahead"
-        "Additional Topics: Going Off Road"
-        "Wrapup"))
+        "Why is Lisp interesting in the 21st century?"
+        "From Lisp to Erlang: how we got to LFE"
+        "Kicking LFE's tires: do we want to drive this thing?"
+        "Let's find out! Taking LFE for a spin"
+        "Racing ahead with bigger projects"
+        "Taking LFE off-road with research projects"))
 
     (slide :title "Our History and Present"
       (quicklist-frag
@@ -23,7 +22,7 @@
         "Extraordinary concepts: actor model, homoiconicity, ML, metaprogramming, GAs"
         "We can take a different path"))
 
-    (slide :title "Our Future"
+    (slide :title "Our History and Present"
       (bullet (strong "Gul Agha's 1985 PhD Dissertation"))
       (quicklist-frag
         "ACTORS: A Model of Concurrent Computation in Distributed Systems"
@@ -31,7 +30,7 @@
         "Researched at MIT with Message-Passing Semantics Group"
         ))
 
-    (slide :title "Our Future"
+    (slide :title "Our History and Present"
       (bullet (strong "Gul Agha's 1985 PhD Dissertation"))
       (bullet "Quotes from the Preface:")
       (quicklist-frag
@@ -42,6 +41,11 @@
 
     (slide :title "Our Future"
       (bullet "\"Somehow we have to develop an ethic that values compassion rather than consumption, to acquire a reverence for life itself.\""))
+
+    (slide :title "Our Future"
+      (bullet "Open source communities foster this vision")
+      (bullet "To keep this alive, we need to care for it, tend to it")
+      (bullet "We each have the power to help rewrite computing's history"))
   ))
 
 (defn contact []
