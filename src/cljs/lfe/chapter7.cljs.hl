@@ -1,5 +1,5 @@
 (ns lfe.chapter7
-    (:require [hoplon.reveal :refer [bullet quicklist-frag]]
+    (:require [hoplon.reveal :refer [bullet notes quicklist-frag]]
               [lfe.reveal :refer [chapter slide]]
               [lfe.sample-code :as sample-code]))
 
@@ -12,22 +12,47 @@
         "(And Bret Victor's)"
         "A world without APIs ..."
         "Computers talking to each other"
-        "Programming with goals"))
+        "Programming with goals")
+      (notes "... I can at the very least, give the unfinished projects "
+             "a quick mention :-)"
+             (br)(br)
+             "HTNs are one of many different types of planning systems that "
+             "continue to be explored in both academia and our industry."
+             (br)(br)
+             "Alan Kay and Bret Victor hope for a world where programmers no "
+             "longer have to learn application interfaces. Rather, computers "
+             "figure out how to talk to each other."
+             ))
 
     (slide :title "Hierarchical Task Networks"
       (quicklist-frag
         "University of Maryland: SHOP2 and PyHOP"
         "Currently working on an LFE port"
-        "Experiment with goals for users, APIs behind the scenes"))
+        "Experiment with goals for users, APIs behind the scenes")
+      (notes "A first step towards this might be humans still talking to "
+             "computers, but doing so using goals instead of learning "
+             "a service's 'internals'."
+             (br)(br)
+             "UMD wrote an award-winning HTN in 2002 using Lisp. This was "
+             "later gutted, given a lobotomy, and written in Python."
+             (br)(br)
+             "I'm currently writing a version for LFE whose practical goal is "
+             "to explore communicating with remote/distributed services "
+             "without making API calls. Rather, one would submit tasks to an "
+             "endpoint and a plan would be generated with the generated plan "
+             "making all the appropriate API calls."))
 
     (slide :title "Hierarchical Task Networks"
-      (sample-code/lfe-hop))
+      (sample-code/lfe-hop)
+      (notes "Here is an example run of the LFE-HOP planner."))
 
     (slide :title "Rebar Plugins"
       (quicklist-frag
         "Lots of Makefile hacking for new deps"
         "Automate that with rebar plugins"
-        "Rebar in LFE"))
+        "Rebar in LFE")
+      (notes "Next project in the works: writing rebar plugins to reduce "
+             "manual work and remaining boiler-plate."))
 
     (slide :title "Rebar Plugins"
       (sample-code/lfe-rebar-1))
@@ -47,20 +72,25 @@
         "Need to re-use code"
         "https://github.com/lfe/lfe-rest-client"
         "lferax client library now uses it"
-        "Others to follow"))
+        "Others to follow")
+      (notes "This project was also born while preparing this presentation."))
 
     (slide :title "Genetic Algorithms"
       (quicklist-frag
         "Enormous corpus of work by John Koza"
         "Mostly Lisp"
         "Homoiconicity FTW"
-        "Using Erlang to power distributed GA processing too tempting"))
+        "Using Erlang to power distributed GA processing too tempting")
+      (notes "GAs are what got me into Lisp in the first place. In fact, that "
+             "was the same year that Robert released LFE :-)"))
 
     (slide :title "Genetic Algorithms"
-      (sample-code/ga-1))
+      (sample-code/ga-1)
+      (notes "Here are some quick checks for a first project around GAs in LFE."))
 
     (slide :title "Genetic Algorithms"
-      (sample-code/ga-2))
+      (sample-code/ga-2)
+      (notes "Another example ..."))
 
     (slide :title "Genetic Algorithms"
       (bullet "Next Steps:")
@@ -69,7 +99,11 @@
         "Replacing nodes"
         "Cross-overs"
         "Mutation"
-        "Evaluating generations"))
+        "Evaluating generations")
+      (notes "The first is still early-stages, with many tasks remaining."
+             (br)(br)
+             "With this, we have reached our destination: the end of the LFE "
+             "tour ..."))
 
     ))
 

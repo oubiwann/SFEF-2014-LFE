@@ -350,6 +350,21 @@
     ;;}}
     ))
 
+(defn macros-4 []
+  (highlight :class "lisp"
+    ;;{{
+      (defmacro defelem arg
+        (let ((tag (car arg)))
+          `(progn
+            (defun ,tag ()
+              (: exemplar-xml xml (atom_to_list ',tag)))
+            (defun ,tag (content)
+              (: exemplar-xml xml (atom_to_list ',tag) content))
+            (defun ,tag (attrs content)
+              (: exemplar-xml xml (atom_to_list ',tag) attrs content)))))
+    ;;}}
+    ))
+
 (defn install-lfe []
   (highlight :class "bash"
     ;;{{
@@ -864,6 +879,13 @@
 
       (defun make-json-error-response (error)
         (make-json-response (++ '"{\"error\": \"" error '"\"}")))
+    ;;}}
+    ))
+
+(defn yaws-start []
+  (highlight :class "bash"
+    ;;{{
+      $ make yaws-dev
     ;;}}
     ))
 

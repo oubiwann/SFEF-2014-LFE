@@ -9,16 +9,17 @@
     ;; 60s
     (slide :title " "
       (bullet (strong :style "font-size: 300%" "1962"))
-      (notes "1962 was the year that Lisp got its interpreter. Great "
-             "programmers had been hacking on making Lisp a reality for "
-             "4 years."
+      (notes "1962 was the year that Lisp got its interpreter. John McCarthy "
+             "his grad students (and others?) had been hacking on making Lisp "
+             "a reality for about 4 years."
              (br) (br)
              "But what else was going on? In what cultural context did Lisp "
              "arise?"))
 
     (slide :title "1962"
       (bullet "What We Were Driving")
-      (img :src "img/volvo-p1800-15-small.jpg"))
+      (img :src "img/volvo-p1800-15-small.jpg")
+      (notes "Smoking pipes, dirving our sporty Volvo P1800s."))
 
     (slide :title "1962"
       (bullet "What We Were Wearing")
@@ -26,7 +27,8 @@
 
     (slide :title "1962"
       (bullet "How We Were Computing")
-      (img :src "img/ibm-704-llnl.jpg"))
+      (img :src "img/ibm-704-llnl.jpg")
+      (notes "The IBM 704 in all its massive glory."))
 
     (slide :title "1962"
       (bullet "What We Were Reading")
@@ -50,39 +52,63 @@
           "machine"
           (img :style "float: right" :src "img/weak-nuclear-force.jpg"))
         "About 10,000 computers on Earth"
-        (span (strong "6.7e-17 ") "instructions/s/kg on the planet")
+        (span (strong "6.7e-17 ") "instructions/s/kg of planet")
         "In units of length, this would be ~7 attometers"
         (span "This is the range of the " (strong "weak nuclear force ")
-          "(responsible for radioactive decay)")))
+          "(responsible for radioactive decay)"))
+      (notes "This was a very different technological world than what we "
+             "know." (br) (br)
+             "ENIAC was a press sensation in 1946. Computing had lived in "
+             "the minds of the public for only 16 years." (br) (br)
+             "UNIVAC, the first successful commercial computer had "
+             "shipped 1951, only 7 years before Lisp was conceived."
+             (br) (br)
+             "IBM's first mainframe, the 700 series, shipped a year later."))
 
     ;; 80s
     (slide :title " "
-      (bullet (strong :style "font-size: 300%" "1986")))
+      (bullet (strong :style "font-size: 300%" "1986"))
+      (notes "That was the start of Lisp. "
+             "Now let's skip ahead about 25 years, to the birth of Erlang. "
+             "What was going on?"))
 
     (slide :title "1986"
       (bullet "What We Were Driving")
-      (img :src "img/1978_Volvo_262_Coupe_Bertone-small.jpg"))
+      (img :src "img/1978_Volvo_262_Coupe_Bertone-small.jpg")
+      (notes "This is actually a 1978 model, but it was produced through the "
+             "mid-80s. And it's a lot sportier than the Volvo wagons that "
+             "were everywhere..."))
 
     (slide :title "1986"
       (bullet "What We Were Wearing")
-      (img :src "img/Shari-Belafonte-Vogue-June-1986.jpg"))
+      (img :src "img/Shari-Belafonte-Vogue-June-1986.jpg")
+      (notes "Shari Belafonte on the cover of Vogue."))
 
     (slide :title "1986"
       (bullet "What We Were Wearing")
-      (img :src "img/Joe-Armstrong-Fashion-small.jpg"))
+      (img :src "img/Joe-Armstrong-Fashion-small.jpg")
+      (notes "Some of us didn't make the covers of fashion magazines, but "
+             "should have."))
 
     (slide :title "1986"
       (bullet "How We Were Computing")
-      (img :src "img/ibm-5150-chaplin.jpg"))
+      (img :src "img/ibm-5150-chaplin.jpg")
+      (notes "The glorious IBM 5150. Its fall from grace had only just begun "
+             "with the rise of the Clones."))
 
     (slide :title "1986"
       (bullet "How We Were Computing")
-      (img :src "img/VAX-11-780-small.jpg"))
+      (img :src "img/VAX-11-780-small.jpg")
+      (notes "Erlang itslf was created on a VAX 11/750 (couldn't find a nice "
+             "image of one) running BSD UNIX. "
+             (br) (br)
+             "I asked Joe, and he asked Mike: it had 16 MB RAM, 2x 512 MB "
+             "disks."))
 
     (slide :title "1986"
       (bullet "What We Were Reading")
       (bullet (em "New York Times Best Seller list"))
-      (img :src "img/john-le-carre-perfect-spy.jpg.jpg"))
+      (img :src "img/john-le-carre-perfect-spy.jpg"))
 
     (slide :title "1986"
       (bullet "What We Were Reading")
@@ -96,27 +122,40 @@
       (quicklist
         (span "The birth of Common Lisp"
           (img :style "float: right" :src "img/Symbolics-3600-small.jpg"))
+        "TCP/IP standardized (1982)"
         "The rise of the Lisp Machines"
-        "Symbolics was the first .com domain on the nascent WWW"
+        "Symbolics was the first .com domain on the Internet"
         "Zetalisp used to program an OS, window manager, compiler, network server, and editor"
-        "The AI Winter still 3 years in the future ..."))
+        "The AI Winter still 3 years in the future ...")
+      (notes "The first CADR Lisp machines shipped in 1982."
+             (br) (br)
+             "symbolics.com was registered on March 15, 1985."))
 
     (slide :title "1986: A Sense of Scale"
       (quicklist-frag
         (span "VAX-11/750 - 1 MIPS at 5 MHz"
           (img :style "float: right" :src "img/helium-atom-small.jpg"))
         "About 31 million computers on Earth"
-        (span (strong "5.2e-12 ") "instructions/s/kg on the planet")
+        (span (strong "5.2e-12 ") "instructions/s/kg of planet")
         "In units of length, this would be ~5 picometers"
-        (span "The radius of a "(strong "helium atom ") "is about 31 pm")))
+        (span "The radius of a "(strong "helium atom ") "is about 31 pm"))
+      (notes "The world that Erlang was born into differed significantly from "
+             "that which Lisp was. Millions of computers existed, processor "
+             "power was significantly increased, and AI was catching the world "
+             "on fire."))
 
     ;; 00s
     (slide :title " "
-      (bullet (strong :style "font-size: 300%" "2008")))
+      (bullet (strong :style "font-size: 300%" "2008"))
+      (notes "Skipping ahead. "
+             "After about 10 years of AI winter, Lisp started making "
+             "headlines. This time period saw the birth of LFE, among many "
+             "other interesting developments in the Lisp world."))
 
     (slide :title "2008"
       (bullet "What We Were Driving")
-      (img :src "img/2008_volvo_s60_2_5t.jpg"))
+      (img :src "img/2008_volvo_s60_2_5t.jpg")
+      (notes "The cars do keep getting better ..."))
 
     (slide :title "2008"
       (bullet "What We Were Wearing")
@@ -128,20 +167,25 @@
 
     (slide :title "2008"
       (bullet "How We Were Computing")
-      (img :src "img/2008-dell-m1730-open-on-small.jpg"))
+      (img :src "img/2008-dell-m1730-open-on-small.jpg")
+      (notes "Robert wrote LFE on a Dell XPS ... a long way from the IBM 704."
+             "Or the VAX 11/750, for that matter."))
 
     (slide :title "2008"
       (bullet "What We Were Reading")
       (bullet (em "New York Times Best Seller list"))
-      (img :src "img/force-unleashed.jpg"))
+      (img :src "img/force-unleashed.jpg")
+      (notes "Best-selling literature reached new hights."))
 
     (slide :title "2008"
       (bullet "What We Were Reading")
-      (img :src "img/Let-Over-Lambda.jpg"))
+      (img :src "img/Let-Over-Lambda.jpg")
+      (notes "I feel I must admit: I haven't read this yet."))
 
     (slide :title "2008"
       (bullet "What We Were Reading")
-      (img :src "img/programming-erlang-2007.jpg"))
+      (img :src "img/programming-erlang-2007.jpg")
+      (notes "I have, however, read this one."))
 
     (slide :title "2008: The World of Lisp"
       (quicklist
@@ -151,7 +195,9 @@
         "2004 -  David Lamkins' Successful Lisp published"
         "2004 -  Conrad Barski's Casting SPELs in Lisp - The Comic Book released"
         "2005 - Daniel Friedman's The Reasoned Schemer published"
-        "2005 - Peter Seibel's Practical Common Lisp published"))
+        "2005 - Peter Seibel's Practical Common Lisp published")
+      (notes "The early 2000s saw a LOT of what seemed sudden developments in "
+             "Lisp. I'm going to zoom past these ..."))
 
     (slide :title "2008: The World of Lisp (cont'd)"
       (quicklist
@@ -160,7 +206,9 @@
         (span "2006 - ITA received "(strong "$100 million ") "in venture capital")
         "2006 - Blaise released, a Scheme implemented in Haskell"
         "2007 - Scheme R6RS ratified as standard"
-        "2007 - Liskell released for Haskell (GHC)"))
+        "2007 - Liskell released for Haskell (GHC)")
+      (notes "These bullets, though, should give you a sense of the changes "
+             "at play during this time."))
 
     (slide :title "2008: The World of Lisp (cont'd)"
       (quicklist
@@ -169,7 +217,8 @@
         "2008 - Robert Virding releases LFE for the Erlang VM"
         "2008 - Termite for Gambit (Erlang-style concurrency in Scheme)"
         "2008 - Doug Hoyte's Let Over Lambda published"
-        "The AI Spring arrives with Machine Learning and Data Analytics"))
+        "The AI Spring arrives with Machine Learning and Data Analytics")
+      (notes "And here we see Robert's contribution."))
 
     (slide :title "2008: A Sense of Scale"
       (quicklist-frag
@@ -177,23 +226,25 @@
           (img :style "float: right"
                :src "img/weird_cloud_rainbow_by_marandaschmidt-cropped-small.jpg"))
         "About 1 billion PCs and ~260 million smartphones on Earth"
-        (span (strong "1.3e-5 ") "instructions/s/kg on the planet")
+        (span (strong "1.3e-5 ") "instructions/s/kg of planet")
         "In units of length, this would be 10s of micrometers"
         (span "10 micrometers is the typical size of a "
           (strong "cloud water droplet"))))
+
     ;; 10s
     (slide :title " "
       (bullet (strong :style "font-size: 300%" "2014")))
 
     (slide :title "2014"
+      (bullet "It's only been 6 years since LFE, but a lot's happened.")
       (quicklist
-        (span "There have been some changes in the last 6 years"
+        (span "Interest in Lisps have exploded"
           (img :style "float: right"
                :src "img/2014-Volvo-Concept-Coupe-small.jpg"))
-        "Interest in Lisps have exploded"
         "AI has returned to the industry in the guise of machine learning"
-        "More companies, projects, and languages are tackling hard problems"
+        "More companies, projects, and languages are tackling hard, distribute-systems problems"
         "Cores are everywhere"
+        "These make LFE an interesting option in the array of modern programming tools"
         ))
 
     (slide :title "2014: A Sense of Scale"
@@ -202,17 +253,22 @@
           (img :style "float: right"
                :src "img/paramecium.jpg"))
         "About 12 billion computing devicess on Earth"
-        (span (strong "2.1e-4 ") "instructions/s/kg on the planet")
+        (span (strong "2.1e-4 ") "instructions/s/kg of planet")
         "In units of length, this would be about 200 micrometers"
         (span "That's two " (strong "Paramecium ")
-          "end-to-end, or the width of a " (strong "human hair"))))
+          "end-to-end, or the width of a " (strong "human hair")))
+      (notes "Other changes in the past 6 years include the incredible "
+             "number of computing devices (including smart phones) "
+             "that are now on the planet."))
 
     (slide :title "A Sense of Scale"
       (quicklist-frag
         (span "In 50 years, our capacity compute has grown from the "
               "equivalent of the plank-scale to the size of living "
               "organisms")
-        (span "This change is " (em "enormous"))))
+        (span "This change is " (em "enormous"))
+        "It's a very different world"
+        "Is there still room for Lisp?"))
     ))
 
 

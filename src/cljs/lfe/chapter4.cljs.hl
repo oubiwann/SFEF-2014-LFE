@@ -9,11 +9,15 @@
     (slide :title "LFE?"
       (img :src "img/can-has-lfe.png"))
 
-    (slide :title "NOW!")
+    (slide :title "NOW!"
+      (notes "With a great back-story, we are finally getting to some "
+             "LFE."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Numbers and Arithmetic")
-      (sample-code/numbers))
+      (sample-code/numbers)
+      (notes "Here're what numbers, some with different bases, and operations "
+             "on them look like."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Atoms and Strings")
@@ -21,7 +25,8 @@
 
     (slide :title "What Does It Look Like?"
       (bullet "Bit Packing")
-      (sample-code/bit-pack))
+      (sample-code/bit-pack)
+      (notes "The bit-packing example from Joe Armstrong's book."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Bit Unpacking")
@@ -29,7 +34,8 @@
 
     (slide :title "What Does It Look Like?"
       (bullet "Lists")
-      (sample-code/lists-1))
+      (sample-code/lists-1)
+      (notes "The bread and butter of Lisps ..."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Lists")
@@ -37,39 +43,53 @@
 
     (slide :title "What Does It Look Like?"
       (bullet "Records")
-      (sample-code/records-1))
+      (sample-code/records-1)
+      (notes "Create an Erlang record with three fields."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Records")
-      (sample-code/records-2))
+      (sample-code/records-2)
+      (notes "Creating a record in LFE generates specific record macros. Here "
+             "is the make-* one creating a new person record."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Records")
-      (sample-code/records-3))
+      (sample-code/records-3)
+      (notes "Here are some more record macros being utilized to get and set "
+             "data."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Pattern Matching - let")
-      (sample-code/patterns-1))
+      (sample-code/patterns-1)
+      (notes "Hopefully folks are at least conceptually familiar with Lisp "
+             "forms like let, case, cond, etc. Here is a let form that has "
+             "been modified for LFE to support pattern matching."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Pattern Matching - case")
-      (sample-code/patterns-2))
+      (sample-code/patterns-2)
+      (notes "LFE's case form demonstrating support for pattern matching."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Pattern Matching - cond")
-      (sample-code/patterns-3))
+      (sample-code/patterns-3)
+      (notes "Similarly for the cond form."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Pattern Matching - defun")
-      (sample-code/patterns-4))
+      (sample-code/patterns-4)
+      (notes "Here is an example of pattern matching in function definitions."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Pattern Matching - receive")
-      (sample-code/patterns-5))
+      (sample-code/patterns-5)
+      (notes "Pattern matching for message-passing."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Macros")
-      (sample-code/macros-1))
+      (sample-code/macros-1)
+      (notes "Here is a macro that provides LFE with a unit test form very "
+             "similar to that found in Clojure."))
 
     (slide :title "What Does It Look Like?"
       (bullet "Macros")
@@ -81,21 +101,46 @@
           (td :width "10%" "to this:")
           (td :width "40%"
             (sample-code/macros-3))
-        )))
-
-    (slide :title "Church Numerals"
-      (sample-code/church-numerals))
-
-    (slide :title "Async HTTP Request"
-      (sample-code/async-http))
-
-    (slide :title "Bidirectional Messages"
-      (sample-code/messenger))
-
-    (slide :title "What Does This Thing Run On?"
-      (bullet "Erlang, of course."))
+        ))
+      (notes "It's a bit of syntactic sugar that allows us to decrease the "
+             "amount of boiler-plate code."))
 
     (slide :title "What Does It Look Like?"
-      (sample-code/erlang-lfe-macros))
+      (bullet "Macros")
+      (sample-code/macros-4)
+      (notes "Here is a macro that defines a function of three different "
+             "arities. In this particular case, it lets us write HTML as "
+             "S-expressions."))
 
+    (slide :title "Church Numerals"
+      (sample-code/church-numerals)
+      (notes "Here's a quick taste of lambda calculus in LFE ..."))
+
+    (slide :title "Async HTTP Request"
+      (sample-code/async-http)
+      (notes "An async HTTP request; this example comes with LFE."))
+
+    (slide :title "Bidirectional Messages"
+      (sample-code/messenger)
+      (notes "Another example found in the LFE code base."))
+
+    (slide :title "What Does This Thing Run On?"
+      (bullet "Erlang, of course.")
+      (notes "Okay, so that goes without saying, given the context. But let's "
+             "take a quick glimpse at what that " (em "means")))
+
+    (slide :title "What Does It Look Like?"
+      (sample-code/erlang-lfe-macros)
+      (notes "This is a tiny portion of LFE's Erlang code. In particular, "
+             "this is from the part of the code base that defines the macros "
+             "that are created when one defines a record. "
+             (br)(br)
+             "This is LFE's AST in Erlang "
+             "lists, defining Lisp macros used with records, also using Erlang "
+             "macros. "
+             (br) (br)
+             "Yo, dog, I heard you liked meta ..."
+             (br) (br)
+             "Great! That's what LFE looks like. If you haven't left the room, "
+             "I can safely assum you want more. Let's take it for a spin."))
     ))

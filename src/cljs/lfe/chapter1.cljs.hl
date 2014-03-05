@@ -8,8 +8,8 @@
     (h2 "in 45 Minutes")
     (bullet "Duncan McGreggor")
     (bullet "SF Erlang Factory, 2014")
-    (notes "Welcome to one of the more exotic projects in the Erlang "
-           "community!")))
+    (notes "Welcome to a talk about one of the more exotic projects in the "
+           "Erlang community!")))
 
 (defn aka []
   (chapter :title "(Lisp Flavored Erlang)"))

@@ -83,11 +83,13 @@
       (sample-code/get-page-13-2)
       (notes "Here's the rest of it."
              (br) (br)
-             "Note that it is expressed in the never-actualy-implemented "
-             "M-expression syntax. (S-expressions were originally envisioned "
+             "Note that this is in the never-actualy-implemented "
+             "M-expression syntax."
+             (br) (br)
+             "(S-expressions were originally envisioned "
              "as an AST, a first step towards a more programmer-friendly "
              "syntax. As it turned out, programmers ended up loving "
-             "S-expressions, and didn't want to change!"))
+             "S-expressions, and didn't want to change!)"))
 
     (slide :title "Brian Hayes"
       (ul
@@ -97,11 +99,11 @@
       (sample-code/get-parens-quote)
       (ul
         (li "\"The Semicolon Wars\", American Scientist (2006)"))
-      (notes "Part of the 'Why Lisp' question often comes down to 'Why all the "
+      (notes "Part of the 'Why Lisp?' question often comes down to 'Why all the "
              "parentheses?!' I can attest to the fact that parens blindness "
-             "only takes a few weeks to set it, so it's really no big deal. "
+             "only takes a few weeks to set in, so it's really no big deal. "
              (br) (br)
-             "But some people actually really like them..."))
+             "But some people actually really " (em "like") " them..."))
 
     (slide :title "Why Lisp?"
       (bullet "But on " (em "Erlang") "?"))
@@ -112,7 +114,7 @@
               "Lisp has such a simple and powerful syntax so how could I not "
               "do it?\"")
       (notes "This is a great quote from Robert. It skips right past all the "
-             "rhetoric and appeals to experimental scientist in us."))
+             "rhetoric and appeals to the experimental scientist in us."))
 
     (slide :title "LFE!"
       (img :src "img/can-has-lfe.png")
@@ -134,12 +136,14 @@
         "It is the candy store of syntactic sugar"
         "The ultimate language lab"))
 
-    (slide :title "For Lispers"
+    (slide :title "Why LFE?"
+      (bullet "For Lispers")
       (quicklist-frag
         "The Actor Model you've always wanted"
         "OTP!"))
 
-    (slide :title "For Erlangers"
+    (slide :title "Why LFE?"
+      (bullet "For Erlangers")
       (quicklist-frag
         "It's just plain fun"
         "Switch syntax and spice up your life ..."

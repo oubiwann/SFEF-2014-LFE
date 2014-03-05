@@ -1,5 +1,48 @@
 (ns lfe.chapter9
-    (:require [lfe.reveal :refer [chapter]]))
+    (:require [hoplon.reveal :refer [quicklist]]
+              [lfe.reveal :refer [chapter slide]]))
 
 (defn end []
   (chapter :title "Thanks :-D"))
+
+(defn references []
+  (chapter :title "References"
+
+    (slide :title "References"
+      (quicklist
+        "https://github.com/rvirding/lfe"
+        "https://github.com/lfe/lfetool"
+        "https://github.com/lfe/lfeunit"
+        "https://github.com/lfe/lfe-openstack"
+        "https://github.com/lfe/lfe-rackspace"
+        "https://github.com/klacke/yaws"
+        "https://github.com/lfe/yaws-rest-starter"
+        "https://github.com/oubiwann/SFEF-2014-LFE"
+        "https://github.com/oubiwann/cloudy"))
+
+    (slide :title "References"
+      (quicklist
+        "http://www.cs.umd.edu/projects/shop/description.html"
+        "http://sourceforge.net/projects/shop/"
+        "https://bitbucket.org/dananau/pyhop"
+        "https://github.com/lfe/lfe-hop"
+        "https://github.com/lfelfe-sample-rebar-plugin"
+        "https://github.com/lfe/lfe-rest-client"
+        "https://github.com/lfe/lfe-gp"))
+
+    (slide :title "References"
+      (quicklist
+        "http://en.wikipedia.org/wiki/Exabyte"
+        "http://en.wikipedia.org/wiki/Zettabyte"
+        "http://arstechnica.com/science/2011/02/adding-up-the-worlds-storage-and-computation-capacities/"
+        "http://www.wired.com/wiredscience/2011/02/world-computer-data/"
+        "http://ijoc.org/index.php/ijoc/article/download/1562/742"))
+
+    (slide :title "References"
+      (quicklist
+        "http://www.computerhistory.org/internet_history/"
+        "http://www.nationmaster.com/graph/med_per_com-media-personal-computers&date=1986"
+        "http://en.wikipedia.org/wiki/Orders_of_magnitude_%28length%29"
+        "http://www.infoq.com/articles/webber-rest-workflow"
+        "https://dspace.mit.edu/bitstream/handle/1721.1/6952/AITR-844.pdf"))
+    ))

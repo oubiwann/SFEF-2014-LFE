@@ -1,5 +1,5 @@
 (ns lfe.chapter8
-    (:require [hoplon.reveal :refer [bullet quicklist-frag]]
+    (:require [hoplon.reveal :refer [bullet notes quicklist quicklist-frag]]
               [lfe.reveal :refer [chapter slide]]))
 
 (defn conclusion []
@@ -10,9 +10,10 @@
         "Why is Lisp interesting in the 21st century?"
         "From Lisp to Erlang: how we got to LFE"
         "Kicking LFE's tires: do we want to drive this thing?"
-        "Let's find out! Taking LFE for a spin"
-        "Racing ahead with bigger projects"
-        "Taking LFE off-road with research projects"))
+        "We took LFE for a spin ... and LOVED it!"
+        "Raced ahead with bigger projects"
+        "Took LFE off-road with research projects")
+      (notes "Soooo much stuff ..."))
 
     (slide :title "Our History and Present"
       (quicklist-frag
@@ -20,15 +21,22 @@
         "Violence was provided as an answer to violence"
         "We are working with powerful tools -- hardware and software"
         "Extraordinary concepts: actor model, homoiconicity, ML, metaprogramming, GAs"
-        "We can take a different path"))
+        "We can take a different path than the one we started with ...")
+      (notes "In closing, I'd like to wax philosophical."))
 
     (slide :title "Our History and Present"
       (bullet (strong "Gul Agha's 1985 PhD Dissertation"))
       (quicklist-frag
-        "ACTORS: A Model of Concurrent Computation in Distributed Systems"
+        (span "ACTORS: A Model of Concurrent Computation in Distributed Systems"
+          (img :style "float: right" :src "img/agha.png"))
         "Agha inspired by Carl Hewitt"
         "Researched at MIT with Message-Passing Semantics Group"
-        ))
+        )
+      (notes "Dr. Agha is currently a professor at the University of Illinois, "
+             "Urbana-Champaign, but started his career at MIT and Michigan "
+             "researching concurrency and the actor model. Through these "
+             "studies, he was left with a deep impression regarding the "
+             "power of this model of distributed computing."))
 
     (slide :title "Our History and Present"
       (bullet (strong "Gul Agha's 1985 PhD Dissertation"))
@@ -37,15 +45,32 @@
         "\"Many observers have noted the computational power [...] of a new generation of computers.\""
         "\"The possibilities that emerge [...] are simply mind boggling.\""
         "\"[H]umankind has generally lacked the foresight to use the resources that science has provided in a manner that would be compatible wth its long-term survival.\""
-        ))
+        )
+      (notes "Dr. Agha's dissertation is prefaced with some observations ... "
+             "and an exellent, alturistc plea. I'd like to share these with "
+             "you."))
 
     (slide :title "Our Future"
-      (bullet "\"Somehow we have to develop an ethic that values compassion rather than consumption, to acquire a reverence for life itself.\""))
+      (bullet "\"Somehow we have to develop an ethic that values compassion rather than consumption, to acquire a reverence for life itself.\"")
+      (notes "His vision is unusual ... but compelling. Especially when "
+             "viewed in the context of our industry's beginnings."))
 
     (slide :title "Our Future"
-      (bullet "Open source communities foster this vision")
-      (bullet "To keep this alive, we need to care for it, tend to it")
-      (bullet "We each have the power to help rewrite computing's history"))
+      (quicklist
+        "Open source communities foster this vision"
+        "To keep this alive, we need to care for it, tend to it"
+        "We each have the power to help rewrite computing's history")
+      (notes "We are helping, working together, to make this dream come true."))
+
+    (slide :title "Our Future"
+      (bullet "With this in mind:")
+      (quicklist-frag
+        "Lisps make great language labs"
+        "Distributed, fault-tolerant platforms are precious jewels"
+        "We are heading down the inexorable rood to complex, emergent systems"
+        "LFE gives us Lisp + Erlang, language lab + distributed systems lab"
+        (span "Make something " (em "awesome")))
+      (notes "Here are my closing thoughts,"))
   ))
 
 (defn contact []

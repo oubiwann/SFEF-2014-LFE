@@ -9,31 +9,51 @@
 
     (slide :title "Overcast Skies"
       (bullet "Creating Larger Projects")
-      (sample-code/cloud-1))
+      (sample-code/cloud-1)
+      (notes "Let's do LFE in the cloud. Using lfetool, we'll create a new "
+             "project called 'cloudy'."))
 
     (slide :title "Amazon AWS"
       (bullet "Update rebar dependencies")
-      (sample-code/aws-deps-1))
+      (sample-code/aws-deps-1)
+      (notes "We'll start with Amazon's version of the cloud :AWS. "
+             "Just update rebar.config with our dependency ..."))
 
     (slide :title "Amazon AWS"
       (bullet "Update Makefile dependencies")
-      (sample-code/aws-deps-2))
+      (sample-code/aws-deps-2)
+      (notes "Then update the Makefile so that we have access to "
+             "the new deps when running the shell or compiling the unit "
+             "tests."
+             (br)(br)
+             "Note: This is now a manual process; I have plans to encode this "
+             "in a rebar plugin for LFE."))
 
     (slide :title "Amazon AWS"
       (bullet "Define a convenience function in src/cloudy.lfe")
-      (sample-code/aws-1))
+      (sample-code/aws-1)
+      (notes "Let's write some code to use erlcloud that will start up an "
+             "instance for us ..."))
 
     (slide :title "Amazon AWS"
       (bullet "Configure environment and start shell")
-      (sample-code/aws-2))
+      (sample-code/aws-2)
+      (notes "Now we can start the REPL to try it out..."))
 
     (slide :title "Amazon AWS"
       (bullet "Start an instance")
-      (sample-code/aws-3))
+      (sample-code/aws-3)
+      (notes "Slurping pulls in all the functions and macros defined or "
+             "included in the slurped file. We can now run our new "
+             "function and get the results back from Amazon."
+             (br)(br)
+             "At this point, we should have a pending or running instance "
+             "in Amazon's cloud. We can check quickly enough ..."))
 
     (slide :title "Amazon AWS"
       (bullet "Check your work")
-      (img :src "img/aws-screenshot.png"))
+      (img :src "img/aws-screenshot.png")
+      (notes "Sure enough, there it is."))
 
     (slide :title "Amazon AWS"
       (bullet "From here:")
@@ -41,35 +61,56 @@
         "Log in to machine, install Erlang, rebar, git, etc."
         "Clone your project(s)"
         "Run your services"
-        "Alternatively, create your own image that does all this"))
+        "Alternatively, create your own image that does all this")
+      (notes "This is just the beginning -- lots more to do."))
 
     (slide :title "Rackspace Cloud"
       (bullet "Update rebar dependencies")
-      (sample-code/rax-deps-1))
+      (sample-code/rax-deps-1)
+      (notes "We can do the same thing with any other vendor. Rackspace has "
+             "a public API, very different from Amazon's, but lets one "
+             "accomplish many of the same things."
+             (br)(br)
+             "Though man languages have an SDK for the Rackspace APIs, there "
+             "was none for Erlang. So I wrote one for this presentation. It's "
+             "quite nascent, but you can at least start up instances."
+             (br)(br)
+             "Let's see how ..."
+             (br)(br)
+             "Add the dep ..."))
 
     (slide :title "Rackspace Cloud"
       (bullet "Update Makefile dependencies")
-      (sample-code/rax-deps-2))
+      (sample-code/rax-deps-2)
+      (notes "Same drill here with the Makefile updates ..."))
 
     (slide :title "Rackspace Cloud"
       (bullet "Update compile for Jiffy")
-      (sample-code/rax-deps-3))
+      (sample-code/rax-deps-3)
+      (notes "Jiffy requires a litte more attention, so we'll need to update "
+             "this make target."))
 
     (slide :title "Rackspace Cloud"
       (bullet "Define a convenience function in src/cloudy.lfe")
-      (sample-code/rax-1))
+      (sample-code/rax-1)
+      (notes "Here is the Rackspace version of the instance-starting "
+             "convenience function."))
 
     (slide :title "Rackspace Cloud"
       (bullet "Configure environment and start shell")
-      (sample-code/rax-2))
+      (sample-code/rax-2)
+      (notes "Start up the REPL ..."))
 
     (slide :title "Rackspace Cloud"
       (bullet "Start an instance")
-      (sample-code/rax-3))
+      (sample-code/rax-3)
+      (notes "Run the function and get the results ... Did our instnace get "
+             "started?"))
 
     (slide :title "Rackspace Cloud"
       (bullet "Check your work")
-      (img :src "img/rax-screenshot.png"))
+      (img :src "img/rax-screenshot.png")
+      (notes "Yup."))
 
     (slide :title "Rackspace Cloud"
       (bullet "From here:")
@@ -77,36 +118,59 @@
         "Log in to machine, install Erlang, rebar, git, etc."
         "Clone your project(s)"
         "Run your services"
-        "Alternatively, create your own image that does all this"))
+        "Alternatively, create your own image that does all this")
+      (notes "Again, lots more you can do ..."))
+
+    (slide :title "REST Area"
+      (notes "So much for public clouds. Now you want to build apps and "
+             "services that run on these clouds (or private clouds like them)."
+             "You want lots of them. You want your SOA. In REST form. Can you "
+             "do this with LFE? Hellzyeah."))
 
     (slide :title "REST Area"
       (bullet "Update dependencies:")
       (sample-code/rest-deps-1)
       (bullet "Download and compile missing deps:")
-      (sample-code/rest-deps-2))
+      (sample-code/rest-deps-2)
+      (notes "Let's pull in the good stuff. (YAWS is awesome.)"))
 
     (slide :title "REST Area"
       (bullet "Update Makefile:")
       (sample-code/rest-deps-3)
-      (sample-code/rest-targets))
+      (sample-code/rest-targets)
+      (notes "Update your project dependencies and define a make target "
+             "for starting up a dev instance of the YAWS server ..."))
 
     (slide :title "REST Area"
       (bullet "Create needed dirs:")
       (sample-code/yaws-dirs)
       (bullet "Create config file at ./etc/yaws.conf:")
-      (sample-code/yaws-conf))
+      (sample-code/yaws-conf)
+      (notes "We'll need to create some directories needed by YAWS, and then "
+             "we'll need a YAWS config for our project."))
 
     (slide :title "REST Area"
       (bullet "Implementation: entry point")
-      (sample-code/yaws-rest-entry))
+      (sample-code/yaws-rest-entry)
+      (notes "YAWS is dead-simple to integrate with. All you need is to define "
+             "an out function in the module you configured YAWS to use. Note "
+             "that we're splitting the path by the separator. Also, you "
+             "can see that we make reference to a routes function ..."))
 
     (slide :title "REST Area"
       (bullet "Implementation: routes")
-      (sample-code/yaws-rest-routes))
+      (sample-code/yaws-rest-routes)
+      (notes "And here is said routes function. This is where our app properly "
+             "starts. As you might notice from the docstring, this app is a "
+             "play on the now-famous coffeeshop REST example. Our app is ... "
+             "a Volvoshop ..."
+             (br)(br)
+             "Each route makes a call to an API function ..."))
 
     (slide :title "REST Area"
       (bullet "Implementation: order")
-      (sample-code/yaws-rest-api-order-1))
+      (sample-code/yaws-rest-api-order-1)
+      (notes "And here are the API functions ..."))
 
     (slide :title "REST Area"
       (bullet "Implementation: order")
@@ -122,11 +186,19 @@
 
     (slide :title "REST Area"
       (bullet "Implementation: utility functions")
-      (sample-code/yaws-rest-utils))
+      (sample-code/yaws-rest-utils)
+      (notes "We also define some utility functions for use by the other "
+             "bits."))
 
     (slide :title "REST Area"
       (bullet "Exercising the API")
-      (sample-code/curl-check-1))
+      (sample-code/yaws-start)
+      (notes "With the code in place, we can start the server ..."))
+
+    (slide :title "REST Area"
+      (bullet "Exercising the API")
+      (sample-code/curl-check-1)
+      (notes "And start checking our endpoints ..."))
 
     (slide :title "REST Area"
       (bullet "Exercising the API")
@@ -150,6 +222,29 @@
 
     (slide :title "REST Area"
       (bullet "Exercising the API")
-      (sample-code/curl-check-7))
+      (sample-code/curl-check-7)
+      (notes "And finally, a call to delete the Volvo order, now that it's "
+             "fulfilled."))
+
+    (slide :title "A Lot of Ground"
+      (notes "All it took to get the Amazon and Rackspace instances started "
+             "were a couple of functions. As you may know, that's barely "
+             "scratching the surface. We then rushed through creating a REST "
+             "server with YAWS, but those same steps can help you create and "
+             "deploy an SOA."
+             (br)(br)
+             "The code that does this is in its own repo, and you can use this "
+             "as the basis for exploring your own LFE cloud apps."
+             (br)(br)
+             "I had "
+             "originally planned to dive even more deeply ... In particular, "
+             "I wanted to show you a new way of imagining service APIs for "
+             "SDK programmers."
+             (br)(br)
+             "Seeing how I'd already created about 10 projects for this "
+             "presentation, and I was running out of time, with the slides "
+             "not even finished, I had to bail."
+             (br)(br)
+             "However ..."))
 
     ))
