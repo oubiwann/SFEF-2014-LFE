@@ -1,8 +1,17 @@
-# hoplon.reveal
+# LFE Presntation for Erlang Factory 2014
 
-This library let's you create slide decks/presentations with
+*San Francisco*
+
+This presentation was created with [holpon.reveal][8]. There
+is a live version of it running [here][9]. It only seemed a
+natural thing to do, when creating an Erlang presentation, to
+create the slides in a Lisp as well ;-)
+
+The hoplon.reveal library let's you create slide decks/presentations with
 [Reveal.js][3] and [Hoplon][7], using Clojure + ClojureScript.
 
+The information that follows below is for using hoplon.reveal,
+or for using this presentation as the basis for your own.
 
 ## Dependencies
 
@@ -184,3 +193,5 @@ Copyright © 2014, Clinton N. Dreisbach
 [5]: http://gruntjs.com/
 [6]: http://sass-lang.com/
 [7]: http://hoplon.io/
+[8]: https://github.com/oubiwann/hoplon-reveal-js
+[9]: http://lfe.cogitat.io/EF-SF-2014/
