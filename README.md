@@ -1,4 +1,4 @@
-# LFE Presntation for Erlang Factory 2014
+# LFE Presentation for Erlang Factory 2014
 
 *San Francisco*
 
